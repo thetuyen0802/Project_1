@@ -13,9 +13,9 @@ namespace _3.DAL.Repositories
     {
         private DBContext _context;
 
-        public Bill_ProductDetailRepository(DBContext context)
+        public Bill_ProductDetailRepository()
         {
-            _context = context;
+            _context = new DBContext();
         }
 
         public bool Add(Bill bill)

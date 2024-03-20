@@ -18,7 +18,6 @@ namespace _3.DAL.Configuration
             builder.HasKey(x => x.ProDetailId);
             builder.Property(a=>a.ProDetailId).UseIdentityColumn(1,1);
             builder.HasOne(x=>x.Product).WithMany(x=>x.ProductDetails).HasForeignKey(x=>x.ProductId);
-            builder.HasOne(x=>x.Bill).WithMany(x=>x.ProductDetails).HasForeignKey(x=>x.ProDetailId);
             builder.HasOne(x=>x.Brand).WithMany(x=>x.ProductDetails).HasForeignKey(x=>x.BrandId);
             builder.HasOne(x=>x.Material).WithMany(x=>x.ProductDetails).HasForeignKey(x=>x.MaterialId);
             builder.HasOne(x => x.Color).WithMany(x => x.ProductDetails).HasForeignKey(x => x.ColorId);

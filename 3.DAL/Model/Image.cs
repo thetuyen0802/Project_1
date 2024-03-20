@@ -9,7 +9,7 @@ namespace _3.DAL.Model
     public class Image
     {   
         public int ImageId { get; set; }
-        public string ImageLink { get; set; }
-        public List<ProductDetail> ProductDetails { get; set; }
+        public string? ImageLink { get; set; }
+        public List<ProductDetail>? ProductDetails { get; set; }
     }
 }

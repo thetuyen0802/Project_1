@@ -11,7 +11,7 @@ namespace _3.DAL.Model
 
         public int BrandId { get; set; }
 
-        public string BrandName { get; set; }
-        public List<ProductDetail> ProductDetails{ get; set; }
+        public string? BrandName { get; set; }
+        public List<ProductDetail>? ProductDetails{ get; set; }
     }
 }

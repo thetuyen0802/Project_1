@@ -16,7 +16,7 @@ namespace _3.DAL.Configuration
             builder.ToTable("Brands");
             builder.HasKey(x => x.BrandId);
             builder.Property(x => x.BrandId).UseIdentityColumn(1,1);
-            
+            builder.Property(x=>x.BrandName).HasMaxLength(50).IsRequired();
             
         }
     }

@@ -13,8 +13,8 @@ namespace _3.DAL.Model
         [Key]
         public int ColorId { get; set; }
        
-        public string Name { get; set; }
-        public string ColorCode { get; set; }
-        public List<ProductDetail> ProductDetails { get; set; }
+        public string? ColorName { get; set; }
+        public string? ColorCode { get; set; }
+        public List<ProductDetail>? ProductDetails { get; set; }
     }
 }

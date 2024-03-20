@@ -16,6 +16,9 @@ namespace _3.DAL.Configuration
             builder.ToTable("Events");
             builder.HasKey(x => x.EventId);
             builder.Property(x => x.EventId).UseIdentityColumn(1,1);
+            builder.Property(x=>x.EventName).IsRequired();
+            builder.Property(x=>x.EventFormat).IsRequired();
+            builder.Property(x=>x.Decription).IsRequired();
         }
     }
 }

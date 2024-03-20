@@ -15,12 +15,13 @@ namespace _3.DAL.Configuration
             builder.ToTable("Bills");
             builder.HasKey(x=>x.BillId);
             builder.Property(x=>x.BillId).UseIdentityColumn(1,1);
-            builder.Property(x => x.ProDetailId).IsRequired();
+            
             builder.Property(x => x.CustomerId).IsRequired();
             builder.Property(x => x.EmployessId).IsRequired();
-            builder.Property(x=>x.CreateDate).HasDefaultValue(DateTime.Now);                                                                                                            
+            builder.Property(x=>x.CreateDate).HasDefaultValue(DateTime.Now);
             
-            builder.HasOne(a=>a.Employess).WithMany(x=>x.Bills).HasForeignKey(x=>x.EmployessId);
+            builder.HasOne(x => x.Employess).WithMany(a => a.Bills).HasForeignKey(a => a.EmployessId);
+            builder.HasOne(x => x.Customer).WithMany(a => a.Bills).HasForeignKey(a => a.CustomerId);
         }
     }
 }

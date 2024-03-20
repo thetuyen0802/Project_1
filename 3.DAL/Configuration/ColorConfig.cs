@@ -16,6 +16,8 @@ namespace _3.DAL.Configuration
             builder.ToTable("Colors");
             builder.HasKey(x => x.ColorId);
             builder.Property(x=>x.ColorId).UseIdentityColumn(1,1);
+            builder.Property(x=>x.ColorCode).IsRequired();
+            builder.Property(x=>x.ColorName).IsRequired();
 
         }
     }

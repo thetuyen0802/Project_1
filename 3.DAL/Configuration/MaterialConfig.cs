@@ -17,6 +17,7 @@ namespace _3.DAL.Configuration
 
             builder.HasKey(x => x.MaterialId);
             builder.Property(x => x.MaterialId).UseIdentityColumn(1,1);
+            builder.Property(x=>x.MaterialName).IsRequired();
 
         }
     }

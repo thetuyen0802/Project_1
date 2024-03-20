@@ -16,7 +16,9 @@ namespace _3.DAL.Configuration
             builder.ToTable("Employesses");
             builder.HasKey(x => x.EmployessId);
             builder.Property(X=>X.EmployessId).UseIdentityColumn(1,1);
-           
+            builder.Property(x => x.Name).IsRequired();
+            builder.Property(x=>x.Email).IsRequired();
+
         }
     }
 }

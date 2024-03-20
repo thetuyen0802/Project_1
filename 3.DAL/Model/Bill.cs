@@ -10,17 +10,15 @@ namespace _3.DAL.Model
     public class Bill
     {
         public int BillId { get; set; }
-
-        public int ProDetailId { get; set; }
         public int EmployessId { get; set; }
         public int CustomerId { get; set; }
         public DateTime CreateDate { get; set; }
         public DateTime PaymenDate { get; set; }
         public int Status { get; set; }
         
-        public List<ProductDetail> ProductDetails { get; set; }
+        public List<Bill_ProductDetail>? Bill_ProductDetails { get; set; }
        
-        public Employess Employess { get; set; }
-        public Customer Customer { get; set; }
+        public Employess? Employess { get; set; }
+        public Customer? Customer { get; set; }
     }
 }

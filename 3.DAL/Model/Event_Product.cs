@@ -11,8 +11,8 @@ namespace _3.DAL.Model
         public int EventId { get; set; }
         public int ProductId { get; set; }
 
-        public Event Event { get; set; }
-        public Product Product { get; set; }
+        public Event? Event { get; set; }
+        public Product? Product { get; set; }
             
     }
 }

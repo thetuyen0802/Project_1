@@ -10,10 +10,9 @@ namespace _3.DAL.Model
     {
         public int CustomerId { get; set; }
         public int UserId { get; set; }
-        public string Name { get; set; }
-        public string Address { get; set; }
+        public string? Name { get; set; }
+        public string? PhoneNumber { get; set; }
         public int Status { get; set; }
-        public List<Bill> Bills { get; set; }
-        public User User { get; set; }
+        public List<Bill>? Bills { get; set; }
     }
 }

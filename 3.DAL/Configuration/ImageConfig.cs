@@ -16,7 +16,7 @@ namespace _3.DAL.Configuration
             builder.ToTable("Images");
             builder.HasKey(x => x.ImageId);
             builder.Property(x=>x.ImageId).UseIdentityColumn(1,1);
-
+            builder.Property(x => x.ImageLink).IsRequired();
         }
     }
 }

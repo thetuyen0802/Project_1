@@ -16,8 +16,8 @@ namespace _3.DAL.Configuration
             builder.ToTable("Customers");
             builder.HasKey(x => x.CustomerId);
             builder.Property(x=>x.CustomerId).UseIdentityColumn (1,1);
-           
-
+            builder.Property(x=>x.Name).IsRequired();
+            builder.Property(x=>x.PhoneNumber).IsRequired();
         }
     }
 }

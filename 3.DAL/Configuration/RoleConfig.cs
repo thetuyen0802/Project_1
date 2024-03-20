@@ -15,6 +15,7 @@ namespace _3.DAL.Configuration
             builder.ToTable("Roles");
             builder.HasKey(c => c.RoleId);
             builder.Property(c=>c.RoleId).UseIdentityColumn(1,1);
+            builder.Property(x => x.RoleName).IsRequired();
             //builder.HasOne(p=>p.Users).WithMany()
 
         }

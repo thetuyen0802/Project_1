@@ -16,6 +16,8 @@ namespace _3.DAL.Configuration
             builder.ToTable("Category");
             builder.HasKey(x => x.CategoryId);
             builder.Property(x=>x.CategoryId).UseIdentityColumn (1,1);
+            builder.Property(x => x.CategoryName).IsRequired();
+
 
         }
     }

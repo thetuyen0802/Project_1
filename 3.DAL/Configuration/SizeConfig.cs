@@ -17,6 +17,7 @@ namespace _3.DAL.Configuration
             builder.ToTable("Sizes");
             builder.HasKey(x => x.SizeId);
             builder.Property(x => x.SizeId).UseIdentityColumn(1,1);
+            builder.Property(x => x.SizeName).IsRequired();
         }
     }
 }

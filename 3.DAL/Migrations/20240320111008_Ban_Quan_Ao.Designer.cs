@@ -12,8 +12,8 @@ using _3.DAL.Context;
 namespace _3.DAL.Migrations
 {
     [DbContext(typeof(DBContext))]
-    [Migration("20240320060917_1")]
-    partial class _1
+    [Migration("20240320111008_Ban_Quan_Ao")]
+    partial class Ban_Quan_Ao
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -35,7 +35,7 @@ namespace _3.DAL.Migrations
                     b.Property<DateTime>("CreateDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 3, 20, 13, 9, 17, 523, DateTimeKind.Local).AddTicks(528));
+                        .HasDefaultValue(new DateTime(2024, 3, 20, 18, 10, 8, 249, DateTimeKind.Local).AddTicks(1432));
 
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");

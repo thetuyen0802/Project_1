@@ -33,7 +33,7 @@ namespace _3.DAL.Migrations
                     b.Property<DateTime>("CreateDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 3, 20, 13, 9, 17, 523, DateTimeKind.Local).AddTicks(528));
+                        .HasDefaultValue(new DateTime(2024, 3, 20, 18, 10, 8, 249, DateTimeKind.Local).AddTicks(1432));
 
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");

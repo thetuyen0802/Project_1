@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _1.GUI.View;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,6 +23,7 @@ namespace _1.GUI
             Product product = new Product();
 
             FillForm(product);
+           
 
         }
         void FillForm(Form form)
@@ -52,6 +54,7 @@ namespace _1.GUI
 
         private void btn_product_Click(object sender, EventArgs e)
         {
+            panelContainer.Controls.Clear();
             Product product = new Product();
             FillForm(product);
         }
@@ -65,10 +68,11 @@ namespace _1.GUI
         {
             Application.Exit();
         }
-
-        private void panelContainer_Paint(object sender, PaintEventArgs e)
+        private void btn_sales_Click(object sender, EventArgs e)
         {
-
+            panelContainer.Controls.Clear();
+            Sales sales=new Sales();
+            FillForm(sales);
         }
     }
 }

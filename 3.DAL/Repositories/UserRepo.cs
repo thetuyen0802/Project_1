@@ -25,13 +25,6 @@ namespace _3.DAL.Repositories
             return true;
         }
 
-        public bool Delete(User nd)
-        {
-            _context.Remove(nd);
-            _context.SaveChanges();
-            return true;
-        }
-
         public User FindById(int id)
         {
             return _context.Users.Find(id);

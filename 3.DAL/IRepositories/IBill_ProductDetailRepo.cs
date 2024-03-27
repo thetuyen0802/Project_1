@@ -2,17 +2,17 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.SymbolStore;
+using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace _3.DAL.IRepositories
 {
-    public interface IProductRepository
+    public interface IBill_ProductDetailRepo
     {
-        bool Add(Product product);
-        bool Update(Product product);
-        Product FindById(int id);
-        List<Product> GetAll();
+        bool Add(Bill_ProductDetail obj);
+        List<Bill_ProductDetail> GetAll();
+        
     }
 }

@@ -18,21 +18,21 @@ namespace _3.DAL.Repositories
             _context = new DBContext();
         }
 
-        public bool Add(Bill bill)
-        {
-            if (bill == null)
+            public bool Add(Bill bill)
             {
-                return false;
-            }
-            else
-            {
-                _context.Bills.Add(bill);
-                _context.SaveChanges();
-                return true;
-            }
+                if (bill == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    _context.Bills.Add(bill);
+                    _context.SaveChanges();
+                    return true;
+                }
             
           
-        }
+            }
 
         public bool Delete(Bill bill)
         {

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace _3.DAL.Repositories
 {
-    public class CustomerRepo : ICustomer
+    public class CustomerRepo : ICustomerRepo
     {
         private DBContext _context;
 
@@ -25,19 +25,13 @@ namespace _3.DAL.Repositories
             return true;
         }
 
-        public bool Delete(Customer kh)
-        {
-            _context.Customers.Remove(kh);
-            _context.SaveChanges();
-            return true;
-        }
-
-        public Customer FindByID(int id)
+        
+        public Customer FindById(int id)
         {
             return _context.Customers.Find(id);
         }
 
-        public List<Customer> GetAllfromDb()
+        public List<Customer> GetAll()
         {
             return _context.Customers.ToList();
         }

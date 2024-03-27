@@ -7,12 +7,11 @@ using System.Threading.Tasks;
 
 namespace _3.DAL.IRepositories
 {
-    public interface ICustomer
+    public interface ICustomerRepo
     {
         bool Add(Customer kh);
         bool Update(Customer kh);   
-        bool Delete(Customer kh);
-        Customer FindByID (int id);
-        List<Customer> GetAllfromDb();    
+        Customer FindById (int id);
+        List<Customer> GetAll();    
     }
 }

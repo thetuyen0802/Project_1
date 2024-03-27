@@ -7,12 +7,11 @@ using System.Threading.Tasks;
 
 namespace _3.DAL.IRepositories
 {
-    public interface IEmployess
+    public interface IEmployessRepo
     {
         bool Add(Employess nv);
         bool Update(Employess nv);
-        bool Delete(Employess nv);
-        Employess FindByID ( int id);   
-        List<Employess> GetAllfromDb();
+        Employess FindById ( int id);   
+        List<Employess> GetAll();
     }
 }

@@ -46,7 +46,6 @@
             panelContainer.Name = "panelContainer";
             panelContainer.Size = new Size(900, 450);
             panelContainer.TabIndex = 2;
-            panelContainer.Paint += panelContainer_Paint;
             // 
             // btn_product
             // 
@@ -66,6 +65,7 @@
             btn_sales.TabIndex = 4;
             btn_sales.Text = "Bán Hàng";
             btn_sales.UseVisualStyleBackColor = true;
+            btn_sales.Click += btn_sales_Click;
             // 
             // btn_bill
             // 
@@ -133,6 +133,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1055, 450);
+            ControlBox = false;
             Controls.Add(btn_logout);
             Controls.Add(btn_event);
             Controls.Add(btn_customer);

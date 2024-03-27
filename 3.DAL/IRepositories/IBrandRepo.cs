@@ -3,16 +3,18 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.SymbolStore;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace _3.DAL.IRepositories
 {
-    public interface IProductRepository
+    public interface IBrandRepo
     {
-        bool Add(Product product);
-        bool Update(Product product);
-        Product FindById(int id);
-        List<Product> GetAll();
+        bool Add(Brand brand);
+        bool Update(Brand brand);   
+        List<Brand> GetAll();
+        Brand FindById(int id);
+
     }
 }

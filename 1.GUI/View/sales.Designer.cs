@@ -1,6 +1,6 @@
 ﻿namespace _1.GUI.View
 {
-    partial class sales
+    partial class Sales
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@
         {
             SuspendLayout();
             // 
-            // sales
+            // Sales
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -38,7 +38,7 @@
             ClientSize = new Size(900, 450);
             ControlBox = false;
             FormBorderStyle = FormBorderStyle.None;
-            Name = "sales";
+            Name = "Sales";
             Text = "Sales";
             ResumeLayout(false);
         }

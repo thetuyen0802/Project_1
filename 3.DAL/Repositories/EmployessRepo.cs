@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace _3.DAL.Repositories
 {
-    internal class EmployessRepo : IEmployess
+    internal class EmployessRepo : IEmployessRepo
     {
         private DBContext _context;
 
@@ -25,19 +25,14 @@ namespace _3.DAL.Repositories
             return true;
         }
 
-        public bool Delete(Employess nv)
-        {
-            _context.Remove(nv);
-            _context.SaveChanges();
-            return true;
-        }
+       
 
-        public Employess FindByID(int id)
+        public Employess FindById(int id)
         {
             return _context.Employesses.Find(id);
         }
 
-        public List<Employess> GetAllfromDb()
+        public List<Employess> GetAll()
         {
            return _context.Employesses.ToList();    
         }

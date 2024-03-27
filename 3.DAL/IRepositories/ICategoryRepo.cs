@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 
 namespace _3.DAL.IRepositories
 {
-    public  interface IUserRepo
+    public interface ICategoryRepo
     {
-        bool Add(User nd);
-        bool Update(User nd);   
-        User FindById(int id);
-        List<User> GetAll();
+        bool Add(Category category);
+        bool Update(Category category);
+        Category GetById(int id);
+        List<Category> GetAll();
+
     }
 }

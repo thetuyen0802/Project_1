@@ -11,7 +11,6 @@ namespace _3.DAL.IRepositories
     {
         bool Add(Bill bill);
         bool Update(Bill bill);
-        bool Delete(Bill bill);
         Bill FindById(int id);
         List<Bill> GetAll();
 

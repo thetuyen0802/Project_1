@@ -20,9 +20,18 @@ namespace _3.DAL.Repositories
 
         public bool Add(Bill bill)
         {
-            _context.Bills.Add(bill);
-            _context.SaveChanges();
-            return true;
+            if (bill == null)
+            {
+                return false;
+            }
+            else
+            {
+                _context.Bills.Add(bill);
+                _context.SaveChanges();
+                return true;
+            }
+            
+          
         }
 
         public bool Delete(Bill bill)
@@ -34,6 +43,11 @@ namespace _3.DAL.Repositories
 
         public Bill FindById(int id)
         {
+            //if (id == null)
+            //{
+            //    return ;
+            //}
+            //else { return _context.Bills.Find(id); }
             return _context.Bills.Find(id);
         }
 
@@ -45,7 +59,7 @@ namespace _3.DAL.Repositories
         public bool Update(Bill bill)
         {
             _context.Bills.Update(bill);
-            _context.SaveChanges(true);
+            _context.SaveChanges();
             return true;
         }
     }

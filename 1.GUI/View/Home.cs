@@ -23,7 +23,7 @@ namespace _1.GUI
             Product product = new Product();
 
             FillForm(product);
-           
+
 
         }
         void FillForm(Form form)
@@ -71,8 +71,16 @@ namespace _1.GUI
         private void btn_sales_Click(object sender, EventArgs e)
         {
             panelContainer.Controls.Clear();
-            Sales sales=new Sales();
+            Sales sales = new Sales();
             FillForm(sales);
+        }
+
+        private void btn_account_Click(object sender, EventArgs e)
+        {
+            panelContainer.Controls.Clear();
+            ///sau chia role điều hướng sang nhân viên
+            Account_Manager account_Manager = new Account_Manager();
+            FillForm(account_Manager);
         }
     }
 }

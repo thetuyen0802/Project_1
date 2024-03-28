@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace _3.DAL.Repositories
 {
-    public class ProductRepository : IProductRepository
+    public class ProductRepo : IProductRepo
     {
         DBContext _context;
 
-        public ProductRepository()
+        public ProductRepo()
         {
             _context = new DBContext();
         }
@@ -26,14 +26,7 @@ namespace _3.DAL.Repositories
             return true;
         }
 
-        public bool Delete(Product product)
-        {
-
-            _context.Products.Remove(product);
-            _context.SaveChanges();
-            return true;
-
-        }
+       
 
         public Product FindById(int id)
         {
@@ -47,9 +40,20 @@ namespace _3.DAL.Repositories
 
         public bool Update(Product product)
         {
-            _context.Update(product);
-            _context.SaveChanges();
-            return true;
+            if (product == null)
+            {
+                return false;
+            }
+            else 
+            {
+                var temp = _context.Products.Find(product.ProductId);
+                temp.ProductName=product.ProductName;
+                temp.QuantityExists=product.QuantityExists;
+                temp.Cost=product.Cost;
+                _context.Update(product);
+                _context.SaveChanges();
+                return true;
+            }
         }
     }
 }

@@ -37,9 +37,22 @@ namespace _3.DAL.Repositories
 
         public bool Update(User nd)
         {
-            _context.Update(nd);
-            _context.SaveChanges();
-            return true;
+            if (nd == null)
+            {
+                return false;
+            }
+            else
+            {
+                var temp = _context.Users.Find(nd.UserId);
+                temp.UserName=nd.UserName;
+                temp.RoleId=nd.RoleId;
+                temp.Password=nd.Password;
+                temp.Email=nd.Email;
+                temp.Status=nd.Status;
+                _context.Update(temp);
+                _context.SaveChanges();
+                return true;
+            }
         }
     }
 }

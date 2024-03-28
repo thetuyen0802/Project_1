@@ -9,9 +9,8 @@ namespace _2.BUS.IServices
 {
     public interface IProductServices
     {
-        bool Add(Product product);
-        bool Update(Product product);
-        bool Delete(Product product);
+        string Add(Product product);
+        string Update(Product product);
         Product FindById(int id);
         List<Product> GetAll();
     }

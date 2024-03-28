@@ -34,6 +34,6 @@ namespace _3.DAL.Repositories
             return _context.Bill_ProductDetails.ToList();
         }
 
-        
+            
     }
 }

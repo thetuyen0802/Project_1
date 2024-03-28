@@ -33,10 +33,11 @@
             btn_sales = new Button();
             btn_bill = new Button();
             btn_statistics = new Button();
-            btn_customer = new Button();
+            btn_account = new Button();
             btn_event = new Button();
             btn_exit = new Button();
             btn_logout = new Button();
+            btn_customer = new Button();
             SuspendLayout();
             // 
             // panelContainer
@@ -78,25 +79,26 @@
             // 
             // btn_statistics
             // 
-            btn_statistics.Location = new Point(-3, 148);
+            btn_statistics.Location = new Point(-3, 199);
             btn_statistics.Name = "btn_statistics";
             btn_statistics.Size = new Size(157, 53);
             btn_statistics.TabIndex = 7;
             btn_statistics.Text = "Thống Kê";
             btn_statistics.UseVisualStyleBackColor = true;
             // 
-            // btn_customer
+            // btn_account
             // 
-            btn_customer.Location = new Point(-3, 198);
-            btn_customer.Name = "btn_customer";
-            btn_customer.Size = new Size(157, 53);
-            btn_customer.TabIndex = 8;
-            btn_customer.Text = "Thống Kê";
-            btn_customer.UseVisualStyleBackColor = true;
+            btn_account.Location = new Point(-3, 327);
+            btn_account.Name = "btn_account";
+            btn_account.Size = new Size(157, 53);
+            btn_account.TabIndex = 8;
+            btn_account.Text = "Tài khoản";
+            btn_account.UseVisualStyleBackColor = true;
+            btn_account.Click += btn_account_Click;
             // 
             // btn_event
             // 
-            btn_event.Location = new Point(-3, 248);
+            btn_event.Location = new Point(-3, 249);
             btn_event.Name = "btn_event";
             btn_event.Size = new Size(157, 53);
             btn_event.TabIndex = 9;
@@ -128,15 +130,25 @@
             btn_logout.Text = "Đăng xuất";
             btn_logout.UseVisualStyleBackColor = false;
             // 
+            // btn_customer
+            // 
+            btn_customer.Location = new Point(-3, 151);
+            btn_customer.Name = "btn_customer";
+            btn_customer.Size = new Size(157, 53);
+            btn_customer.TabIndex = 11;
+            btn_customer.Text = "Khách Hàng";
+            btn_customer.UseVisualStyleBackColor = true;
+            // 
             // Home
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1055, 450);
             ControlBox = false;
+            Controls.Add(btn_customer);
             Controls.Add(btn_logout);
             Controls.Add(btn_event);
-            Controls.Add(btn_customer);
+            Controls.Add(btn_account);
             Controls.Add(btn_statistics);
             Controls.Add(btn_exit);
             Controls.Add(btn_bill);
@@ -155,9 +167,10 @@
         private Button btn_sales;
         private Button btn_bill;
         private Button btn_statistics;
-        private Button btn_customer;
+        private Button btn_account;
         private Button btn_event;
         private Button btn_exit;
         private Button btn_logout;
+        private Button btn_customer;
     }
 }

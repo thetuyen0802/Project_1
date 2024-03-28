@@ -7,37 +7,30 @@ namespace _2.BUS.Services
 {
     public class BillServices : IBillServices
     {
-        //private IBillRepository _iBillRepository;
-        //public BillServices()
-        //{
-        //    _iBillRepository= new BilllRepository();
-        //}
+        private IBillRepository _iBillRepository;
+        public BillServices()
+        {
+            _iBillRepository = new BilllRepository();
+        }
 
-        //public string Delete(Bill bill)
-        //{
-        //    if (bill == null) return "Xoá thất bại";
-        //    else
-        //    {
+        public Bill FindById(int id)
+        {
+            return _iBillRepository.FindById(id);
+        }
 
-        //        _iBillRepository.Delete(bill);
-        //        return "Xóa thành công";
-        //    }
-        //}
-
-        //public Bill FindById(int id)
-        //{
-        //    return _iBillRepository.FindById(id);
-        //}
-
-        //public List<Bill> GetAll()
-        //{
-        //       return _iBillRepository.GetAll();
-        //}
-
-        //public string Update(Bill bill)
-        //{
-        //    if (_iBillRepository.Update(bill)) return "Update thành công";
-        //    else return "Update thất bại";
-        //}
+        public List<Bill> GetAll()
+        {
+            return _iBillRepository.GetAll();
+        }
+        public string Add(Bill bill)
+        {
+            if (_iBillRepository.Add(bill)) return "Thêm thành công";
+            else return "Thêm thất bại";
+        }
+        public string Update(Bill bill)
+        {
+            if (_iBillRepository.Update(bill)) return "Update thành công";
+            else return "Update thất bại";
+        }
     }
 }

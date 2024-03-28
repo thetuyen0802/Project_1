@@ -12,6 +12,7 @@ namespace _3.DAL.IRepositories
     public interface IBill_ProductDetailRepo
     {
         bool Add(Bill_ProductDetail obj);
+        
         List<Bill_ProductDetail> GetAll();
         
     }

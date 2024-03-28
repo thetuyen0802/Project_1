@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace _3.DAL.IRepositories
 {
-    public interface IProductRepository
+    public interface IProductRepo
     {
         bool Add(Product product);
         bool Update(Product product);

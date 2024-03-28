@@ -38,9 +38,20 @@ namespace _3.DAL.Repositories
 
         public bool Update(Customer kh)
         {
-            _context.Customers.Update(kh);
-            _context.SaveChanges();
-            return true;
+            if (kh==null)
+            {
+                return false;
+            }
+            else
+            {
+                var temp = _context.Customers.Find(kh.CustomerId);
+                temp.Name = kh.Name;
+                temp.PhoneNumber = kh.PhoneNumber;
+                temp.Status = kh.Status;
+                _context.Customers.Update(temp);
+                _context.SaveChanges();
+                return true;
+            }
         }
     }
 

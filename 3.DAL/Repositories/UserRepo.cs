@@ -20,6 +20,7 @@ namespace _3.DAL.Repositories
 
         public bool Add(User nd)
         {
+            if(nd == null) return false;
             _context.Add(nd);
             _context.SaveChanges();
             return true;
@@ -37,9 +38,24 @@ namespace _3.DAL.Repositories
 
         public bool Update(User nd)
         {
-            _context.Update(nd);
-            _context.SaveChanges();
-            return true;
+           if( nd == null)
+            {
+                return false;
+            }
+            else
+            {
+                var obj = _context.Users.Find(nd.UserId);
+                obj.RoleId = nd.RoleId; 
+                obj.UserName = nd.UserName; 
+                obj.Email = nd.Email;   
+                obj.Password = nd.Password; 
+                obj.Status = nd.Status; 
+                _context.Update(obj);   
+                _context.SaveChanges(); 
+                return true;    
+
+
+            }
         }
     }
 }

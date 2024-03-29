@@ -20,6 +20,7 @@ namespace _3.DAL.Repositories
 
         public bool Add(Customer kh)
         {
+          if(kh == null)    return false;
             _context.Customers.Add(kh);
             _context.SaveChanges();
             return true;
@@ -38,9 +39,19 @@ namespace _3.DAL.Repositories
 
         public bool Update(Customer kh)
         {
-            _context.Customers.Update(kh);
-            _context.SaveChanges();
-            return true;
+            if (kh == null)
+            {
+                return false;
+            }
+            else
+            {
+                var obj = _context.Customers.Find(kh.CustomerId);
+               obj.Name = kh.Name;  
+                obj.Status = kh.Status; 
+                obj.PhoneNumber = kh.PhoneNumber;   
+                _context.Update(obj);
+                _context.SaveChanges();
+                return true;
         }
     }
 

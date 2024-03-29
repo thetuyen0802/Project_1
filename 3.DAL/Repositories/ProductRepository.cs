@@ -20,19 +20,10 @@ namespace _3.DAL.Repositories
 
         public bool Add(Product product)
         {
-            //if (product == null) { return false; }
-            _context.Products.Add(product);
-            _context.SaveChanges();
-            return true;
-        }
-
-        public bool Delete(Product product)
-        {
-
-            _context.Products.Remove(product);
-            _context.SaveChanges();
-            return true;
-
+            if (product == null) return false;
+            _context.Add(product);
+            _context.SaveChanges(); 
+            return true;    
         }
 
         public Product FindById(int id)
@@ -47,9 +38,20 @@ namespace _3.DAL.Repositories
 
         public bool Update(Product product)
         {
-            _context.Update(product);
-            _context.SaveChanges();
-            return true;
+            if(product == null)
+            {
+                return false;
+            }
+            else
+            {
+                var obj = _context.Products.Find(product.ProductId);
+                obj.ProductName = product.ProductName;  
+                obj.QuantityExists = product.QuantityExists;    
+                obj.Cost = product.Cost;    
+                _context.Update(obj);   
+                _context.SaveChanges(); 
+                return true;    
+            }
         }
     }
 }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace _3.DAL.Repositories
 {
-    internal class EmployessRepo : IEmployessRepo
+    public class EmployessRepo : IEmployessRepo
     {
         private DBContext _context;
 
@@ -20,8 +20,9 @@ namespace _3.DAL.Repositories
 
         public bool Add(Employess nv)
         {
-            _context.Add(nv);   
-            _context.SaveChanges(); 
+            if (nv == null) return false;
+            _context.Add(nv);
+            _context.SaveChanges();
             return true;
         }
 
@@ -39,9 +40,20 @@ namespace _3.DAL.Repositories
 
         public bool Update(Employess nv)
         {
-            _context.Update(nv);
-            _context.SaveChanges();
-            return true;
+            if(nv == null)
+            {
+                return false;
+            }
+            else
+            {
+                var obj = _context.Employesses.Find(nv.EmployessId);
+                obj.Name = nv.Name; 
+                obj.Status = nv.Status; 
+                obj.Email = nv.Email;   
+                _context.Update(obj);
+                _context.SaveChanges();
+                return true;        
+            }
         }
     }
 }

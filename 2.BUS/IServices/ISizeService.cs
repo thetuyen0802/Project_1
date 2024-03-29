@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 
 namespace _2.BUS.IServices
 {
-    public interface IBillServices
+    public interface ISizeService
     {
-        string Add(Bill bill);
-        string Update(Bill bill);
-        Bill FindById(int id);
-        List<Bill> GetAll();
+        string Add(Size size);
+        string update(Size size);
+        List<Size> GetSizes();
+        Size GetById(int id);
+
     }
 }

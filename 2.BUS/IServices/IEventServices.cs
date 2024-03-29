@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace _2.BUS.IServices
 {
-    public interface IBillServices
+    public interface IEventServices
     {
-        string Add(Bill bill);
-        string Update(Bill bill);
-        Bill FindById(int id);
-        List<Bill> GetAll();
+        string Add(Event eve);
+        string Update(Event eve);   
+        List<Event> GetEvents();    
+        Event GetByID(int id);  
     }
 }

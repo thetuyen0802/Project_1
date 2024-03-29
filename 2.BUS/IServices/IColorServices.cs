@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace _2.BUS.IServices
 {
-    public interface IBillServices
+    public interface IColorServices
     {
-        string Add(Bill bill);
-        string Update(Bill bill);
-        Bill FindById(int id);
-        List<Bill> GetAll();
+        string Add(Color color);
+        string  Update(Color color);    
+        List<Color> GetColors();    
+        Color GetByID(int id);  
     }
 }

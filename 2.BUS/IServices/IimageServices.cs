@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace _2.BUS.IServices
 {
-    public interface IBillServices
+    public interface IimageServices
     {
-        string Add(Bill bill);
-        string Update(Bill bill);
-        Bill FindById(int id);
-        List<Bill> GetAll();
+        string Add(Image ig);
+        string Update(Image ig);    
+        List<Image> GetImages();
+        Image GetImageById(int id); 
     }
 }

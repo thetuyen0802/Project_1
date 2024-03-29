@@ -1,6 +1,6 @@
 ﻿namespace _1.GUI
 {
-    partial class Product
+    partial class F_product
     {
         /// <summary>
         /// Required designer variable.
@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            textBox1 = new TextBox();
-            DTview_product = new DataGridView();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
+            txt_id = new TextBox();
+            dview_product = new DataGridView();
+            txt_quantity = new TextBox();
+            txt_name = new TextBox();
+            txt_cost = new TextBox();
             btn_add = new Button();
             btn_update = new Button();
             btn_delete = new Button();
@@ -41,73 +41,76 @@
             label3 = new Label();
             label4 = new Label();
             label5 = new Label();
-            ((System.ComponentModel.ISupportInitialize)DTview_product).BeginInit();
+            btn_clear = new Button();
+            ((System.ComponentModel.ISupportInitialize)dview_product).BeginInit();
             SuspendLayout();
             // 
-            // textBox1
+            // txt_id
             // 
-            textBox1.Location = new Point(146, 167);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(247, 27);
-            textBox1.TabIndex = 0;
+            txt_id.Location = new Point(146, 167);
+            txt_id.Name = "txt_id";
+            txt_id.Size = new Size(247, 27);
+            txt_id.TabIndex = 0;
             // 
-            // DTview_product
+            // dview_product
             // 
-            DTview_product.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DTview_product.Location = new Point(416, 12);
-            DTview_product.Name = "DTview_product";
-            DTview_product.RowHeadersWidth = 51;
-            DTview_product.RowTemplate.Height = 29;
-            DTview_product.Size = new Size(472, 426);
-            DTview_product.TabIndex = 1;
+            dview_product.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dview_product.Location = new Point(416, 12);
+            dview_product.Name = "dview_product";
+            dview_product.RowHeadersWidth = 51;
+            dview_product.RowTemplate.Height = 29;
+            dview_product.Size = new Size(472, 426);
+            dview_product.TabIndex = 1;
             // 
-            // textBox2
+            // txt_quantity
             // 
-            textBox2.Location = new Point(146, 272);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(247, 27);
-            textBox2.TabIndex = 2;
+            txt_quantity.Location = new Point(146, 272);
+            txt_quantity.Name = "txt_quantity";
+            txt_quantity.Size = new Size(247, 27);
+            txt_quantity.TabIndex = 2;
             // 
-            // textBox3
+            // txt_name
             // 
-            textBox3.Location = new Point(146, 216);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(247, 27);
-            textBox3.TabIndex = 3;
+            txt_name.Location = new Point(146, 216);
+            txt_name.Name = "txt_name";
+            txt_name.Size = new Size(247, 27);
+            txt_name.TabIndex = 3;
             // 
-            // textBox4
+            // txt_cost
             // 
-            textBox4.Location = new Point(146, 317);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(247, 27);
-            textBox4.TabIndex = 4;
+            txt_cost.Location = new Point(146, 317);
+            txt_cost.Name = "txt_cost";
+            txt_cost.Size = new Size(247, 27);
+            txt_cost.TabIndex = 4;
             // 
             // btn_add
             // 
-            btn_add.Location = new Point(22, 389);
+            btn_add.Location = new Point(3, 389);
             btn_add.Name = "btn_add";
-            btn_add.Size = new Size(94, 29);
+            btn_add.Size = new Size(84, 29);
             btn_add.TabIndex = 5;
             btn_add.Text = "Thêm ";
             btn_add.UseVisualStyleBackColor = true;
+            btn_add.Click += btn_add_Click;
             // 
             // btn_update
             // 
-            btn_update.Location = new Point(163, 389);
+            btn_update.Location = new Point(103, 389);
             btn_update.Name = "btn_update";
-            btn_update.Size = new Size(94, 29);
+            btn_update.Size = new Size(88, 29);
             btn_update.TabIndex = 6;
             btn_update.Text = "Sửa";
             btn_update.UseVisualStyleBackColor = true;
             // 
             // btn_delete
             // 
-            btn_delete.Location = new Point(299, 389);
+            btn_delete.Location = new Point(214, 389);
             btn_delete.Name = "btn_delete";
-            btn_delete.Size = new Size(94, 29);
+            btn_delete.Size = new Size(83, 29);
             btn_delete.TabIndex = 7;
             btn_delete.Text = "Xóa";
             btn_delete.UseVisualStyleBackColor = true;
+            btn_delete.Click += btn_delete_Click;
             // 
             // label1
             // 
@@ -155,7 +158,17 @@
             label5.TabIndex = 12;
             label5.Text = "Sản Phẩm";
             // 
-            // Product
+            // btn_clear
+            // 
+            btn_clear.Location = new Point(316, 389);
+            btn_clear.Name = "btn_clear";
+            btn_clear.Size = new Size(94, 29);
+            btn_clear.TabIndex = 13;
+            btn_clear.Text = "Clear";
+            btn_clear.UseVisualStyleBackColor = true;
+            btn_clear.Click += btn_clear_Click_1;
+            // 
+            // F_product
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -163,6 +176,7 @@
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(900, 450);
             ControlBox = false;
+            Controls.Add(btn_clear);
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -171,33 +185,35 @@
             Controls.Add(btn_delete);
             Controls.Add(btn_update);
             Controls.Add(btn_add);
-            Controls.Add(textBox4);
-            Controls.Add(textBox3);
-            Controls.Add(textBox2);
-            Controls.Add(DTview_product);
-            Controls.Add(textBox1);
+            Controls.Add(txt_cost);
+            Controls.Add(txt_name);
+            Controls.Add(txt_quantity);
+            Controls.Add(dview_product);
+            Controls.Add(txt_id);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "Product";
+            Name = "F_product";
             Text = "Producct";
-            ((System.ComponentModel.ISupportInitialize)DTview_product).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dview_product).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private TextBox textBox1;
-        private DataGridView DTview_product;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private TextBox textBox4;
+        private TextBox txt_id;
+        private DataGridView dview_product;
+        private TextBox txt_quantity;
+        private TextBox txt_name;
+        private TextBox txt_cost;
         private Button btn_add;
         private Button btn_update;
         private Button btn_delete;
+        private Button btn_clear;
         private Label label1;
         private Label label2;
         private Label label3;
         private Label label4;
         private Label label5;
+       
     }
 }

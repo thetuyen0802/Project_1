@@ -47,6 +47,7 @@
             panelContainer.Name = "panelContainer";
             panelContainer.Size = new Size(900, 450);
             panelContainer.TabIndex = 2;
+            panelContainer.Paint += panelContainer_Paint;
             // 
             // btn_product
             // 
@@ -98,7 +99,7 @@
             // 
             // btn_event
             // 
-            btn_event.Location = new Point(-3, 249);
+            btn_event.Location = new Point(-3, 247);
             btn_event.Name = "btn_event";
             btn_event.Size = new Size(157, 53);
             btn_event.TabIndex = 9;
@@ -143,6 +144,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
             ClientSize = new Size(1055, 450);
             ControlBox = false;
             Controls.Add(btn_customer);
@@ -156,7 +158,7 @@
             Controls.Add(btn_product);
             Controls.Add(panelContainer);
             Name = "Home";
-            Text = "Home";
+            Text = "Shop";
             Load += Home_Load;
             ResumeLayout(false);
         }

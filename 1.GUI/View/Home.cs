@@ -20,10 +20,8 @@ namespace _1.GUI
         private void Home_Load(object sender, EventArgs e)
 
         {
-            Product product = new Product();
+            
 
-            FillForm(product);
-           
 
         }
         void FillForm(Form form)
@@ -55,8 +53,8 @@ namespace _1.GUI
         private void btn_product_Click(object sender, EventArgs e)
         {
             panelContainer.Controls.Clear();
-            Product product = new Product();
-            FillForm(product);
+            
+           
         }
 
         private void Home_Resize(object sender, EventArgs e)
@@ -71,8 +69,21 @@ namespace _1.GUI
         private void btn_sales_Click(object sender, EventArgs e)
         {
             panelContainer.Controls.Clear();
-            Sales sales=new Sales();
+            Sales sales = new Sales();
             FillForm(sales);
+        }
+
+        private void btn_account_Click(object sender, EventArgs e)
+        {
+            panelContainer.Controls.Clear();
+            ///sau chia role điều hướng sang nhân viên
+            Account_Manager account_Manager = new Account_Manager();
+            FillForm(account_Manager);
+        }
+
+        private void panelContainer_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

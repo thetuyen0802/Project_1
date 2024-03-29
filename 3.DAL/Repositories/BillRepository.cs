@@ -58,9 +58,22 @@ namespace _3.DAL.Repositories
 
         public bool Update(Bill bill)
         {
-            _context.Bills.Update(bill);
-            _context.SaveChanges();
-            return true;
+            if (bill==null)
+            {
+                return false ;
+            }
+            else
+            {
+                Bill temp = _context.Bills.Find(bill.BillId);
+                temp.CreateDate = bill.CreateDate;
+                temp.PaymenDate = bill.PaymenDate;
+                temp.EmployessId = bill.EmployessId;
+                temp.CustomerId = bill.CustomerId;
+                temp.Status = bill.Status;
+                _context.Bills.Update(temp);
+                _context.SaveChanges();
+                return true;
+            }
         }
     }
 }

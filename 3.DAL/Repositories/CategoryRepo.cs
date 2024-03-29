@@ -11,6 +11,7 @@ namespace _3.DAL.Repositories
 {
     public class CategoryRepo : ICategoryRepo
     {
+<<<<<<< HEAD
         DBContext _context;
 
         public CategoryRepo()
@@ -25,11 +26,27 @@ namespace _3.DAL.Repositories
            _context.Add(category);  
             _context.SaveChanges();
             return true;
+=======
+        private DBContext _context;
+        public bool Add(Category category)
+        {
+            if (category == null) return false;
+            else
+            {
+                _context.Categories.Add(category);
+                _context.SaveChanges();
+                return true;
+            }
+>>>>>>> 147599f48a840a7b22d22aac364befbe205b883d
         }
 
         public List<Category> GetAll()
         {
+<<<<<<< HEAD
             return _context.Categories.ToList();   
+=======
+            return _context.Categories.ToList();
+>>>>>>> 147599f48a840a7b22d22aac364befbe205b883d
         }
 
         public Category GetById(int id)
@@ -39,6 +56,7 @@ namespace _3.DAL.Repositories
 
         public bool Update(Category category)
         {
+<<<<<<< HEAD
             if (category == null)
             {
                 return false;
@@ -53,3 +71,20 @@ namespace _3.DAL.Repositories
             }
     }
 
+=======
+            if (category==null)
+            {
+                return false;
+            }
+            else 
+            {
+                var temp = _context.Categories.Find(category.CategoryId);
+                temp.CategoryName=category.CategoryName;
+                _context.Categories.Update(category);
+                _context.SaveChanges();
+                return true;
+            }
+        }
+    }
+}
+>>>>>>> 147599f48a840a7b22d22aac364befbe205b883d

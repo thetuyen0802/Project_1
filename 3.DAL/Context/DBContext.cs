@@ -22,7 +22,7 @@ namespace _3.DAL.Context
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Data Source=MSI\\SQLEXPRESS;Initial Catalog=Du_An_;Integrated Security=True");
+                optionsBuilder.UseSqlServer("Data Source=TUYEN_DEV\\SQLEXPRESS;Initial Catalog=PROJECT1;Integrated Security=True;Encrypt=True;Trust Server Certificate=True");
             }
         }
 

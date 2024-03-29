@@ -20,8 +20,8 @@ namespace _1.GUI
         private void Home_Load(object sender, EventArgs e)
 
         {
-            
-
+            F_product f_Product = new F_product();
+            FillForm(f_Product);
 
         }
         void FillForm(Form form)
@@ -53,7 +53,8 @@ namespace _1.GUI
         private void btn_product_Click(object sender, EventArgs e)
         {
             panelContainer.Controls.Clear();
-            
+            F_product f_Product = new F_product();
+            FillForm(f_Product);
            
         }
 

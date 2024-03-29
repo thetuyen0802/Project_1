@@ -9,7 +9,7 @@ namespace _2.BUS.IServices
 {
     public interface IBillServices
     {
-        string (Bill bill);
+        string Add(Bill bill);
         string Update(Bill bill);
         Bill FindById(int id);
         List<Bill> GetAll();

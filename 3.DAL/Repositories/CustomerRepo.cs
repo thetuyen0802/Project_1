@@ -20,6 +20,7 @@ namespace _3.DAL.Repositories
 
         public bool Add(Customer kh)
         {
+          if(kh == null)    return false;
             _context.Customers.Add(kh);
             _context.SaveChanges();
             return true;
@@ -38,12 +39,25 @@ namespace _3.DAL.Repositories
 
         public bool Update(Customer kh)
         {
+<<<<<<< HEAD
+            if (kh == null)
+=======
             if (kh==null)
+>>>>>>> 147599f48a840a7b22d22aac364befbe205b883d
             {
                 return false;
             }
             else
             {
+<<<<<<< HEAD
+                var obj = _context.Customers.Find(kh.CustomerId);
+               obj.Name = kh.Name;  
+                obj.Status = kh.Status; 
+                obj.PhoneNumber = kh.PhoneNumber;   
+                _context.Update(obj);
+                _context.SaveChanges();
+                return true;
+=======
                 var temp = _context.Customers.Find(kh.CustomerId);
                 temp.Name = kh.Name;
                 temp.PhoneNumber = kh.PhoneNumber;
@@ -52,6 +66,7 @@ namespace _3.DAL.Repositories
                 _context.SaveChanges();
                 return true;
             }
+>>>>>>> 147599f48a840a7b22d22aac364befbe205b883d
         }
     }
 

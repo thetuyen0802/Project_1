@@ -20,6 +20,13 @@ namespace _3.DAL.Repositories
 
         public bool Add(Product product)
         {
+<<<<<<< HEAD:3.DAL/Repositories/ProductRepository.cs
+            if (product == null) return false;
+            _context.Add(product);
+            _context.SaveChanges(); 
+            return true;    
+        }
+=======
             //if (product == null) { return false; }
             _context.Products.Add(product);
             _context.SaveChanges();
@@ -27,6 +34,7 @@ namespace _3.DAL.Repositories
         }
 
        
+>>>>>>> 147599f48a840a7b22d22aac364befbe205b883d:3.DAL/Repositories/ProductRepo.cs
 
         public Product FindById(int id)
         {
@@ -40,6 +48,21 @@ namespace _3.DAL.Repositories
 
         public bool Update(Product product)
         {
+<<<<<<< HEAD:3.DAL/Repositories/ProductRepository.cs
+            if(product == null)
+            {
+                return false;
+            }
+            else
+            {
+                var obj = _context.Products.Find(product.ProductId);
+                obj.ProductName = product.ProductName;  
+                obj.QuantityExists = product.QuantityExists;    
+                obj.Cost = product.Cost;    
+                _context.Update(obj);   
+                _context.SaveChanges(); 
+                return true;    
+=======
             if (product == null)
             {
                 return false;
@@ -53,6 +76,7 @@ namespace _3.DAL.Repositories
                 _context.Update(product);
                 _context.SaveChanges();
                 return true;
+>>>>>>> 147599f48a840a7b22d22aac364befbe205b883d:3.DAL/Repositories/ProductRepo.cs
             }
         }
     }

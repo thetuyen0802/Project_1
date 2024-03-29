@@ -38,29 +38,14 @@ namespace _3.DAL.Repositories
 
         public bool Update(User nd)
         {
-<<<<<<< HEAD
+
            if( nd == null)
-=======
-            if (nd == null)
->>>>>>> 147599f48a840a7b22d22aac364befbe205b883d
             {
                 return false;
             }
             else
             {
-<<<<<<< HEAD
-                var obj = _context.Users.Find(nd.UserId);
-                obj.RoleId = nd.RoleId; 
-                obj.UserName = nd.UserName; 
-                obj.Email = nd.Email;   
-                obj.Password = nd.Password; 
-                obj.Status = nd.Status; 
-                _context.Update(obj);   
-                _context.SaveChanges(); 
-                return true;    
 
-
-=======
                 var temp = _context.Users.Find(nd.UserId);
                 temp.UserName=nd.UserName;
                 temp.RoleId=nd.RoleId;
@@ -70,7 +55,7 @@ namespace _3.DAL.Repositories
                 _context.Update(temp);
                 _context.SaveChanges();
                 return true;
->>>>>>> 147599f48a840a7b22d22aac364befbe205b883d
+
             }
         }
     }

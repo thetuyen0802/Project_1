@@ -41,17 +41,15 @@ namespace _3.DAL.Repositories
 
         public bool Update(Employess nv)
         {
-<<<<<<< HEAD
+
             if(nv == null)
-=======
-           if (nv == null)
->>>>>>> 147599f48a840a7b22d22aac364befbe205b883d
+
             {
                 return false;
             }
             else
             {
-<<<<<<< HEAD
+
                 var obj = _context.Employesses.Find(nv.EmployessId);
                 obj.Name = nv.Name; 
                 obj.Status = nv.Status; 
@@ -59,16 +57,7 @@ namespace _3.DAL.Repositories
                 _context.Update(obj);
                 _context.SaveChanges();
                 return true;        
-=======
-                var temp = _context.Employesses.Find(nv.EmployessId);
-                temp.Name = nv.Name;
-                temp.Status = nv.Status;
-                temp.Email = nv.Email;
-                temp.UserId = nv.UserId;
-                _context.Update(temp);
-                _context.SaveChanges();
-                return true;
->>>>>>> 147599f48a840a7b22d22aac364befbe205b883d
+
             }
         }
     }

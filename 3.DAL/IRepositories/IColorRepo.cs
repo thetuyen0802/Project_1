@@ -9,7 +9,7 @@ namespace _3.DAL.IRepositories
 {
     public interface IColorRepo
     {
-        bool Add(Color color);`
+        bool Add(Color color);
         bool Update (Color color);  
         List<Color> GetColors();    
         Color FindByID (int id);

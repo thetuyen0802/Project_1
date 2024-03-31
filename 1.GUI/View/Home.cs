@@ -1,4 +1,5 @@
 ﻿using _1.GUI.View;
+using _3.DAL.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,15 +14,34 @@ namespace _1.GUI
 {
     public partial class Home : Form
     {
-        public Home()
+        private int _rolelogin;
+        private User _user;
+        public Home(User _uslog)
         {
             InitializeComponent();
+            _rolelogin = _uslog.RoleId;
+            _user = _uslog;
+
         }
         private void Home_Load(object sender, EventArgs e)
-
         {
-            F_product f_Product = new F_product();
-            FillForm(f_Product);
+            if (_rolelogin == 1)
+            {
+                this.Controls.Remove(btn_product);
+                this.Controls.Remove(btn_statistics);
+                this.Controls.Remove(btn_event);
+                btn_sales.Location = new Point(0, 0);
+                btn_bill.Location = new Point(0, 50);
+                btn_customer.Location = new Point(0, 100);
+                Sales sales = new Sales();
+                FillForm(sales);
+            }
+            if (_rolelogin == 2)
+            {
+                F_product f_Product = new F_product();
+                FillForm(f_Product);
+            }
+
 
         }
         void FillForm(Form form)
@@ -32,36 +52,36 @@ namespace _1.GUI
             this.panelContainer.Controls.Add(form);
             form.Show();
         }
-        void ResizeControll()
-        {
-            float ScaleX = (float)this.Width / this.MaximumSize.Width;
-            float ScaleY = (float)this.Height / this.MaximumSize.Height;
+        //void ResizeControll()
+        //{
+        //    float ScaleX = (float)this.Width / this.MaximumSize.Width;
+        //    float ScaleY = (float)this.Height / this.MaximumSize.Height;
 
-            foreach (Control control in this.Controls)
-            {
-                if (control.Tag.ToString() == "NoResize") continue;
-                int newX = (int)(control.Location.X / ScaleX);
-                int newY = (int)(control.Location.Y / ScaleY);
-                int newWidth = (int)(control.Width / ScaleX);
-                int newHeight = (int)(control.Height / ScaleY);
+        //    foreach (Control control in this.Controls)
+        //    {
+        //        if (control.Tag.ToString() == "NoResize") continue;
+        //        int newX = (int)(control.Location.X / ScaleX);
+        //        int newY = (int)(control.Location.Y / ScaleY);
+        //        int newWidth = (int)(control.Width / ScaleX);
+        //        int newHeight = (int)(control.Height / ScaleY);
 
-                control.Location = new Point(newX, newY);
-                control.Size = new Size(newWidth, newHeight);
-            }
-        }
+        //        control.Location = new Point(newX, newY);
+        //        control.Size = new System.Drawing.Size(newWidth, newHeight);
+        //    }
+        //}
 
         private void btn_product_Click(object sender, EventArgs e)
         {
             panelContainer.Controls.Clear();
             F_product f_Product = new F_product();
             FillForm(f_Product);
-           
+
         }
 
-        private void Home_Resize(object sender, EventArgs e)
-        {
-            ResizeControll();
-        }
+        //private void Home_Resize(object sender, EventArgs e)
+        //{
+        //    ResizeControll();
+        //}
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -77,14 +97,39 @@ namespace _1.GUI
         private void btn_account_Click(object sender, EventArgs e)
         {
             panelContainer.Controls.Clear();
-            ///sau chia role điều hướng sang nhân viên
-            Account_Manager account_Manager = new Account_Manager();
-            FillForm(account_Manager);
+            if (_rolelogin == 1)
+            {
+                Account_Employess account_Employes = new Account_Employess(_user);
+                FillForm(account_Employes);
+            }
+            else if (_rolelogin == 2)
+            {
+                Account_Manager account_Manager = new Account_Manager();
+                FillForm(account_Manager);
+            }
         }
 
         private void panelContainer_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void btn_logout_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Bạn có muốn đăng xuất không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            // Xử lý kết quả từ hộp thoại
+            if (result == DialogResult.Yes)
+            {
+                Login login = new Login();
+                login.Show();
+                this.Hide();
+            }
+            else
+            {
+             
+            }
+            
         }
     }
 }

@@ -59,8 +59,9 @@
             dview_product.Name = "dview_product";
             dview_product.RowHeadersWidth = 51;
             dview_product.RowTemplate.Height = 29;
-            dview_product.Size = new Size(472, 426);
+            dview_product.Size = new Size(480, 433);
             dview_product.TabIndex = 1;
+            dview_product.CellClick += dview_product_CellClick;
             // 
             // txt_quantity
             // 
@@ -101,6 +102,7 @@
             btn_update.TabIndex = 6;
             btn_update.Text = "Sửa";
             btn_update.UseVisualStyleBackColor = true;
+            btn_update.Click += btn_update_Click;
             // 
             // btn_delete
             // 

@@ -48,10 +48,27 @@ namespace _1.GUI
 
         private void btn_clear_Click_1(object sender, EventArgs e)
         {
-            txt_cost.Text=string.Empty;
-            txt_quantity.Text=string.Empty;
-            txt_name.Text=string.Empty;
+            txt_cost.Text = string.Empty;
+            txt_quantity.Text = string.Empty;
+            txt_name.Text = string.Empty;
 
+        }
+
+        private void btn_update_Click(object sender, EventArgs e)
+        {
+            Product product = new Product();
+            product.ProductName = txt_name.Text;
+            product.Cost = float.Parse(txt_cost.Text);
+            product.QuantityExists = int.Parse(txt_quantity.Text);
+            _services.Update(product);
+            LoadData();
+        }
+
+        private void dview_product_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int proId= (int)dview_product.Rows[e.RowIndex].Cells[0].Value;
+            _services.FindById(proId);
+            
         }
     }
 }

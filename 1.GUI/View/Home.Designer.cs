@@ -130,6 +130,7 @@
             btn_logout.TabIndex = 10;
             btn_logout.Text = "Đăng xuất";
             btn_logout.UseVisualStyleBackColor = false;
+            btn_logout.Click += btn_logout_Click;
             // 
             // btn_customer
             // 

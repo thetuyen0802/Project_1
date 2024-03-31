@@ -28,35 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
+            txt_username = new TextBox();
+            txt_email = new TextBox();
+            txt_password = new TextBox();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
             btn_update = new Button();
             SuspendLayout();
             // 
-            // textBox1
+            // txt_username
             // 
-            textBox1.Location = new Point(254, 61);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(329, 27);
-            textBox1.TabIndex = 0;
+            txt_username.Location = new Point(254, 61);
+            txt_username.Name = "txt_username";
+            txt_username.Size = new Size(329, 27);
+            txt_username.TabIndex = 0;
             // 
-            // textBox2
+            // txt_email
             // 
-            textBox2.Location = new Point(254, 149);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(329, 27);
-            textBox2.TabIndex = 1;
+            txt_email.Location = new Point(254, 149);
+            txt_email.Name = "txt_email";
+            txt_email.Size = new Size(329, 27);
+            txt_email.TabIndex = 1;
             // 
-            // textBox3
+            // txt_password
             // 
-            textBox3.Location = new Point(254, 245);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(329, 27);
-            textBox3.TabIndex = 2;
+            txt_password.Location = new Point(254, 245);
+            txt_password.Name = "txt_password";
+            txt_password.Size = new Size(329, 27);
+            txt_password.TabIndex = 2;
             // 
             // label1
             // 
@@ -94,6 +94,7 @@
             btn_update.TabIndex = 6;
             btn_update.Text = "Cập nhật";
             btn_update.UseVisualStyleBackColor = true;
+            btn_update.Click += btn_update_Click;
             // 
             // Account_Employess
             // 
@@ -106,21 +107,22 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(textBox3);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(txt_password);
+            Controls.Add(txt_email);
+            Controls.Add(txt_username);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Account_Employess";
             Text = "Account_Employess";
+            Load += Account_Employess_Load;
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
+        private TextBox txt_username;
+        private TextBox txt_email;
+        private TextBox txt_password;
         private Label label1;
         private Label label2;
         private Label label3;

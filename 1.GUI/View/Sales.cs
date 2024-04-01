@@ -23,7 +23,7 @@ namespace _1.GUI.View
         }
         void LoadBill()
         { int stt = 1;
-            dview_bill.ColumnCount = ;
+            //dview_bill.ColumnCount = ;
         }
 
         private void dview_bill_CellContentClick(object sender, DataGridViewCellEventArgs e)

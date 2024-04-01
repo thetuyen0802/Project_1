@@ -10,6 +10,8 @@ namespace _3.DAL.Model
     {
         public int BillId { get; set; }
         public int? ProDetailId { get; set; }
+        public Double Price { get; set; }
+        public int Quantity { get; set; }
         public ProductDetail? ProductDetail { get; set; }
         public Bill? Bill { get; set; }
     }

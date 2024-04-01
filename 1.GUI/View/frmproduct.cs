@@ -31,7 +31,7 @@ namespace _1.GUI
         {
             List<Product> products = _services.GetAll();
             dview_product.DataSource = products;
-            cbx_brand.DataSource = _brandServices.GetAll();
+
             
         }
 

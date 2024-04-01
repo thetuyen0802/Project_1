@@ -59,8 +59,8 @@ namespace _3.DAL.Repositories
                 obj.MaterialId = productDetail.MaterialId;  
                 obj.ColorId = productDetail.ColorId;    
                 obj.SizeId = productDetail.SizeId;  
-                obj.Quantity = productDetail.Quantity;  
-                obj.Price = productDetail.Price;
+                //////obj.Quantity = productDetail.Quantity;  
+                //obj.Price = productDetail.Price;
                 _context.Update(obj);   
                 _context.SaveChanges(); 
                 return true;    

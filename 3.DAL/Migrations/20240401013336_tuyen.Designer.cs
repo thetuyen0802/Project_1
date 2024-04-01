@@ -12,8 +12,8 @@ using _3.DAL.Context;
 namespace _3.DAL.Migrations
 {
     [DbContext(typeof(DBContext))]
-    [Migration("20240327184447_Du_An_mot")]
-    partial class Du_An_mot
+    [Migration("20240401013336_tuyen")]
+    partial class tuyen
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -35,7 +35,7 @@ namespace _3.DAL.Migrations
                     b.Property<DateTime>("CreateDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 3, 28, 1, 44, 47, 822, DateTimeKind.Local).AddTicks(9296));
+                        .HasDefaultValue(new DateTime(2024, 4, 1, 8, 33, 35, 991, DateTimeKind.Local).AddTicks(3105));
 
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
@@ -64,6 +64,12 @@ namespace _3.DAL.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("BillId")
+                        .HasColumnType("int");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
+                    b.Property<int>("Quantity")
                         .HasColumnType("int");
 
                     b.HasKey("ProDetailId", "BillId");
@@ -308,13 +314,7 @@ namespace _3.DAL.Migrations
                     b.Property<int>("MaterialId")
                         .HasColumnType("int");
 
-                    b.Property<double>("Price")
-                        .HasColumnType("float");
-
                     b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Quantity")
                         .HasColumnType("int");
 
                     b.Property<int>("SizeId")

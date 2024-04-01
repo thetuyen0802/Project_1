@@ -16,8 +16,8 @@ namespace _3.DAL.Model
         public int MaterialId { get; set; }
         public int ColorId { get; set; }
         public int SizeId { get; set; }
-        public int Quantity { get; set; }
-        public Double Price { get; set; }
+     
+
         public List<Bill_ProductDetail>? Bill_ProductDetail { get; set; }
         public Product? Product { get; set; }
         public Color? Color { get; set; }

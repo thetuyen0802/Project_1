@@ -57,7 +57,7 @@
             dataView.Name = "dataView";
             dataView.RowHeadersWidth = 51;
             dataView.RowTemplate.Height = 29;
-            dataView.Size = new Size(894, 211);
+            dataView.Size = new Size(894, 641);
             dataView.TabIndex = 0;
             dataView.CellClick += dataView_CellClick;
             // 
@@ -222,7 +222,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientActiveCaption;
-            ClientSize = new Size(900, 450);
+            ClientSize = new Size(900, 880);
             ControlBox = false;
             Controls.Add(rbt_status_0);
             Controls.Add(rbt_status_1);

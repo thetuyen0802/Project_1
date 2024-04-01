@@ -45,7 +45,7 @@
             panelContainer.Dock = DockStyle.Right;
             panelContainer.Location = new Point(155, 0);
             panelContainer.Name = "panelContainer";
-            panelContainer.Size = new Size(900, 450);
+            panelContainer.Size = new Size(900, 833);
             panelContainer.TabIndex = 2;
             panelContainer.Paint += panelContainer_Paint;
             // 
@@ -89,7 +89,7 @@
             // 
             // btn_account
             // 
-            btn_account.Location = new Point(-3, 327);
+            btn_account.Location = new Point(-3, 297);
             btn_account.Name = "btn_account";
             btn_account.Size = new Size(157, 53);
             btn_account.TabIndex = 8;
@@ -111,7 +111,7 @@
             btn_exit.BackColor = Color.Red;
             btn_exit.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point);
             btn_exit.ForeColor = SystemColors.ControlLightLight;
-            btn_exit.Location = new Point(-3, 421);
+            btn_exit.Location = new Point(-3, 804);
             btn_exit.Name = "btn_exit";
             btn_exit.Size = new Size(157, 29);
             btn_exit.TabIndex = 6;
@@ -124,7 +124,7 @@
             btn_logout.BackColor = Color.Red;
             btn_logout.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point);
             btn_logout.ForeColor = SystemColors.ControlLightLight;
-            btn_logout.Location = new Point(-3, 386);
+            btn_logout.Location = new Point(-3, 778);
             btn_logout.Name = "btn_logout";
             btn_logout.Size = new Size(157, 29);
             btn_logout.TabIndex = 10;
@@ -146,7 +146,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
-            ClientSize = new Size(1055, 450);
+            ClientSize = new Size(1055, 833);
             ControlBox = false;
             Controls.Add(btn_customer);
             Controls.Add(btn_logout);

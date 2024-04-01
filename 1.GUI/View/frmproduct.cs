@@ -11,24 +11,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Image = System.Drawing.Image;
 
 namespace _1.GUI
 {
-    public partial class F_product : Form
+    public partial class frmproduct : Form
     {
         private IProductServices _services;
+        private IBrandServices _brandServices;
 
-
-        public F_product()
+        public frmproduct()
         {
             InitializeComponent();
             _services = new ProductServices();
+            _brandServices = new BrandServices();
             LoadData();
         }
         public void LoadData()
         {
             List<Product> products = _services.GetAll();
             dview_product.DataSource = products;
+            cbx_brand.DataSource = _brandServices.GetAll();
+            
         }
 
         private void btn_delete_Click(object sender, EventArgs e)
@@ -66,9 +70,25 @@ namespace _1.GUI
 
         private void dview_product_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int proId= (int)dview_product.Rows[e.RowIndex].Cells[0].Value;
+            int proId = (int)dview_product.Rows[e.RowIndex].Cells[0].Value;
             _services.FindById(proId);
-            
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Image Files (*.jpg, *.jpeg, *.png, *.gif)|*.jpg;*.jpeg;*.png;*.gif";
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                string selectedImagePath = ofd.FileName;
+                pictureBox1.Image = Image.FromFile(selectedImagePath);
+            }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

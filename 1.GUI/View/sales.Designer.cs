@@ -32,11 +32,18 @@
             label1 = new Label();
             label2 = new Label();
             panel1 = new Panel();
-            dataGridView1 = new DataGridView();
+            btn_search = new Button();
+            txt_search = new TextBox();
+            btn_producdetail = new Button();
+            button3 = new Button();
             label3 = new Label();
+            dview_product = new DataGridView();
+            btn_savebill = new Button();
+            btn_paymentbill = new Button();
+            btn_deletefrbill = new Button();
             ((System.ComponentModel.ISupportInitialize)dview_bill).BeginInit();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dview_product).BeginInit();
             SuspendLayout();
             // 
             // dview_bill
@@ -46,7 +53,7 @@
             dview_bill.Name = "dview_bill";
             dview_bill.RowHeadersWidth = 51;
             dview_bill.RowTemplate.Height = 29;
-            dview_bill.Size = new Size(876, 284);
+            dview_bill.Size = new Size(622, 284);
             dview_bill.TabIndex = 0;
             dview_bill.CellContentClick += dview_bill_CellContentClick;
             // 
@@ -73,31 +80,97 @@
             // panel1
             // 
             panel1.BackColor = SystemColors.Menu;
+            panel1.Controls.Add(btn_search);
+            panel1.Controls.Add(txt_search);
+            panel1.Controls.Add(btn_producdetail);
+            panel1.Controls.Add(button3);
             panel1.Controls.Add(label3);
-            panel1.Controls.Add(dataGridView1);
-            panel1.Location = new Point(3, 540);
+            panel1.Controls.Add(dview_product);
+            panel1.Location = new Point(3, 488);
             panel1.Name = "panel1";
-            panel1.Size = new Size(885, 324);
+            panel1.Size = new Size(894, 390);
             panel1.TabIndex = 4;
             // 
-            // dataGridView1
+            // btn_search
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(3, 36);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(628, 285);
-            dataGridView1.TabIndex = 0;
+            btn_search.Location = new Point(37, 19);
+            btn_search.Name = "btn_search";
+            btn_search.Size = new Size(94, 29);
+            btn_search.TabIndex = 9;
+            btn_search.Text = "Tìm kiếm";
+            btn_search.UseVisualStyleBackColor = true;
+            // 
+            // txt_search
+            // 
+            txt_search.Location = new Point(152, 19);
+            txt_search.Name = "txt_search";
+            txt_search.Size = new Size(733, 27);
+            txt_search.TabIndex = 8;
+            // 
+            // btn_producdetail
+            // 
+            btn_producdetail.Location = new Point(696, 351);
+            btn_producdetail.Name = "btn_producdetail";
+            btn_producdetail.Size = new Size(160, 29);
+            btn_producdetail.TabIndex = 7;
+            btn_producdetail.Text = "Xem chi tiết";
+            btn_producdetail.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            button3.Location = new Point(696, 292);
+            button3.Name = "button3";
+            button3.Size = new Size(160, 29);
+            button3.TabIndex = 6;
+            button3.Text = "Thêm vào hóa đơn";
+            button3.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(9, 13);
+            label3.Location = new Point(9, 79);
             label3.Name = "label3";
             label3.Size = new Size(145, 20);
             label3.TabIndex = 5;
             label3.Text = "Danh sách sản phẩm";
+            // 
+            // dview_product
+            // 
+            dview_product.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dview_product.Location = new Point(3, 102);
+            dview_product.Name = "dview_product";
+            dview_product.RowHeadersWidth = 51;
+            dview_product.RowTemplate.Height = 29;
+            dview_product.Size = new Size(628, 285);
+            dview_product.TabIndex = 0;
+            dview_product.CellContentClick += dataGridView1_CellContentClick;
+            // 
+            // btn_savebill
+            // 
+            btn_savebill.Location = new Point(690, 301);
+            btn_savebill.Name = "btn_savebill";
+            btn_savebill.Size = new Size(147, 29);
+            btn_savebill.TabIndex = 5;
+            btn_savebill.Text = "Lưu hóa đơn";
+            btn_savebill.UseVisualStyleBackColor = true;
+            // 
+            // btn_paymentbill
+            // 
+            btn_paymentbill.Location = new Point(690, 359);
+            btn_paymentbill.Name = "btn_paymentbill";
+            btn_paymentbill.Size = new Size(147, 29);
+            btn_paymentbill.TabIndex = 6;
+            btn_paymentbill.Text = "Thanh toán";
+            btn_paymentbill.UseVisualStyleBackColor = true;
+            // 
+            // btn_deletefrbill
+            // 
+            btn_deletefrbill.Location = new Point(690, 243);
+            btn_deletefrbill.Name = "btn_deletefrbill";
+            btn_deletefrbill.Size = new Size(147, 29);
+            btn_deletefrbill.TabIndex = 7;
+            btn_deletefrbill.Text = "Xóa khỏi hóa đơn";
+            btn_deletefrbill.UseVisualStyleBackColor = true;
             // 
             // Sales
             // 
@@ -105,8 +178,11 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             BackColor = SystemColors.GradientActiveCaption;
-            ClientSize = new Size(900, 876);
+            ClientSize = new Size(900, 880);
             ControlBox = false;
+            Controls.Add(btn_deletefrbill);
+            Controls.Add(btn_paymentbill);
+            Controls.Add(btn_savebill);
             Controls.Add(panel1);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -117,7 +193,7 @@
             ((System.ComponentModel.ISupportInitialize)dview_bill).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dview_product).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -129,6 +205,13 @@
         private Label label2;
         private Panel panel1;
         private Label label3;
-        private DataGridView dataGridView1;
+        private DataGridView dview_product;
+        private Button btn_producdetail;
+        private Button button3;
+        private Button btn_savebill;
+        private Button btn_paymentbill;
+        private Button btn_deletefrbill;
+        private Button btn_search;
+        private TextBox txt_search;
     }
 }

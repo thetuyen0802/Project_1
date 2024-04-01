@@ -38,7 +38,7 @@ namespace _1.GUI
             }
             if (_rolelogin == 2)
             {
-                F_product f_Product = new F_product();
+                frmproduct f_Product = new frmproduct();
                 FillForm(f_Product);
             }
 
@@ -73,7 +73,7 @@ namespace _1.GUI
         private void btn_product_Click(object sender, EventArgs e)
         {
             panelContainer.Controls.Clear();
-            F_product f_Product = new F_product();
+            frmproduct f_Product = new frmproduct();
             FillForm(f_Product);
 
         }

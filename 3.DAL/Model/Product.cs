@@ -13,6 +13,7 @@ namespace _3.DAL.Model
         public int QuantityExists { get; set; }
         public Double Cost { get; set; }
 
+        public int Status { get; set; }
         public List<ProductDetail>? ProductDetails { get; set;}
         public List<Event_Product>? Event_Products { get; set;}
 

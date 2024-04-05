@@ -18,13 +18,14 @@ namespace _1.GUI
     public partial class frmproduct : Form
     {
         private IProductServices _services;
-        private IBrandServices _brandServices;
+        //private IBrandServices _brandServices;
+        private int _clickid;
 
         public frmproduct()
         {
             InitializeComponent();
             _services = new ProductServices();
-            _brandServices = new BrandServices();
+            //_brandServices = new BrandServices();
             LoadData();
         }
         public void LoadData()
@@ -32,7 +33,7 @@ namespace _1.GUI
             List<Product> products = _services.GetAll();
             dview_product.DataSource = products;
 
-            
+
         }
 
         private void btn_delete_Click(object sender, EventArgs e)
@@ -42,10 +43,15 @@ namespace _1.GUI
 
         private void btn_add_Click(object sender, EventArgs e)
         {
+            /////Chú ý trạng thái của sản phẩm :
+            ////    Trạng thái = 0 => Ngừng kinh doanh
+            ///     Trạng thái = 1 => Còn hàng
+            ///     Tạng thái  = 2 => Hàng sắp về
             Product product = new Product();
             product.ProductName = txt_name.Text;
             product.Cost = float.Parse(txt_cost.Text);
             product.QuantityExists = int.Parse(txt_quantity.Text);
+            product.Status = cbx_status.SelectedIndex;
             _services.Add(product);
             LoadData();
         }
@@ -60,18 +66,24 @@ namespace _1.GUI
 
         private void btn_update_Click(object sender, EventArgs e)
         {
-            Product product = new Product();
+            Product product = _services.FindById(_clickid);
             product.ProductName = txt_name.Text;
             product.Cost = float.Parse(txt_cost.Text);
             product.QuantityExists = int.Parse(txt_quantity.Text);
+            product.Status = cbx_status.SelectedIndex;
             _services.Update(product);
             LoadData();
         }
 
         private void dview_product_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int proId = (int)dview_product.Rows[e.RowIndex].Cells[0].Value;
-            _services.FindById(proId);
+            _clickid = (int)dview_product.Rows[e.RowIndex].Cells[0].Value;
+            Product product = _services.FindById(_clickid);
+            txt_name.Text = product.ProductName;
+            txt_quantity.Text = product.QuantityExists.ToString();
+            txt_cost.Text = product.Cost.ToString();
+            txt_id.Text = _clickid.ToString();
+            cbx_status.SelectedIndex = product.Status;
 
         }
 
@@ -82,11 +94,26 @@ namespace _1.GUI
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 string selectedImagePath = ofd.FileName;
-                pictureBox1.Image = Image.FromFile(selectedImagePath);
+                //pictureBox1.Image = Image.FromFile(selectedImagePath);
             }
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dview_product_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void frmproduct_Load(object sender, EventArgs e)
         {
 
         }

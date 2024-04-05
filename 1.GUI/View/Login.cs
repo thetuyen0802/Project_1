@@ -10,6 +10,7 @@ namespace _1.GUI
         public Login()
         {
             InitializeComponent();
+            _uslog = new User();
             _userServices=new UserServices();
         }
 

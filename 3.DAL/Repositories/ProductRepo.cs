@@ -50,7 +50,8 @@ namespace _3.DAL.Repositories
                 var obj = _context.Products.Find(product.ProductId);
                 obj.ProductName = product.ProductName;  
                 obj.QuantityExists = product.QuantityExists;    
-                obj.Cost = product.Cost;    
+                obj.Cost = product.Cost; 
+                obj.Status = product.Status;
                 _context.Update(obj);   
                 _context.SaveChanges(); 
                 return true;    

@@ -140,6 +140,7 @@
             btn_customer.TabIndex = 11;
             btn_customer.Text = "Khách Hàng";
             btn_customer.UseVisualStyleBackColor = true;
+            btn_customer.Click += btn_customer_Click;
             // 
             // Home
             // 

@@ -49,11 +49,11 @@
             // dview_bill
             // 
             dview_bill.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dview_bill.Location = new Point(12, 104);
+            dview_bill.Location = new Point(3, 104);
             dview_bill.Name = "dview_bill";
             dview_bill.RowHeadersWidth = 51;
             dview_bill.RowTemplate.Height = 29;
-            dview_bill.Size = new Size(622, 284);
+            dview_bill.Size = new Size(894, 284);
             dview_bill.TabIndex = 0;
             dview_bill.CellContentClick += dview_bill_CellContentClick;
             // 
@@ -72,9 +72,9 @@
             label2.AutoSize = true;
             label2.Location = new Point(12, 81);
             label2.Name = "label2";
-            label2.Size = new Size(67, 20);
+            label2.Size = new Size(95, 20);
             label2.TabIndex = 2;
-            label2.Text = "Hóa đơn";
+            label2.Text = "Hóa đơn chờ";
             label2.Click += label2_Click;
             // 
             // panel1
@@ -141,13 +141,13 @@
             dview_product.Name = "dview_product";
             dview_product.RowHeadersWidth = 51;
             dview_product.RowTemplate.Height = 29;
-            dview_product.Size = new Size(628, 285);
+            dview_product.Size = new Size(687, 285);
             dview_product.TabIndex = 0;
             dview_product.CellContentClick += dataGridView1_CellContentClick;
             // 
             // btn_savebill
             // 
-            btn_savebill.Location = new Point(690, 301);
+            btn_savebill.Location = new Point(356, 420);
             btn_savebill.Name = "btn_savebill";
             btn_savebill.Size = new Size(147, 29);
             btn_savebill.TabIndex = 5;
@@ -156,7 +156,7 @@
             // 
             // btn_paymentbill
             // 
-            btn_paymentbill.Location = new Point(690, 359);
+            btn_paymentbill.Location = new Point(598, 420);
             btn_paymentbill.Name = "btn_paymentbill";
             btn_paymentbill.Size = new Size(147, 29);
             btn_paymentbill.TabIndex = 6;
@@ -165,7 +165,7 @@
             // 
             // btn_deletefrbill
             // 
-            btn_deletefrbill.Location = new Point(690, 243);
+            btn_deletefrbill.Location = new Point(124, 420);
             btn_deletefrbill.Name = "btn_deletefrbill";
             btn_deletefrbill.Size = new Size(147, 29);
             btn_deletefrbill.TabIndex = 7;

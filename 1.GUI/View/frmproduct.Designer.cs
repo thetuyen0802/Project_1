@@ -38,16 +38,12 @@
             label3 = new Label();
             label4 = new Label();
             label5 = new Label();
-            btn_delete = new Button();
             btn_update = new Button();
             btn_add = new Button();
             btn_clear = new Button();
-            openFileDialog1 = new OpenFileDialog();
-            label7 = new Label();
-            button1 = new Button();
-            pictureBox1 = new PictureBox();
+            cbx_status = new ComboBox();
+            label6 = new Label();
             ((System.ComponentModel.ISupportInitialize)dview_product).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // txt_id
@@ -55,7 +51,7 @@
             txt_id.Location = new Point(146, 167);
             txt_id.Name = "txt_id";
             txt_id.ReadOnly = true;
-            txt_id.Size = new Size(247, 27);
+            txt_id.Size = new Size(104, 27);
             txt_id.TabIndex = 0;
             // 
             // dview_product
@@ -68,6 +64,7 @@
             dview_product.Size = new Size(894, 441);
             dview_product.TabIndex = 1;
             dview_product.CellClick += dview_product_CellClick;
+            dview_product.CellContentClick += dview_product_CellContentClick;
             // 
             // txt_quantity
             // 
@@ -85,46 +82,47 @@
             // 
             // txt_cost
             // 
-            txt_cost.Location = new Point(146, 317);
+            txt_cost.Location = new Point(527, 219);
             txt_cost.Name = "txt_cost";
-            txt_cost.Size = new Size(247, 27);
+            txt_cost.Size = new Size(120, 27);
             txt_cost.TabIndex = 4;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(61, 174);
+            label1.Location = new Point(26, 174);
             label1.Name = "label1";
             label1.Size = new Size(24, 20);
             label1.TabIndex = 8;
             label1.Text = "ID";
+            label1.Click += label1_Click;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(61, 219);
+            label2.Location = new Point(26, 219);
             label2.Name = "label2";
-            label2.Size = new Size(49, 20);
+            label2.Size = new Size(100, 20);
             label2.TabIndex = 9;
-            label2.Text = "Name";
+            label2.Text = "Tên sản phẩm";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(61, 272);
+            label3.Location = new Point(26, 275);
             label3.Name = "label3";
-            label3.Size = new Size(65, 20);
+            label3.Size = new Size(69, 20);
             label3.TabIndex = 10;
-            label3.Text = "Quantity";
+            label3.Text = "Số lượng";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(61, 324);
+            label4.Location = new Point(446, 226);
             label4.Name = "label4";
-            label4.Size = new Size(38, 20);
+            label4.Size = new Size(31, 20);
             label4.TabIndex = 11;
-            label4.Text = "Cost";
+            label4.Text = "Giá";
             // 
             // label5
             // 
@@ -136,23 +134,13 @@
             label5.TabIndex = 12;
             label5.Text = "Sản Phẩm";
             // 
-            // btn_delete
-            // 
-            btn_delete.Location = new Point(439, 382);
-            btn_delete.Name = "btn_delete";
-            btn_delete.Size = new Size(88, 29);
-            btn_delete.TabIndex = 7;
-            btn_delete.Text = "Xóa";
-            btn_delete.UseVisualStyleBackColor = true;
-            btn_delete.Click += btn_delete_Click;
-            // 
             // btn_update
             // 
-            btn_update.Location = new Point(280, 382);
+            btn_update.Location = new Point(305, 382);
             btn_update.Name = "btn_update";
             btn_update.Size = new Size(88, 29);
             btn_update.TabIndex = 6;
-            btn_update.Text = "Sửa";
+            btn_update.Text = "Cập nhật";
             btn_update.UseVisualStyleBackColor = true;
             btn_update.Click += btn_update_Click;
             // 
@@ -168,7 +156,7 @@
             // 
             // btn_clear
             // 
-            btn_clear.Location = new Point(580, 382);
+            btn_clear.Location = new Point(464, 382);
             btn_clear.Name = "btn_clear";
             btn_clear.Size = new Size(88, 29);
             btn_clear.TabIndex = 13;
@@ -176,36 +164,23 @@
             btn_clear.UseVisualStyleBackColor = true;
             btn_clear.Click += btn_clear_Click_1;
             // 
-            // openFileDialog1
+            // cbx_status
             // 
-            openFileDialog1.FileName = "openFileDialog1";
+            cbx_status.FormattingEnabled = true;
+            cbx_status.Items.AddRange(new object[] { "Ngừng khinh doanh", "Còn hàng", "Hàng sắp về" });
+            cbx_status.Location = new Point(527, 272);
+            cbx_status.Name = "cbx_status";
+            cbx_status.Size = new Size(120, 28);
+            cbx_status.TabIndex = 14;
             // 
-            // label7
+            // label6
             // 
-            label7.AutoSize = true;
-            label7.Location = new Point(634, 144);
-            label7.Name = "label7";
-            label7.Size = new Size(103, 20);
-            label7.TabIndex = 17;
-            label7.Text = "Ảnh sản phẩm";
-            // 
-            // button1
-            // 
-            button1.Location = new Point(784, 343);
-            button1.Name = "button1";
-            button1.Size = new Size(94, 29);
-            button1.TabIndex = 18;
-            button1.Text = "Chọn ảnh";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Location = new Point(499, 167);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(379, 170);
-            pictureBox1.TabIndex = 14;
-            pictureBox1.TabStop = false;
+            label6.AutoSize = true;
+            label6.Location = new Point(446, 280);
+            label6.Name = "label6";
+            label6.Size = new Size(75, 20);
+            label6.TabIndex = 15;
+            label6.Text = "Trạng thái";
             // 
             // frmproduct
             // 
@@ -215,11 +190,9 @@
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(900, 880);
             ControlBox = false;
-            Controls.Add(button1);
-            Controls.Add(label7);
-            Controls.Add(pictureBox1);
+            Controls.Add(label6);
+            Controls.Add(cbx_status);
             Controls.Add(btn_clear);
-            Controls.Add(btn_delete);
             Controls.Add(btn_update);
             Controls.Add(btn_add);
             Controls.Add(label5);
@@ -234,9 +207,9 @@
             Controls.Add(txt_id);
             FormBorderStyle = FormBorderStyle.None;
             Name = "frmproduct";
-            Text = "Producct";
+            Text = " b";
+            Load += frmproduct_Load;
             ((System.ComponentModel.ISupportInitialize)dview_product).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -253,13 +226,10 @@
         private Label label3;
         private Label label4;
         private Label label5;
-        private Button btn_delete;
         private Button btn_update;
         private Button btn_add;
         private Button btn_clear;
-        private OpenFileDialog openFileDialog1;
-        private Label label7;
-        private Button button1;
-        private PictureBox pictureBox1;
+        private ComboBox cbx_status;
+        private Label label6;
     }
 }

@@ -25,7 +25,8 @@ namespace _1.GUI
         }
         private void Home_Load(object sender, EventArgs e)
         {
-            if (_rolelogin == 1)
+            //Chú ý : Role login =0 là nhân viên login =1 là admin
+            if (_rolelogin == 0)
             {
                 this.Controls.Remove(btn_product);
                 this.Controls.Remove(btn_statistics);
@@ -36,7 +37,7 @@ namespace _1.GUI
                 Sales sales = new Sales();
                 FillForm(sales);
             }
-            if (_rolelogin == 2)
+            if (_rolelogin == 1)
             {
                 frmproduct f_Product = new frmproduct();
                 FillForm(f_Product);
@@ -97,12 +98,12 @@ namespace _1.GUI
         private void btn_account_Click(object sender, EventArgs e)
         {
             panelContainer.Controls.Clear();
-            if (_rolelogin == 1)
+            if (_rolelogin == 0)
             {
                 Account_Employess account_Employes = new Account_Employess(_user);
                 FillForm(account_Employes);
             }
-            else if (_rolelogin == 2)
+            else if (_rolelogin == 1)
             {
                 Account_Manager account_Manager = new Account_Manager();
                 FillForm(account_Manager);
@@ -127,9 +128,14 @@ namespace _1.GUI
             }
             else
             {
-             
+
             }
-            
+
+        }
+        private void btn_customer_Click(object sender, EventArgs e)
+        {
+            frmCustomer customer = new frmCustomer();
+            FillForm(customer);
         }
     }
 }

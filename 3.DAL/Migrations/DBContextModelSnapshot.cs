@@ -33,7 +33,7 @@ namespace _3.DAL.Migrations
                     b.Property<DateTime>("CreateDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 4, 1, 8, 33, 35, 991, DateTimeKind.Local).AddTicks(3105));
+                        .HasDefaultValue(new DateTime(2024, 4, 4, 23, 21, 0, 2, DateTimeKind.Local).AddTicks(724));
 
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
@@ -282,6 +282,9 @@ namespace _3.DAL.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("QuantityExists")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Status")
                         .HasColumnType("int");
 
                     b.HasKey("ProductId");

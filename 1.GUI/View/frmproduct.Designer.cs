@@ -41,7 +41,8 @@
             btn_update = new Button();
             btn_add = new Button();
             btn_clear = new Button();
-            cbx_status = new ComboBox();
+            btn_delete = new Button();
+            comboBox1 = new ComboBox();
             label6 = new Label();
             ((System.ComponentModel.ISupportInitialize)dview_product).BeginInit();
             SuspendLayout();
@@ -51,24 +52,24 @@
             txt_id.Location = new Point(146, 167);
             txt_id.Name = "txt_id";
             txt_id.ReadOnly = true;
-            txt_id.Size = new Size(104, 27);
+            txt_id.Size = new Size(247, 27);
             txt_id.TabIndex = 0;
             // 
             // dview_product
             // 
             dview_product.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dview_product.Location = new Point(3, 435);
+            dview_product.Location = new Point(1, 454);
             dview_product.Name = "dview_product";
             dview_product.RowHeadersWidth = 51;
             dview_product.RowTemplate.Height = 29;
-            dview_product.Size = new Size(894, 441);
+            dview_product.Size = new Size(898, 377);
             dview_product.TabIndex = 1;
             dview_product.CellClick += dview_product_CellClick;
             dview_product.CellContentClick += dview_product_CellContentClick;
             // 
             // txt_quantity
             // 
-            txt_quantity.Location = new Point(146, 272);
+            txt_quantity.Location = new Point(146, 280);
             txt_quantity.Name = "txt_quantity";
             txt_quantity.Size = new Size(247, 27);
             txt_quantity.TabIndex = 2;
@@ -82,9 +83,9 @@
             // 
             // txt_cost
             // 
-            txt_cost.Location = new Point(527, 219);
+            txt_cost.Location = new Point(524, 219);
             txt_cost.Name = "txt_cost";
-            txt_cost.Size = new Size(120, 27);
+            txt_cost.Size = new Size(247, 27);
             txt_cost.TabIndex = 4;
             // 
             // label1
@@ -95,12 +96,11 @@
             label1.Size = new Size(24, 20);
             label1.TabIndex = 8;
             label1.Text = "ID";
-            label1.Click += label1_Click;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(26, 219);
+            label2.Location = new Point(26, 226);
             label2.Name = "label2";
             label2.Size = new Size(100, 20);
             label2.TabIndex = 9;
@@ -109,7 +109,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(26, 275);
+            label3.Location = new Point(26, 287);
             label3.Name = "label3";
             label3.Size = new Size(69, 20);
             label3.TabIndex = 10;
@@ -118,7 +118,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(446, 226);
+            label4.Location = new Point(451, 226);
             label4.Name = "label4";
             label4.Size = new Size(31, 20);
             label4.TabIndex = 11;
@@ -156,7 +156,7 @@
             // 
             // btn_clear
             // 
-            btn_clear.Location = new Point(464, 382);
+            btn_clear.Location = new Point(587, 382);
             btn_clear.Name = "btn_clear";
             btn_clear.Size = new Size(88, 29);
             btn_clear.TabIndex = 13;
@@ -164,23 +164,33 @@
             btn_clear.UseVisualStyleBackColor = true;
             btn_clear.Click += btn_clear_Click_1;
             // 
-            // cbx_status
+            // btn_delete
             // 
-            cbx_status.FormattingEnabled = true;
-            cbx_status.Items.AddRange(new object[] { "Ngừng khinh doanh", "Còn hàng", "Hàng sắp về" });
-            cbx_status.Location = new Point(527, 272);
-            cbx_status.Name = "cbx_status";
-            cbx_status.Size = new Size(120, 28);
-            cbx_status.TabIndex = 14;
+            btn_delete.Location = new Point(433, 382);
+            btn_delete.Name = "btn_delete";
+            btn_delete.Size = new Size(94, 29);
+            btn_delete.TabIndex = 14;
+            btn_delete.Text = "Xóa";
+            btn_delete.UseVisualStyleBackColor = true;
+            btn_delete.Click += btn_delete_Click_1;
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "Ngừng kinh doanh", "Còn hàng", "Hết hàng" });
+            comboBox1.Location = new Point(524, 279);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(217, 28);
+            comboBox1.TabIndex = 15;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(446, 280);
+            label6.Location = new Point(442, 287);
             label6.Name = "label6";
-            label6.Size = new Size(75, 20);
-            label6.TabIndex = 15;
-            label6.Text = "Trạng thái";
+            label6.Size = new Size(76, 20);
+            label6.TabIndex = 16;
+            label6.Text = "Tình trạng";
             // 
             // frmproduct
             // 
@@ -188,10 +198,11 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             BackColor = SystemColors.ActiveCaption;
-            ClientSize = new Size(900, 880);
+            ClientSize = new Size(900, 833);
             ControlBox = false;
             Controls.Add(label6);
-            Controls.Add(cbx_status);
+            Controls.Add(comboBox1);
+            Controls.Add(btn_delete);
             Controls.Add(btn_clear);
             Controls.Add(btn_update);
             Controls.Add(btn_add);
@@ -229,7 +240,8 @@
         private Button btn_update;
         private Button btn_add;
         private Button btn_clear;
-        private ComboBox cbx_status;
+        private Button btn_delete;
+        private ComboBox comboBox1;
         private Label label6;
     }
 }

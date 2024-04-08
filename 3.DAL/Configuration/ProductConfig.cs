@@ -15,8 +15,10 @@ namespace _3.DAL.Configuration
         {
             builder.ToTable("Products");
             builder.HasKey(x => x.ProductId);
+            
             builder.Property(x => x.ProductId).UseIdentityColumn(1,1);
             builder.Property(x => x.ProductName).IsRequired();
+            builder.HasOne(x=>x.Brand).WithMany(x=>x.Product).HasForeignKey(x=>x.BrandId);
         }
     }
 }

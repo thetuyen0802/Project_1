@@ -43,7 +43,7 @@
             // panelContainer
             // 
             panelContainer.Dock = DockStyle.Right;
-            panelContainer.Location = new Point(155, 0);
+            panelContainer.Location = new Point(154, 0);
             panelContainer.Name = "panelContainer";
             panelContainer.Size = new Size(900, 833);
             panelContainer.TabIndex = 2;
@@ -147,7 +147,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
-            ClientSize = new Size(1055, 833);
+            ClientSize = new Size(1054, 833);
             ControlBox = false;
             Controls.Add(btn_customer);
             Controls.Add(btn_logout);

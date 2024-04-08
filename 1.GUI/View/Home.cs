@@ -34,7 +34,7 @@ namespace _1.GUI
                 btn_sales.Location = new Point(0, 0);
                 btn_bill.Location = new Point(0, 50);
                 btn_customer.Location = new Point(0, 100);
-                Sales sales = new Sales();
+                frmBanhang sales = new frmBanhang();
                 FillForm(sales);
             }
             if (_rolelogin == 1)
@@ -91,7 +91,7 @@ namespace _1.GUI
         private void btn_sales_Click(object sender, EventArgs e)
         {
             panelContainer.Controls.Clear();
-            Sales sales = new Sales();
+            frmBanhang sales = new frmBanhang();
             FillForm(sales);
         }
 

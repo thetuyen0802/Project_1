@@ -51,7 +51,7 @@ namespace _3.DAL.Repositories
 
                 var obj = _context.Customers.Find(kh.CustomerId);
                obj.Name = kh.Name;  
-                obj.Status = kh.Status; 
+               
                 obj.PhoneNumber = kh.PhoneNumber;   
                 _context.Update(obj);
                 _context.SaveChanges();

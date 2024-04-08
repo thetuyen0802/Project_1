@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using _3.DAL.Context;
 
@@ -11,9 +12,10 @@ using _3.DAL.Context;
 namespace _3.DAL.Migrations
 {
     [DbContext(typeof(DBContext))]
-    partial class DBContextModelSnapshot : ModelSnapshot
+    [Migration("20240407170330_2")]
+    partial class _2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -33,7 +35,7 @@ namespace _3.DAL.Migrations
                     b.Property<DateTime>("CreateDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 4, 8, 16, 12, 27, 624, DateTimeKind.Local).AddTicks(3073));
+                        .HasDefaultValue(new DateTime(2024, 4, 8, 0, 3, 30, 565, DateTimeKind.Local).AddTicks(7064));
 
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
@@ -149,6 +151,9 @@ namespace _3.DAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
                     b.HasKey("CustomerId");
 
                     b.ToTable("Customers", (string)null);
@@ -254,11 +259,11 @@ namespace _3.DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductId"), 1L, 1);
 
-                    b.Property<int>("BrandId")
-                        .HasColumnType("int");
-
                     b.Property<float>("Cost")
                         .HasColumnType("real");
+
+                    b.Property<int>("ImageId")
+                        .HasColumnType("int");
 
                     b.Property<float>("Price")
                         .HasColumnType("real");
@@ -275,8 +280,6 @@ namespace _3.DAL.Migrations
 
                     b.HasKey("ProductId");
 
-                    b.HasIndex("BrandId");
-
                     b.ToTable("Products", (string)null);
                 });
 
@@ -288,10 +291,16 @@ namespace _3.DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProDetailId"), 1L, 1);
 
+                    b.Property<int>("BrandId")
+                        .HasColumnType("int");
+
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
                     b.Property<int>("ColorId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ImageId")
                         .HasColumnType("int");
 
                     b.Property<int>("MaterialId")
@@ -304,6 +313,8 @@ namespace _3.DAL.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("ProDetailId");
+
+                    b.HasIndex("BrandId");
 
                     b.HasIndex("CategoryId");
 
@@ -453,19 +464,14 @@ namespace _3.DAL.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("_3.DAL.Model.Product", b =>
+            modelBuilder.Entity("_3.DAL.Model.ProductDetail", b =>
                 {
                     b.HasOne("_3.DAL.Model.Brand", "Brand")
-                        .WithMany("Product")
+                        .WithMany("ProductDetails")
                         .HasForeignKey("BrandId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Brand");
-                });
-
-            modelBuilder.Entity("_3.DAL.Model.ProductDetail", b =>
-                {
                     b.HasOne("_3.DAL.Model.Category", "Category")
                         .WithMany("ProductDetails")
                         .HasForeignKey("CategoryId")
@@ -496,6 +502,8 @@ namespace _3.DAL.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("Brand");
+
                     b.Navigation("Category");
 
                     b.Navigation("Color");
@@ -525,7 +533,7 @@ namespace _3.DAL.Migrations
 
             modelBuilder.Entity("_3.DAL.Model.Brand", b =>
                 {
-                    b.Navigation("Product");
+                    b.Navigation("ProductDetails");
                 });
 
             modelBuilder.Entity("_3.DAL.Model.Category", b =>

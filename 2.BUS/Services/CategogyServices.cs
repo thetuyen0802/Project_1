@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace _2.BUS.Services
 {
-    internal class CategogyServices : ICategogyServices
+    public class CategogyServices : ICategogyServices
     {
         private ICategoryRepo _categogy;
 

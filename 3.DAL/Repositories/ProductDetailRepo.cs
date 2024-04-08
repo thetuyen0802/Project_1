@@ -53,8 +53,8 @@ namespace _3.DAL.Repositories
 
                 var obj = _context.ProductDetails.Find(productDetail.ProDetailId);
                 obj.ProductId = productDetail.ProductId;    
-                obj.ImageId = productDetail.ImageId;    
-                obj.BrandId = productDetail.BrandId;    
+
+
                 obj.CategoryId = productDetail.CategoryId;  
                 obj.MaterialId = productDetail.MaterialId;  
                 obj.ColorId = productDetail.ColorId;    

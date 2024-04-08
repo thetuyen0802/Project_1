@@ -46,12 +46,14 @@ namespace _1.GUI
             /////Chú ý trạng thái của sản phẩm :
             ////    Trạng thái = 0 => Ngừng kinh doanh
             ///     Trạng thái = 1 => Còn hàng
-            ///     Tạng thái  = 2 => Hàng sắp về
+            ///     Tạng thái  = 2 => Hết hàng
             Product product = new Product();
             product.ProductName = txt_name.Text;
             product.Cost = float.Parse(txt_cost.Text);
             product.QuantityExists = int.Parse(txt_quantity.Text);
-            product.Status = cbx_status.SelectedIndex;
+            product.Status = 1;
+            product.Status = comboBox1.SelectedIndex;
+
             _services.Add(product);
             LoadData();
         }
@@ -70,7 +72,7 @@ namespace _1.GUI
             product.ProductName = txt_name.Text;
             product.Cost = float.Parse(txt_cost.Text);
             product.QuantityExists = int.Parse(txt_quantity.Text);
-            product.Status = cbx_status.SelectedIndex;
+            product.Status = comboBox1.SelectedIndex;
             _services.Update(product);
             LoadData();
         }
@@ -83,29 +85,6 @@ namespace _1.GUI
             txt_quantity.Text = product.QuantityExists.ToString();
             txt_cost.Text = product.Cost.ToString();
             txt_id.Text = _clickid.ToString();
-            cbx_status.SelectedIndex = product.Status;
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "Image Files (*.jpg, *.jpeg, *.png, *.gif)|*.jpg;*.jpeg;*.png;*.gif";
-            if (ofd.ShowDialog() == DialogResult.OK)
-            {
-                string selectedImagePath = ofd.FileName;
-                //pictureBox1.Image = Image.FromFile(selectedImagePath);
-            }
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void dview_product_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -116,6 +95,21 @@ namespace _1.GUI
         private void frmproduct_Load(object sender, EventArgs e)
         {
 
+        }
+
+
+
+       
+
+        private void btn_delete_Click_1(object sender, EventArgs e)
+        {
+            Product product = _services.FindById(_clickid);
+            product.ProductName = txt_name.Text;
+            product.Cost = float.Parse(txt_cost.Text);
+            product.QuantityExists = int.Parse(txt_quantity.Text);
+            product.Status = 0;
+            _services.Update(product);
+            LoadData();
         }
     }
 }

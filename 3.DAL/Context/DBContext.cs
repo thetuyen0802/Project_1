@@ -37,7 +37,6 @@ namespace _3.DAL.Context
             modelBuilder.ApplyConfiguration(new EmployessConfig());
             modelBuilder.ApplyConfiguration(new Event_ProductConfig());
             modelBuilder.ApplyConfiguration(new EventConfig());
-            modelBuilder.ApplyConfiguration(new ImageConfig());
             modelBuilder.ApplyConfiguration(new MaterialConfig());
             modelBuilder.ApplyConfiguration(new ProductConfig());
             modelBuilder.ApplyConfiguration(new ProductDetailConfig());
@@ -57,7 +56,7 @@ namespace _3.DAL.Context
         public virtual DbSet<Employess>? Employesses { get; set; }
         public virtual DbSet<Event_Product>? Event_Products { get; set; }
         public virtual DbSet<Event>? Events { get; set; }
-        public virtual DbSet<Image>? Images { get; set; }
+    
         public virtual DbSet<Material>? Materials { get; set; }
         public virtual DbSet<Product>? Products { get; set; }
         public virtual DbSet<ProductDetail>? ProductDetails { get; set; }

@@ -49,8 +49,10 @@ namespace _3.DAL.Repositories
             {
                 var obj = _context.Products.Find(product.ProductId);
                 obj.ProductName = product.ProductName;  
+                obj.BrandId = product.BrandId;
                 obj.QuantityExists = product.QuantityExists;    
                 obj.Cost = product.Cost; 
+                obj.Price = product.Price;
                 obj.Status = product.Status;
                 _context.Update(obj);   
                 _context.SaveChanges(); 

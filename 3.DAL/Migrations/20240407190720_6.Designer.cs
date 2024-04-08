@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using _3.DAL.Context;
 
@@ -11,9 +12,10 @@ using _3.DAL.Context;
 namespace _3.DAL.Migrations
 {
     [DbContext(typeof(DBContext))]
-    partial class DBContextModelSnapshot : ModelSnapshot
+    [Migration("20240407190720_6")]
+    partial class _6
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -33,7 +35,7 @@ namespace _3.DAL.Migrations
                     b.Property<DateTime>("CreateDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 4, 8, 16, 12, 27, 624, DateTimeKind.Local).AddTicks(3073));
+                        .HasDefaultValue(new DateTime(2024, 4, 8, 2, 7, 20, 76, DateTimeKind.Local).AddTicks(9214));
 
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
@@ -149,6 +151,9 @@ namespace _3.DAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
                     b.HasKey("CustomerId");
 
                     b.ToTable("Customers", (string)null);
@@ -258,9 +263,6 @@ namespace _3.DAL.Migrations
                         .HasColumnType("int");
 
                     b.Property<float>("Cost")
-                        .HasColumnType("real");
-
-                    b.Property<float>("Price")
                         .HasColumnType("real");
 
                     b.Property<string>("ProductName")

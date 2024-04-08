@@ -12,8 +12,8 @@ using _3.DAL.Context;
 namespace _3.DAL.Migrations
 {
     [DbContext(typeof(DBContext))]
-    [Migration("20240404162100_1")]
-    partial class _1
+    [Migration("20240407180118_5")]
+    partial class _5
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -35,7 +35,7 @@ namespace _3.DAL.Migrations
                     b.Property<DateTime>("CreateDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 4, 4, 23, 21, 0, 2, DateTimeKind.Local).AddTicks(724));
+                        .HasDefaultValue(new DateTime(2024, 4, 8, 1, 1, 18, 313, DateTimeKind.Local).AddTicks(9507));
 
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
@@ -234,23 +234,6 @@ namespace _3.DAL.Migrations
                     b.ToTable("Even_Products", (string)null);
                 });
 
-            modelBuilder.Entity("_3.DAL.Model.Image", b =>
-                {
-                    b.Property<int>("ImageId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ImageId"), 1L, 1);
-
-                    b.Property<string>("ImageLink")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ImageId");
-
-                    b.ToTable("Images", (string)null);
-                });
-
             modelBuilder.Entity("_3.DAL.Model.Material", b =>
                 {
                     b.Property<int>("MaterialId")
@@ -276,8 +259,8 @@ namespace _3.DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductId"), 1L, 1);
 
-                    b.Property<double>("Cost")
-                        .HasColumnType("float");
+                    b.Property<float>("Cost")
+                        .HasColumnType("real");
 
                     b.Property<string>("ProductName")
                         .IsRequired()
@@ -311,9 +294,6 @@ namespace _3.DAL.Migrations
                     b.Property<int>("ColorId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ImageId")
-                        .HasColumnType("int");
-
                     b.Property<int>("MaterialId")
                         .HasColumnType("int");
 
@@ -330,8 +310,6 @@ namespace _3.DAL.Migrations
                     b.HasIndex("CategoryId");
 
                     b.HasIndex("ColorId");
-
-                    b.HasIndex("ImageId");
 
                     b.HasIndex("MaterialId");
 
@@ -497,12 +475,6 @@ namespace _3.DAL.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("_3.DAL.Model.Image", "Image")
-                        .WithMany("ProductDetails")
-                        .HasForeignKey("ImageId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("_3.DAL.Model.Material", "Material")
                         .WithMany("ProductDetails")
                         .HasForeignKey("MaterialId")
@@ -526,8 +498,6 @@ namespace _3.DAL.Migrations
                     b.Navigation("Category");
 
                     b.Navigation("Color");
-
-                    b.Navigation("Image");
 
                     b.Navigation("Material");
 
@@ -580,11 +550,6 @@ namespace _3.DAL.Migrations
             modelBuilder.Entity("_3.DAL.Model.Event", b =>
                 {
                     b.Navigation("Event_Products");
-                });
-
-            modelBuilder.Entity("_3.DAL.Model.Image", b =>
-                {
-                    b.Navigation("ProductDetails");
                 });
 
             modelBuilder.Entity("_3.DAL.Model.Material", b =>

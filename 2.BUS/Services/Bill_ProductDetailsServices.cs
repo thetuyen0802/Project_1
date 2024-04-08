@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace _2.BUS.Services
 {
-    internal class Bill_ProductDetailsServices : IBill_ProductDetailsServices
+    public class Bill_ProductDetailsServices : IBill_ProductDetailsServices
     {
         private IBill_ProductDetailRepo _bill_product_repo;
 

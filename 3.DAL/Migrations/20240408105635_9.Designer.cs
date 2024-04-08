@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using _3.DAL.Context;
 
@@ -11,9 +12,10 @@ using _3.DAL.Context;
 namespace _3.DAL.Migrations
 {
     [DbContext(typeof(DBContext))]
-    partial class DBContextModelSnapshot : ModelSnapshot
+    [Migration("20240408105635_9")]
+    partial class _9
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -33,7 +35,7 @@ namespace _3.DAL.Migrations
                     b.Property<DateTime>("CreateDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 4, 8, 18, 10, 1, 392, DateTimeKind.Local).AddTicks(6157));
+                        .HasDefaultValue(new DateTime(2024, 4, 8, 17, 56, 35, 154, DateTimeKind.Local).AddTicks(1078));
 
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
@@ -41,7 +43,7 @@ namespace _3.DAL.Migrations
                     b.Property<int?>("EmployessId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("PaymenDate")
+                    b.Property<DateTime>("PaymenDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("Status")

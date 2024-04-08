@@ -32,12 +32,11 @@
             btn_product = new Button();
             btn_sales = new Button();
             btn_bill = new Button();
-            btn_statistics = new Button();
             btn_account = new Button();
-            btn_event = new Button();
             btn_exit = new Button();
             btn_logout = new Button();
             btn_customer = new Button();
+            btn_nhanvien = new Button();
             SuspendLayout();
             // 
             // panelContainer
@@ -78,33 +77,15 @@
             btn_bill.Text = "Hóa Đơn";
             btn_bill.UseVisualStyleBackColor = true;
             // 
-            // btn_statistics
-            // 
-            btn_statistics.Location = new Point(-3, 199);
-            btn_statistics.Name = "btn_statistics";
-            btn_statistics.Size = new Size(157, 53);
-            btn_statistics.TabIndex = 7;
-            btn_statistics.Text = "Thống Kê";
-            btn_statistics.UseVisualStyleBackColor = true;
-            // 
             // btn_account
             // 
-            btn_account.Location = new Point(-3, 297);
+            btn_account.Location = new Point(-3, 250);
             btn_account.Name = "btn_account";
             btn_account.Size = new Size(157, 53);
             btn_account.TabIndex = 8;
             btn_account.Text = "Tài khoản";
             btn_account.UseVisualStyleBackColor = true;
             btn_account.Click += btn_account_Click;
-            // 
-            // btn_event
-            // 
-            btn_event.Location = new Point(-3, 247);
-            btn_event.Name = "btn_event";
-            btn_event.Size = new Size(157, 53);
-            btn_event.TabIndex = 9;
-            btn_event.Text = "Sự Kiện";
-            btn_event.UseVisualStyleBackColor = true;
             // 
             // btn_exit
             // 
@@ -142,6 +123,15 @@
             btn_customer.UseVisualStyleBackColor = true;
             btn_customer.Click += btn_customer_Click;
             // 
+            // btn_nhanvien
+            // 
+            btn_nhanvien.Location = new Point(-3, 201);
+            btn_nhanvien.Name = "btn_nhanvien";
+            btn_nhanvien.Size = new Size(157, 53);
+            btn_nhanvien.TabIndex = 12;
+            btn_nhanvien.Text = "Nhân viên";
+            btn_nhanvien.UseVisualStyleBackColor = true;
+            // 
             // Home
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -149,11 +139,10 @@
             AutoSize = true;
             ClientSize = new Size(1054, 833);
             ControlBox = false;
+            Controls.Add(btn_nhanvien);
             Controls.Add(btn_customer);
             Controls.Add(btn_logout);
-            Controls.Add(btn_event);
             Controls.Add(btn_account);
-            Controls.Add(btn_statistics);
             Controls.Add(btn_exit);
             Controls.Add(btn_bill);
             Controls.Add(btn_sales);
@@ -170,11 +159,10 @@
         private Button btn_product;
         private Button btn_sales;
         private Button btn_bill;
-        private Button btn_statistics;
         private Button btn_account;
-        private Button btn_event;
         private Button btn_exit;
         private Button btn_logout;
         private Button btn_customer;
+        private Button btn_nhanvien;
     }
 }

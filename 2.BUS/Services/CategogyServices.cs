@@ -1,6 +1,7 @@
 ﻿using _2.BUS.IServices;
 using _3.DAL.IRepositories;
 using _3.DAL.Model;
+using _3.DAL.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,11 @@ namespace _2.BUS.Services
     public class CategogyServices : ICategogyServices
     {
         private ICategoryRepo _categogy;
+
+        public CategogyServices()
+        {
+            _categogy = new CategoryRepo();
+        }
 
         public string Add(Category categogy)
         {

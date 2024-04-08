@@ -50,7 +50,7 @@
             btn_delete = new Button();
             label3 = new Label();
             btn_thaydoi = new Button();
-            textBox1 = new TextBox();
+            txt_name = new TextBox();
             label4 = new Label();
             label5 = new Label();
             txt_phone = new TextBox();
@@ -268,12 +268,12 @@
             btn_thaydoi.Text = "Thay đổi";
             btn_thaydoi.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // txt_name
             // 
-            textBox1.Location = new Point(334, 71);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(183, 27);
-            textBox1.TabIndex = 9;
+            txt_name.Location = new Point(334, 71);
+            txt_name.Name = "txt_name";
+            txt_name.Size = new Size(183, 27);
+            txt_name.TabIndex = 9;
             // 
             // label4
             // 
@@ -312,7 +312,7 @@
             Controls.Add(txt_phone);
             Controls.Add(label5);
             Controls.Add(label4);
-            Controls.Add(textBox1);
+            Controls.Add(txt_name);
             Controls.Add(btn_thaydoi);
             Controls.Add(label3);
             Controls.Add(btn_delete);
@@ -349,7 +349,7 @@
         private Button btn_delete;
         private Label label3;
         private Button btn_thaydoi;
-        private TextBox textBox1;
+        private TextBox txt_name;
         private Label label4;
         private Label label5;
         private TextBox txt_phone;

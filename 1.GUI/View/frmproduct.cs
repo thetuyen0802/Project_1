@@ -17,6 +17,7 @@ namespace _1.GUI
 {
     public partial class frmproduct : Form
     {
+        private IBrandServices _brandService;
         private IProductServices _services;
         //private IBrandServices _brandServices;
         private int _clickid;
@@ -25,13 +26,18 @@ namespace _1.GUI
         {
             InitializeComponent();
             _services = new ProductServices();
+            _brandService = new BrandServices();
             //_brandServices = new BrandServices();
             LoadData();
         }
         public void LoadData()
         {
+            List<Brand> brands = _brandService.GetAll();
             List<Product> products = _services.GetAll();
             dview_product.DataSource = products;
+            cbx_brand.DataSource = brands;
+            cbx_brand.DisplayMember = "BrandName";
+            cbx_brand.ValueMember = "BrandId";
 
 
         }
@@ -53,6 +59,7 @@ namespace _1.GUI
             product.QuantityExists = int.Parse(txt_quantity.Text);
             product.Status = 1;
             product.Status = comboBox1.SelectedIndex;
+            product.BrandId = int.Parse(cbx_brand.SelectedValue.ToString());
 
             _services.Add(product);
             LoadData();
@@ -95,12 +102,8 @@ namespace _1.GUI
         private void frmproduct_Load(object sender, EventArgs e)
         {
 
+
         }
-
-
-
-       
-
         private void btn_delete_Click_1(object sender, EventArgs e)
         {
             Product product = _services.FindById(_clickid);

@@ -37,8 +37,6 @@
             btn_clear = new Button();
             btn_update = new Button();
             btn_add = new Button();
-            txt_search = new TextBox();
-            btn_search = new Button();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -133,23 +131,6 @@
             btn_add.UseVisualStyleBackColor = true;
             btn_add.Click += button2_Click;
             // 
-            // txt_search
-            // 
-            txt_search.Location = new Point(40, 201);
-            txt_search.Name = "txt_search";
-            txt_search.Size = new Size(694, 27);
-            txt_search.TabIndex = 7;
-            // 
-            // btn_search
-            // 
-            btn_search.Location = new Point(767, 201);
-            btn_search.Name = "btn_search";
-            btn_search.Size = new Size(94, 29);
-            btn_search.TabIndex = 8;
-            btn_search.Text = "Tìm Kiếm";
-            btn_search.UseVisualStyleBackColor = true;
-            btn_search.Click += btn_search_Click;
-            // 
             // label1
             // 
             label1.AutoSize = true;
@@ -231,8 +212,6 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(btn_search);
-            Controls.Add(txt_search);
             Controls.Add(panel1);
             Controls.Add(cbx_chucvu);
             Controls.Add(txt_password);
@@ -259,8 +238,6 @@
         private Button btn_clear;
         private Button btn_update;
         private Button btn_add;
-        private TextBox txt_search;
-        private Button btn_search;
         private Label label1;
         private Label label2;
         private Label label3;

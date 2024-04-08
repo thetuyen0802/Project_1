@@ -137,22 +137,6 @@ namespace _1.GUI.View
             rbt_status_1.Checked = false;
         }
 
-        private void btn_search_Click(object sender, EventArgs e)
-        {
-            string name= txt_search.Text;
-
-            User searchuser = _services.GetUsers().FirstOrDefault(x => x.UserName == name);
-            if (searchuser == null)
-            {
-                MessageBox.Show("Tên không đúng hoặc không tồn tại");
-            }
-            else
-            {
-                BindingSource bindingSource = new BindingSource();
-                bindingSource.DataSource = searchuser;
-                dataView.DataSource = bindingSource;
-            }
-           
-        }
+        
     }
 }

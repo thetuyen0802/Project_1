@@ -17,7 +17,6 @@ namespace _3.DAL.Configuration
             builder.Property(x=>x.BillId).UseIdentityColumn(1,1);
             
             builder.Property(x => x.CustomerId).IsRequired();
-            builder.Property(x => x.EmployessId).IsRequired();
             builder.Property(x=>x.CreateDate).HasDefaultValue(DateTime.Now);
             
             builder.HasOne(x => x.Employess).WithMany(a => a.Bills).HasForeignKey(a => a.EmployessId);

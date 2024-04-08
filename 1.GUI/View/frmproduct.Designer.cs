@@ -44,6 +44,8 @@
             btn_delete = new Button();
             comboBox1 = new ComboBox();
             label6 = new Label();
+            cbx_brand = new ComboBox();
+            label7 = new Label();
             ((System.ComponentModel.ISupportInitialize)dview_product).BeginInit();
             SuspendLayout();
             // 
@@ -83,7 +85,7 @@
             // 
             // txt_cost
             // 
-            txt_cost.Location = new Point(524, 219);
+            txt_cost.Location = new Point(540, 219);
             txt_cost.Name = "txt_cost";
             txt_cost.Size = new Size(247, 27);
             txt_cost.TabIndex = 4;
@@ -178,7 +180,7 @@
             // 
             comboBox1.FormattingEnabled = true;
             comboBox1.Items.AddRange(new object[] { "Ngừng kinh doanh", "Còn hàng", "Hết hàng" });
-            comboBox1.Location = new Point(524, 279);
+            comboBox1.Location = new Point(540, 279);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(217, 28);
             comboBox1.TabIndex = 15;
@@ -192,6 +194,23 @@
             label6.TabIndex = 16;
             label6.Text = "Tình trạng";
             // 
+            // cbx_brand
+            // 
+            cbx_brand.FormattingEnabled = true;
+            cbx_brand.Location = new Point(540, 166);
+            cbx_brand.Name = "cbx_brand";
+            cbx_brand.Size = new Size(217, 28);
+            cbx_brand.TabIndex = 17;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(442, 170);
+            label7.Name = "label7";
+            label7.Size = new Size(92, 20);
+            label7.TabIndex = 18;
+            label7.Text = "Thương hiệu";
+            // 
             // frmproduct
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -200,6 +219,8 @@
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(900, 833);
             ControlBox = false;
+            Controls.Add(label7);
+            Controls.Add(cbx_brand);
             Controls.Add(label6);
             Controls.Add(comboBox1);
             Controls.Add(btn_delete);
@@ -243,5 +264,7 @@
         private Button btn_delete;
         private ComboBox comboBox1;
         private Label label6;
+        private ComboBox cbx_brand;
+        private Label label7;
     }
 }

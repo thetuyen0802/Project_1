@@ -131,6 +131,7 @@
             btn_nhanvien.TabIndex = 12;
             btn_nhanvien.Text = "Nhân viên";
             btn_nhanvien.UseVisualStyleBackColor = true;
+            btn_nhanvien.Click += btn_nhanvien_Click;
             // 
             // Home
             // 

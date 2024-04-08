@@ -29,10 +29,11 @@ namespace _1.GUI
             if (_rolelogin == 1)
             {
                 this.Controls.Remove(btn_product);
-
+                this.Controls.Remove(btn_nhanvien);
                 btn_sales.Location = new Point(0, 0);
                 btn_bill.Location = new Point(0, 50);
                 btn_customer.Location = new Point(0, 100);
+                btn_account.Location=new Point(0, 150);
                 frmBanhang sales = new frmBanhang(_user);
                 FillForm(sales);
             }
@@ -90,7 +91,7 @@ namespace _1.GUI
         private void btn_sales_Click(object sender, EventArgs e)
         {
             panelContainer.Controls.Clear();
-            frmBanhang sales = new frmBanhang( _user);
+            frmBanhang sales = new frmBanhang(_user);
             FillForm(sales);
         }
 
@@ -133,8 +134,16 @@ namespace _1.GUI
         }
         private void btn_customer_Click(object sender, EventArgs e)
         {
+            panelContainer.Controls.Clear();
             frmCustomer customer = new frmCustomer();
             FillForm(customer);
+        }
+
+        private void btn_nhanvien_Click(object sender, EventArgs e)
+        {
+            panelContainer.Controls.Clear();
+            frmNhanvien frm= new frmNhanvien();
+            FillForm(frm);
         }
     }
 }

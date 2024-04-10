@@ -30,15 +30,12 @@
         {
             dataView = new DataGridView();
             txt_username = new TextBox();
-            txt_email = new TextBox();
             txt_password = new TextBox();
             cbx_chucvu = new ComboBox();
             panel1 = new Panel();
             btn_clear = new Button();
             btn_update = new Button();
-            btn_add = new Button();
             label1 = new Label();
-            label2 = new Label();
             label3 = new Label();
             label4 = new Label();
             label5 = new Label();
@@ -61,18 +58,11 @@
             // 
             // txt_username
             // 
-            txt_username.Location = new Point(107, 12);
+            txt_username.Location = new Point(107, 32);
             txt_username.Name = "txt_username";
+            txt_username.ReadOnly = true;
             txt_username.Size = new Size(394, 27);
             txt_username.TabIndex = 1;
-            // 
-            // txt_email
-            // 
-            txt_email.Location = new Point(107, 56);
-            txt_email.Name = "txt_email";
-            txt_email.Size = new Size(394, 27);
-            txt_email.TabIndex = 2;
-            txt_email.TextChanged += textBox2_TextChanged;
             // 
             // txt_password
             // 
@@ -95,7 +85,6 @@
             panel1.BackColor = SystemColors.ButtonFace;
             panel1.Controls.Add(btn_clear);
             panel1.Controls.Add(btn_update);
-            panel1.Controls.Add(btn_add);
             panel1.Location = new Point(530, 12);
             panel1.Name = "panel1";
             panel1.Size = new Size(358, 156);
@@ -121,33 +110,14 @@
             btn_update.UseVisualStyleBackColor = true;
             btn_update.Click += btn_update_Click;
             // 
-            // btn_add
-            // 
-            btn_add.Location = new Point(38, 20);
-            btn_add.Name = "btn_add";
-            btn_add.Size = new Size(94, 29);
-            btn_add.TabIndex = 0;
-            btn_add.Text = "Thêm ";
-            btn_add.UseVisualStyleBackColor = true;
-            btn_add.Click += button2_Click;
-            // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(12, 19);
+            label1.Location = new Point(12, 39);
             label1.Name = "label1";
             label1.Size = new Size(82, 20);
             label1.TabIndex = 9;
             label1.Text = "User Name";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(12, 59);
-            label2.Name = "label2";
-            label2.Size = new Size(46, 20);
-            label2.TabIndex = 10;
-            label2.Text = "Email";
             // 
             // label3
             // 
@@ -210,12 +180,10 @@
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
-            Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(panel1);
             Controls.Add(cbx_chucvu);
             Controls.Add(txt_password);
-            Controls.Add(txt_email);
             Controls.Add(txt_username);
             Controls.Add(dataView);
             FormBorderStyle = FormBorderStyle.None;
@@ -231,15 +199,12 @@
 
         private DataGridView dataView;
         private TextBox txt_username;
-        private TextBox txt_email;
         private TextBox txt_password;
         private ComboBox cbx_chucvu;
         private Panel panel1;
         private Button btn_clear;
         private Button btn_update;
-        private Button btn_add;
         private Label label1;
-        private Label label2;
         private Label label3;
         private Label label4;
         private Label label5;

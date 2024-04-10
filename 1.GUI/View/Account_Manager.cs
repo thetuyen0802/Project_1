@@ -44,36 +44,36 @@ namespace _1.GUI.View
         }
 
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            User userView = new User();
-            userView.Email = txt_email.Text;
-            userView.UserName = txt_username.Text;
-            userView.Password = txt_password.Text;
-            if (cbx_chucvu.SelectedIndex == 0)
-            {
-                userView.RoleId = 1;
-            }
-            else
-            {
-                userView.RoleId = 2;
-            }
-            if (rbt_status_0.Checked)
-            {
-                userView.Status = 0;
-            }
-            else if (rbt_status_1.Checked)
-            {
-                userView.Status = 1;
-            }
-            MessageBox.Show(_services.AddUser(userView));
-            LoadData();
-        }
+        //private void button2_Click(object sender, EventArgs e)
+        //{
+        //    User userView = new User();
+          
+        //    userView.UserName = txt_username.Text;
+        //    userView.Password = txt_password.Text;
+        //    if (cbx_chucvu.SelectedIndex == 0)
+        //    {
+        //        userView.RoleId = 1;
+        //    }
+        //    else
+        //    {
+        //        userView.RoleId = 2;
+        //    }
+        //    if (rbt_status_0.Checked)
+        //    {
+        //        userView.Status = 0;
+        //    }
+        //    else if (rbt_status_1.Checked)
+        //    {
+        //        userView.Status = 1;
+        //    }
+        //    MessageBox.Show(_services.AddUser(userView));
+        //    LoadData();
+        //}
 
         private void btn_update_Click(object sender, EventArgs e)
         {
             var user = _services.GetById(id);
-            user.Email = txt_email.Text;
+       
             user.UserName = txt_username.Text;
             user.Password = txt_password.Text;
             if (cbx_chucvu.SelectedIndex == 0)
@@ -105,7 +105,7 @@ namespace _1.GUI.View
         {
             id = (int)dataView.Rows[e.RowIndex].Cells[0].Value;
             User user = _services.GetById(id);
-            txt_email.Text = user.Email;
+         
             txt_username.Text = user.UserName;
             txt_password.Text = user.Password;
             if (user.RoleId == 1)
@@ -129,7 +129,7 @@ namespace _1.GUI.View
 
         private void btn_clear_Click(object sender, EventArgs e)
         {
-            txt_email.Text = string.Empty;
+          
             txt_password.Text = string.Empty;
             txt_username.Text = string.Empty;
             cbx_chucvu.Text = string.Empty;

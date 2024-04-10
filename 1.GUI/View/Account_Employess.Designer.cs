@@ -29,27 +29,18 @@
         private void InitializeComponent()
         {
             txt_username = new TextBox();
-            txt_email = new TextBox();
             txt_password = new TextBox();
             label1 = new Label();
-            label2 = new Label();
             label3 = new Label();
             btn_update = new Button();
             SuspendLayout();
             // 
             // txt_username
             // 
-            txt_username.Location = new Point(254, 61);
+            txt_username.Location = new Point(254, 170);
             txt_username.Name = "txt_username";
             txt_username.Size = new Size(329, 27);
             txt_username.TabIndex = 0;
-            // 
-            // txt_email
-            // 
-            txt_email.Location = new Point(254, 149);
-            txt_email.Name = "txt_email";
-            txt_email.Size = new Size(329, 27);
-            txt_email.TabIndex = 1;
             // 
             // txt_password
             // 
@@ -62,20 +53,11 @@
             // 
             label1.AutoSize = true;
             label1.ImageAlign = ContentAlignment.BottomRight;
-            label1.Location = new Point(140, 68);
+            label1.Location = new Point(140, 173);
             label1.Name = "label1";
             label1.Size = new Size(82, 20);
             label1.TabIndex = 3;
             label1.Text = "User Name";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(140, 156);
-            label2.Name = "label2";
-            label2.Size = new Size(46, 20);
-            label2.TabIndex = 4;
-            label2.Text = "Email";
             // 
             // label3
             // 
@@ -105,10 +87,8 @@
             ControlBox = false;
             Controls.Add(btn_update);
             Controls.Add(label3);
-            Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(txt_password);
-            Controls.Add(txt_email);
             Controls.Add(txt_username);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Account_Employess";
@@ -121,10 +101,8 @@
         #endregion
 
         private TextBox txt_username;
-        private TextBox txt_email;
         private TextBox txt_password;
         private Label label1;
-        private Label label2;
         private Label label3;
         private Button btn_update;
     }

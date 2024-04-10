@@ -10,11 +10,19 @@ using System.Windows.Forms;
 
 namespace _1.GUI.View
 {
-    public partial class frmNhanvien : Form
+    public partial class frmEmployess : Form
     {
-        public frmNhanvien()
+        public frmEmployess()
         {
             InitializeComponent();
+        }
+        public void LoadData()
+        {
+            
+        }
+        private void label4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

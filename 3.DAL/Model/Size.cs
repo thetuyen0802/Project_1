@@ -9,7 +9,7 @@ namespace _3.DAL.Model
     public class Size
     {
         public int SizeId { get; set; }
-        public string? SizeName { get; set; }
+        public string SizeName { get; set; }
         public List<ProductDetail>? ProductDetails { get; set; }
     }
 }

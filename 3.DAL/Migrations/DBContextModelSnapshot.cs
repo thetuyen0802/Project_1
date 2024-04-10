@@ -33,7 +33,7 @@ namespace _3.DAL.Migrations
                     b.Property<DateTime>("CreateDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 4, 8, 18, 10, 1, 392, DateTimeKind.Local).AddTicks(6157));
+                        .HasDefaultValue(new DateTime(2024, 4, 10, 17, 16, 21, 574, DateTimeKind.Local).AddTicks(1113));
 
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
@@ -58,7 +58,7 @@ namespace _3.DAL.Migrations
 
             modelBuilder.Entity("_3.DAL.Model.Bill_ProductDetail", b =>
                 {
-                    b.Property<int?>("ProDetailId")
+                    b.Property<int>("ProDetailId")
                         .HasColumnType("int");
 
                     b.Property<int>("BillId")
@@ -260,15 +260,9 @@ namespace _3.DAL.Migrations
                     b.Property<float>("Cost")
                         .HasColumnType("real");
 
-                    b.Property<float>("Price")
-                        .HasColumnType("real");
-
                     b.Property<string>("ProductName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("QuantityExists")
-                        .HasColumnType("int");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
@@ -297,10 +291,19 @@ namespace _3.DAL.Migrations
                     b.Property<int>("MaterialId")
                         .HasColumnType("int");
 
+                    b.Property<float>("Price")
+                        .HasColumnType("real");
+
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
+                    b.Property<int>("QuantityExists")
+                        .HasColumnType("int");
+
                     b.Property<int>("SizeId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("status")
                         .HasColumnType("int");
 
                     b.HasKey("ProDetailId");
@@ -359,10 +362,6 @@ namespace _3.DAL.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"), 1L, 1);
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Password")
                         .IsRequired()

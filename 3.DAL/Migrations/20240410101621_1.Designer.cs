@@ -12,8 +12,8 @@ using _3.DAL.Context;
 namespace _3.DAL.Migrations
 {
     [DbContext(typeof(DBContext))]
-    [Migration("20240407180118_5")]
-    partial class _5
+    [Migration("20240410101621_1")]
+    partial class _1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -35,15 +35,15 @@ namespace _3.DAL.Migrations
                     b.Property<DateTime>("CreateDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2024, 4, 8, 1, 1, 18, 313, DateTimeKind.Local).AddTicks(9507));
+                        .HasDefaultValue(new DateTime(2024, 4, 10, 17, 16, 21, 574, DateTimeKind.Local).AddTicks(1113));
 
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
-                    b.Property<int>("EmployessId")
+                    b.Property<int?>("EmployessId")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("PaymenDate")
+                    b.Property<DateTime?>("PaymenDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("Status")
@@ -60,7 +60,7 @@ namespace _3.DAL.Migrations
 
             modelBuilder.Entity("_3.DAL.Model.Bill_ProductDetail", b =>
                 {
-                    b.Property<int?>("ProDetailId")
+                    b.Property<int>("ProDetailId")
                         .HasColumnType("int");
 
                     b.Property<int>("BillId")
@@ -150,9 +150,6 @@ namespace _3.DAL.Migrations
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
 
                     b.HasKey("CustomerId");
 
@@ -259,6 +256,9 @@ namespace _3.DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductId"), 1L, 1);
 
+                    b.Property<int>("BrandId")
+                        .HasColumnType("int");
+
                     b.Property<float>("Cost")
                         .HasColumnType("real");
 
@@ -266,13 +266,12 @@ namespace _3.DAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("QuantityExists")
-                        .HasColumnType("int");
-
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
                     b.HasKey("ProductId");
+
+                    b.HasIndex("BrandId");
 
                     b.ToTable("Products", (string)null);
                 });
@@ -285,9 +284,6 @@ namespace _3.DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProDetailId"), 1L, 1);
 
-                    b.Property<int>("BrandId")
-                        .HasColumnType("int");
-
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
@@ -297,15 +293,22 @@ namespace _3.DAL.Migrations
                     b.Property<int>("MaterialId")
                         .HasColumnType("int");
 
+                    b.Property<float>("Price")
+                        .HasColumnType("real");
+
                     b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("QuantityExists")
                         .HasColumnType("int");
 
                     b.Property<int>("SizeId")
                         .HasColumnType("int");
 
-                    b.HasKey("ProDetailId");
+                    b.Property<int>("status")
+                        .HasColumnType("int");
 
-                    b.HasIndex("BrandId");
+                    b.HasKey("ProDetailId");
 
                     b.HasIndex("CategoryId");
 
@@ -362,10 +365,6 @@ namespace _3.DAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("UserId"), 1L, 1);
 
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -397,9 +396,7 @@ namespace _3.DAL.Migrations
 
                     b.HasOne("_3.DAL.Model.Employess", "Employess")
                         .WithMany("Bills")
-                        .HasForeignKey("EmployessId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("EmployessId");
 
                     b.Navigation("Customer");
 
@@ -455,14 +452,19 @@ namespace _3.DAL.Migrations
                     b.Navigation("Product");
                 });
 
-            modelBuilder.Entity("_3.DAL.Model.ProductDetail", b =>
+            modelBuilder.Entity("_3.DAL.Model.Product", b =>
                 {
                     b.HasOne("_3.DAL.Model.Brand", "Brand")
-                        .WithMany("ProductDetails")
+                        .WithMany("Product")
                         .HasForeignKey("BrandId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("Brand");
+                });
+
+            modelBuilder.Entity("_3.DAL.Model.ProductDetail", b =>
+                {
                     b.HasOne("_3.DAL.Model.Category", "Category")
                         .WithMany("ProductDetails")
                         .HasForeignKey("CategoryId")
@@ -493,8 +495,6 @@ namespace _3.DAL.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Brand");
-
                     b.Navigation("Category");
 
                     b.Navigation("Color");
@@ -524,7 +524,7 @@ namespace _3.DAL.Migrations
 
             modelBuilder.Entity("_3.DAL.Model.Brand", b =>
                 {
-                    b.Navigation("ProductDetails");
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("_3.DAL.Model.Category", b =>

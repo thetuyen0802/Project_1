@@ -12,9 +12,8 @@ namespace _3.DAL.Model
         public int UserId { get; set; }
         public int RoleId { get; set; }
         public string? UserName { get; set; }
-        public string? Email { get; set; }
         public string? Password { get; set; }
-        public int Status { get; set; } 
+        public int Status { get; set; }
 
         // Một nhân viên có 1 role
         public Role? Role { get; set; }

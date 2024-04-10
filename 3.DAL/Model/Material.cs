@@ -9,7 +9,7 @@ namespace _3.DAL.Model
     public class Material
     {
         public int MaterialId { get; set; }
-        public string? MaterialName { get; set; }
-        public List<ProductDetail>?   ProductDetails { get; set; }
+        public string MaterialName { get; set; }
+        public List<ProductDetail>?  ProductDetails { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace _1.GUI.View
 {
-    partial class frmBanhang
+    partial class frmSale
     {
         /// <summary>
         /// Required designer variable.
@@ -31,6 +31,11 @@
             dview_bill = new DataGridView();
             label1 = new Label();
             panel1 = new Panel();
+            btn_findbyname = new Button();
+            txt_findbyname = new TextBox();
+            label10 = new Label();
+            dview_product = new DataGridView();
+            btn_clearfillter = new Button();
             label = new Label();
             cbx_color = new ComboBox();
             txt_soluong = new TextBox();
@@ -43,20 +48,21 @@
             cbx_size = new ComboBox();
             label2 = new Label();
             btn_add = new Button();
-            dview_product = new DataGridView();
+            dview_productdetail = new DataGridView();
             btn_save = new Button();
             btn_bora = new Button();
             btn_thanhtoan = new Button();
-            btn_delete = new Button();
             label3 = new Label();
-            btn_thaydoi = new Button();
             txt_name = new TextBox();
             label4 = new Label();
             label5 = new Label();
             txt_phone = new TextBox();
+            txt_tongtien = new TextBox();
+            label11 = new Label();
             ((System.ComponentModel.ISupportInitialize)dview_bill).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dview_product).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dview_productdetail).BeginInit();
             SuspendLayout();
             // 
             // dview_bill
@@ -68,6 +74,7 @@
             dview_bill.RowTemplate.Height = 29;
             dview_bill.Size = new Size(894, 242);
             dview_bill.TabIndex = 0;
+            dview_bill.CellClick += dview_bill_CellClick;
             // 
             // label1
             // 
@@ -82,6 +89,11 @@
             // panel1
             // 
             panel1.BackColor = SystemColors.ButtonHighlight;
+            panel1.Controls.Add(btn_findbyname);
+            panel1.Controls.Add(txt_findbyname);
+            panel1.Controls.Add(label10);
+            panel1.Controls.Add(dview_product);
+            panel1.Controls.Add(btn_clearfillter);
             panel1.Controls.Add(label);
             panel1.Controls.Add(cbx_color);
             panel1.Controls.Add(txt_soluong);
@@ -94,11 +106,58 @@
             panel1.Controls.Add(cbx_size);
             panel1.Controls.Add(label2);
             panel1.Controls.Add(btn_add);
-            panel1.Controls.Add(dview_product);
+            panel1.Controls.Add(dview_productdetail);
             panel1.Location = new Point(3, 409);
             panel1.Name = "panel1";
-            panel1.Size = new Size(894, 412);
+            panel1.Size = new Size(894, 426);
             panel1.TabIndex = 2;
+            // 
+            // btn_findbyname
+            // 
+            btn_findbyname.Location = new Point(455, 60);
+            btn_findbyname.Name = "btn_findbyname";
+            btn_findbyname.Size = new Size(94, 29);
+            btn_findbyname.TabIndex = 19;
+            btn_findbyname.Text = "Tìm kiếm";
+            btn_findbyname.UseVisualStyleBackColor = true;
+            btn_findbyname.Click += btn_findbyname_Click;
+            // 
+            // txt_findbyname
+            // 
+            txt_findbyname.Location = new Point(455, 27);
+            txt_findbyname.Name = "txt_findbyname";
+            txt_findbyname.Size = new Size(275, 27);
+            txt_findbyname.TabIndex = 18;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(3, 202);
+            label10.Name = "label10";
+            label10.Size = new Size(124, 20);
+            label10.TabIndex = 17;
+            label10.Text = "Chi tiết sản phẩm";
+            // 
+            // dview_product
+            // 
+            dview_product.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dview_product.Location = new Point(3, 23);
+            dview_product.Name = "dview_product";
+            dview_product.RowHeadersWidth = 51;
+            dview_product.RowTemplate.Height = 29;
+            dview_product.Size = new Size(432, 168);
+            dview_product.TabIndex = 16;
+            dview_product.CellClick += dview_product_CellClick_1;
+            // 
+            // btn_clearfillter
+            // 
+            btn_clearfillter.Location = new Point(103, 383);
+            btn_clearfillter.Name = "btn_clearfillter";
+            btn_clearfillter.Size = new Size(94, 29);
+            btn_clearfillter.TabIndex = 15;
+            btn_clearfillter.Text = "Clear";
+            btn_clearfillter.UseVisualStyleBackColor = true;
+            btn_clearfillter.Click += btn_clearfillter_Click;
             // 
             // label
             // 
@@ -116,10 +175,11 @@
             cbx_color.Name = "cbx_color";
             cbx_color.Size = new Size(151, 28);
             cbx_color.TabIndex = 13;
+            cbx_color.SelectionChangeCommitted += cbx_color_SelectionChangeCommitted;
             // 
             // txt_soluong
             // 
-            txt_soluong.Location = new Point(740, 320);
+            txt_soluong.Location = new Point(740, 330);
             txt_soluong.Name = "txt_soluong";
             txt_soluong.Size = new Size(151, 27);
             txt_soluong.TabIndex = 12;
@@ -127,7 +187,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(741, 297);
+            label9.Location = new Point(741, 307);
             label9.Name = "label9";
             label9.Size = new Size(69, 20);
             label9.TabIndex = 11;
@@ -167,6 +227,7 @@
             cbx_material.Name = "cbx_material";
             cbx_material.Size = new Size(151, 28);
             cbx_material.TabIndex = 6;
+            cbx_material.SelectionChangeCommitted += cbx_material_SelectionChangeCommitted;
             // 
             // cbx_category
             // 
@@ -175,6 +236,7 @@
             cbx_category.Name = "cbx_category";
             cbx_category.Size = new Size(151, 28);
             cbx_category.TabIndex = 5;
+            cbx_category.SelectionChangeCommitted += cbx_category_SelectionChangeCommitted;
             // 
             // cbx_size
             // 
@@ -183,6 +245,7 @@
             cbx_size.Name = "cbx_size";
             cbx_size.Size = new Size(151, 28);
             cbx_size.TabIndex = 4;
+            cbx_size.SelectionChangeCommitted += cbx_size_SelectionChangeCommitted;
             // 
             // label2
             // 
@@ -195,7 +258,7 @@
             // 
             // btn_add
             // 
-            btn_add.Location = new Point(9, 358);
+            btn_add.Location = new Point(3, 383);
             btn_add.Name = "btn_add";
             btn_add.Size = new Size(94, 29);
             btn_add.TabIndex = 1;
@@ -203,52 +266,46 @@
             btn_add.UseVisualStyleBackColor = true;
             btn_add.Click += button1_Click;
             // 
-            // dview_product
+            // dview_productdetail
             // 
-            dview_product.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dview_product.Location = new Point(3, 23);
-            dview_product.Name = "dview_product";
-            dview_product.RowHeadersWidth = 51;
-            dview_product.RowTemplate.Height = 29;
-            dview_product.Size = new Size(727, 306);
-            dview_product.TabIndex = 0;
-            dview_product.CellClick += dview_product_CellClick;
+            dview_productdetail.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dview_productdetail.Location = new Point(3, 224);
+            dview_productdetail.Name = "dview_productdetail";
+            dview_productdetail.RowHeadersWidth = 51;
+            dview_productdetail.RowTemplate.Height = 29;
+            dview_productdetail.Size = new Size(727, 153);
+            dview_productdetail.TabIndex = 0;
+            dview_productdetail.CellClick += dview_productdetail_CellClick;
             // 
             // btn_save
             // 
-            btn_save.Location = new Point(574, 349);
+            btn_save.Location = new Point(174, 349);
             btn_save.Name = "btn_save";
             btn_save.Size = new Size(120, 29);
             btn_save.TabIndex = 3;
             btn_save.Text = "Lưu hóa đơn";
             btn_save.UseVisualStyleBackColor = true;
+            btn_save.Click += btn_save_Click;
             // 
             // btn_bora
             // 
-            btn_bora.Location = new Point(223, 349);
+            btn_bora.Location = new Point(3, 349);
             btn_bora.Name = "btn_bora";
             btn_bora.Size = new Size(120, 29);
             btn_bora.TabIndex = 4;
             btn_bora.Text = "Bỏ ra";
             btn_bora.UseVisualStyleBackColor = true;
+            btn_bora.Click += btn_bora_Click;
             // 
             // btn_thanhtoan
             // 
-            btn_thanhtoan.Location = new Point(747, 349);
+            btn_thanhtoan.Location = new Point(768, 349);
             btn_thanhtoan.Name = "btn_thanhtoan";
             btn_thanhtoan.Size = new Size(120, 29);
             btn_thanhtoan.TabIndex = 5;
             btn_thanhtoan.Text = "Thanh toán";
             btn_thanhtoan.UseVisualStyleBackColor = true;
-            // 
-            // btn_delete
-            // 
-            btn_delete.Location = new Point(45, 349);
-            btn_delete.Name = "btn_delete";
-            btn_delete.Size = new Size(120, 29);
-            btn_delete.TabIndex = 6;
-            btn_delete.Text = "Xóa";
-            btn_delete.UseVisualStyleBackColor = true;
+            btn_thanhtoan.Click += btn_thanhtoan_Click;
             // 
             // label3
             // 
@@ -258,15 +315,6 @@
             label3.Size = new Size(95, 20);
             label3.TabIndex = 7;
             label3.Text = "Hóa đơn chờ";
-            // 
-            // btn_thaydoi
-            // 
-            btn_thaydoi.Location = new Point(397, 349);
-            btn_thaydoi.Name = "btn_thaydoi";
-            btn_thaydoi.Size = new Size(120, 29);
-            btn_thaydoi.TabIndex = 8;
-            btn_thaydoi.Text = "Thay đổi";
-            btn_thaydoi.UseVisualStyleBackColor = true;
             // 
             // txt_name
             // 
@@ -299,7 +347,22 @@
             txt_phone.Name = "txt_phone";
             txt_phone.Size = new Size(167, 27);
             txt_phone.TabIndex = 12;
-            txt_phone.Text = "Sđt khách hàng";
+            // 
+            // txt_tongtien
+            // 
+            txt_tongtien.Location = new Point(521, 351);
+            txt_tongtien.Name = "txt_tongtien";
+            txt_tongtien.Size = new Size(241, 27);
+            txt_tongtien.TabIndex = 13;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new Point(436, 354);
+            label11.Name = "label11";
+            label11.Size = new Size(79, 20);
+            label11.TabIndex = 14;
+            label11.Text = "Tổng Tiền ";
             // 
             // frmBanhang
             // 
@@ -309,13 +372,13 @@
             BackColor = SystemColors.GradientActiveCaption;
             ClientSize = new Size(900, 833);
             ControlBox = false;
+            Controls.Add(label11);
+            Controls.Add(txt_tongtien);
             Controls.Add(txt_phone);
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(txt_name);
-            Controls.Add(btn_thaydoi);
             Controls.Add(label3);
-            Controls.Add(btn_delete);
             Controls.Add(btn_thanhtoan);
             Controls.Add(btn_bora);
             Controls.Add(panel1);
@@ -331,6 +394,7 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dview_product).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dview_productdetail).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -343,12 +407,10 @@
         private Button btn_bora;
         private Button btn_save;
         private Button btn_add;
-        private DataGridView dview_product;
+        private DataGridView dview_productdetail;
         private Label label2;
         private Button btn_thanhtoan;
-        private Button btn_delete;
         private Label label3;
-        private Button btn_thaydoi;
         private TextBox txt_name;
         private Label label4;
         private Label label5;
@@ -363,5 +425,12 @@
         private ComboBox cbx_size;
         private Label label;
         private ComboBox cbx_color;
+        private Button btn_clearfillter;
+        private Label label10;
+        private DataGridView dview_product;
+        private Button btn_findbyname;
+        private TextBox txt_findbyname;
+        private TextBox txt_tongtien;
+        private Label label11;
     }
 }

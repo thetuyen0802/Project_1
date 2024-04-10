@@ -50,7 +50,6 @@ namespace _3.DAL.Repositories
                 temp.UserName=nd.UserName;
                 temp.RoleId=nd.RoleId;
                 temp.Password=nd.Password;
-                temp.Email=nd.Email;
                 temp.Status=nd.Status;
                 _context.Update(temp);
                 _context.SaveChanges();

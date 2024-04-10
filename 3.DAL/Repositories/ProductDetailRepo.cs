@@ -53,14 +53,14 @@ namespace _3.DAL.Repositories
 
                 var obj = _context.ProductDetails.Find(productDetail.ProDetailId);
                 obj.ProductId = productDetail.ProductId;    
-
-
+                obj.status=productDetail.status;
+                obj.Price = productDetail.Price;
                 obj.CategoryId = productDetail.CategoryId;  
                 obj.MaterialId = productDetail.MaterialId;  
                 obj.ColorId = productDetail.ColorId;    
-                obj.SizeId = productDetail.SizeId;  
-                //////obj.Quantity = productDetail.Quantity;  
-                //obj.Price = productDetail.Price;
+                obj.SizeId = productDetail.SizeId;
+                obj.QuantityExists = productDetail.QuantityExists;
+
                 _context.Update(obj);   
                 _context.SaveChanges(); 
                 return true;    

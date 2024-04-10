@@ -14,6 +14,6 @@ namespace _3.DAL.Model
         public string? Email { get; set; }
         public int Status { get; set; }
         public List<Bill>? Bills { get; set; }
-        public User?  User { get; set; }
+        public User? User { get; set; }
     }
 }

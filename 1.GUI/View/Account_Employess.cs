@@ -26,7 +26,7 @@ namespace _1.GUI.View
 
         private void Account_Employess_Load(object sender, EventArgs e)
         {
-            txt_email.Text= _Userif.Email;  
+          
             txt_password.Text = _Userif.Password;
             txt_username.Text  =_Userif.UserName;
         }
@@ -35,7 +35,6 @@ namespace _1.GUI.View
         {
             User newUser = _userServices.GetById(_Userif.UserId);
             newUser.UserName= txt_username.Text;
-            newUser.Email= txt_email.Text;
             newUser.Password= txt_password.Text;
             MessageBox.Show(_userServices.Update(newUser)); 
 

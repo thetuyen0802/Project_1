@@ -34,7 +34,7 @@ namespace _1.GUI
                 btn_bill.Location = new Point(0, 50);
                 btn_customer.Location = new Point(0, 100);
                 btn_account.Location=new Point(0, 150);
-                frmBanhang sales = new frmBanhang(_user);
+                frmSale sales = new frmSale(_user);
                 FillForm(sales);
             }
             if (_rolelogin == 2)
@@ -91,7 +91,7 @@ namespace _1.GUI
         private void btn_sales_Click(object sender, EventArgs e)
         {
             panelContainer.Controls.Clear();
-            frmBanhang sales = new frmBanhang(_user);
+            frmSale sales = new frmSale(_user);
             FillForm(sales);
         }
 
@@ -142,7 +142,7 @@ namespace _1.GUI
         private void btn_nhanvien_Click(object sender, EventArgs e)
         {
             panelContainer.Controls.Clear();
-            frmNhanvien frm= new frmNhanvien();
+            frmEmployess frm= new frmEmployess();
             FillForm(frm);
         }
     }

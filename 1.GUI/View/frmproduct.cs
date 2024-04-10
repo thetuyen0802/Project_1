@@ -33,8 +33,14 @@ namespace _1.GUI
         public void LoadData()
         {
             List<Brand> brands = _brandService.GetAll();
-            List<Product> products = _services.GetAll();
-            dview_product.DataSource = products;
+            List<Product> products = _services.GetAll().Where(c=>c.Status==1).ToList();
+            dview_product.Columns.Add("Id", "ID");
+            dview_product.Columns.Add("Brand", "Thương hiệu");
+            dview_product.Columns.Add("ProductName", "Tên sản phẩm");
+            dview_product.Columns.Add("Cost", "Giá bán");
+
+
+
             cbx_brand.DataSource = brands;
             cbx_brand.DisplayMember = "BrandName";
             cbx_brand.ValueMember = "BrandId";
@@ -42,17 +48,14 @@ namespace _1.GUI
 
         }
 
-        private void btn_delete_Click(object sender, EventArgs e)
-        {
 
-        }
 
         private void btn_add_Click(object sender, EventArgs e)
         {
             /////Chú ý trạng thái của sản phẩm :
             ////    Trạng thái = 0 => Ngừng kinh doanh
-            ///     Trạng thái = 1 => Còn hàng
-            ///     Tạng thái  = 2 => Hết hàng
+            ///     Trạng thái = 1 => Đang kinh doah
+\
             Product product = new Product();
             product.ProductName = txt_name.Text;
             product.Cost = float.Parse(txt_cost.Text);
@@ -64,6 +67,7 @@ namespace _1.GUI
 
         private void btn_clear_Click_1(object sender, EventArgs e)
         {
+            txt_id.Text = string.Empty;
             txt_cost.Text = string.Empty;
             txt_name.Text = string.Empty;
             cbx_brand.SelectedIndex = -1;
@@ -74,6 +78,8 @@ namespace _1.GUI
             Product product = _services.FindById(_clickid);
             product.ProductName = txt_name.Text;
             product.Cost = float.Parse(txt_cost.Text);
+            product.BrandId=cbx_brand.SelectedIndex;
+
             _services.Update(product);
             LoadData();
         }

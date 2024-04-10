@@ -32,13 +32,12 @@
             dataGridView1 = new DataGridView();
             label3 = new Label();
             btn_update = new Button();
-            btn_delete = new Button();
             txt_name = new TextBox();
             txt_email = new TextBox();
             label4 = new Label();
             label2 = new Label();
             txt_userid = new TextBox();
-            textBox2 = new TextBox();
+            txt_employessId = new TextBox();
             label5 = new Label();
             comboBox1 = new ComboBox();
             label6 = new Label();
@@ -65,11 +64,12 @@
             dataGridView1.RowTemplate.Height = 29;
             dataGridView1.Size = new Size(893, 449);
             dataGridView1.TabIndex = 1;
+            dataGridView1.CellClick += dataGridView1_CellClick;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(413, 129);
+            label3.Location = new Point(413, 100);
             label3.Name = "label3";
             label3.Size = new Size(99, 20);
             label3.TabIndex = 3;
@@ -77,33 +77,24 @@
             // 
             // btn_update
             // 
-            btn_update.Location = new Point(418, 331);
+            btn_update.Location = new Point(479, 331);
             btn_update.Name = "btn_update";
             btn_update.Size = new Size(94, 29);
             btn_update.TabIndex = 7;
             btn_update.Text = "Cập nhật";
             btn_update.UseVisualStyleBackColor = true;
-            btn_update.Click += this.btn_update_Click;
-            // 
-            // btn_delete
-            // 
-            btn_delete.Location = new Point(635, 331);
-            btn_delete.Name = "btn_delete";
-            btn_delete.Size = new Size(94, 29);
-            btn_delete.TabIndex = 8;
-            btn_delete.Text = "Xóa";
-            btn_delete.UseVisualStyleBackColor = true;
+            btn_update.Click += btn_update_Click;
             // 
             // txt_name
             // 
-            txt_name.Location = new Point(523, 122);
+            txt_name.Location = new Point(526, 93);
             txt_name.Name = "txt_name";
             txt_name.Size = new Size(292, 27);
             txt_name.TabIndex = 10;
             // 
             // txt_email
             // 
-            txt_email.Location = new Point(523, 184);
+            txt_email.Location = new Point(523, 151);
             txt_email.Name = "txt_email";
             txt_email.Size = new Size(295, 27);
             txt_email.TabIndex = 11;
@@ -111,7 +102,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(418, 191);
+            label4.Location = new Point(413, 151);
             label4.Name = "label4";
             label4.Size = new Size(46, 20);
             label4.TabIndex = 13;
@@ -121,7 +112,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(43, 144);
+            label2.Location = new Point(43, 154);
             label2.Name = "label2";
             label2.Size = new Size(51, 20);
             label2.TabIndex = 14;
@@ -129,18 +120,19 @@
             // 
             // txt_userid
             // 
-            txt_userid.Location = new Point(161, 144);
+            txt_userid.Location = new Point(161, 148);
             txt_userid.Name = "txt_userid";
+            txt_userid.ReadOnly = true;
             txt_userid.Size = new Size(144, 27);
             txt_userid.TabIndex = 15;
             // 
-            // textBox2
+            // txt_employessId
             // 
-            textBox2.Location = new Point(161, 93);
-            textBox2.Name = "textBox2";
-            textBox2.ReadOnly = true;
-            textBox2.Size = new Size(144, 27);
-            textBox2.TabIndex = 16;
+            txt_employessId.Location = new Point(161, 93);
+            txt_employessId.Name = "txt_employessId";
+            txt_employessId.ReadOnly = true;
+            txt_employessId.Size = new Size(144, 27);
+            txt_employessId.TabIndex = 16;
             // 
             // label5
             // 
@@ -155,7 +147,7 @@
             // 
             comboBox1.FormattingEnabled = true;
             comboBox1.Items.AddRange(new object[] { "Đã nghỉ việc ", "Đang làm việc" });
-            comboBox1.Location = new Point(161, 183);
+            comboBox1.Location = new Point(161, 201);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(214, 28);
             comboBox1.TabIndex = 18;
@@ -163,7 +155,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(43, 191);
+            label6.Location = new Point(43, 209);
             label6.Name = "label6";
             label6.Size = new Size(75, 20);
             label6.TabIndex = 19;
@@ -171,13 +163,13 @@
             // 
             // btn_add
             // 
-            btn_add.Location = new Point(211, 331);
+            btn_add.Location = new Point(241, 331);
             btn_add.Name = "btn_add";
             btn_add.Size = new Size(94, 29);
             btn_add.TabIndex = 20;
             btn_add.Text = "Thêm";
             btn_add.UseVisualStyleBackColor = true;
-            btn_add.Click += this.btn_add_Click;
+            btn_add.Click += btn_add_Click;
             // 
             // frmEmployess
             // 
@@ -189,13 +181,12 @@
             Controls.Add(label6);
             Controls.Add(comboBox1);
             Controls.Add(label5);
-            Controls.Add(textBox2);
+            Controls.Add(txt_employessId);
             Controls.Add(txt_userid);
             Controls.Add(label2);
             Controls.Add(label4);
             Controls.Add(txt_email);
             Controls.Add(txt_name);
-            Controls.Add(btn_delete);
             Controls.Add(btn_update);
             Controls.Add(label3);
             Controls.Add(dataGridView1);
@@ -203,6 +194,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "frmEmployess";
             Text = "frmNhanvien";
+            Load += frmEmployess_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -214,13 +206,12 @@
         private DataGridView dataGridView1;
         private Label label3;
         private Button btn_update;
-        private Button btn_delete;
         private TextBox txt_name;
         private TextBox txt_email;
         private Label label4;
         private Label label2;
         private TextBox txt_userid;
-        private TextBox textBox2;
+        private TextBox txt_employessId;
         private Label label5;
         private ComboBox comboBox1;
         private Label label6;

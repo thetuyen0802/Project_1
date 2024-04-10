@@ -63,7 +63,7 @@
             dview_product.Size = new Size(898, 377);
             dview_product.TabIndex = 1;
             dview_product.CellClick += dview_product_CellClick;
-            dview_product.CellContentClick += dview_product_CellContentClick;
+        
             // 
             // txt_name
             // 
@@ -159,7 +159,7 @@
             // cbx_brand
             // 
             cbx_brand.FormattingEnabled = true;
-            cbx_brand.Location = new Point(540, 174);
+            cbx_brand.Location = new Point(540, 166);
             cbx_brand.Name = "cbx_brand";
             cbx_brand.Size = new Size(217, 28);
             cbx_brand.TabIndex = 17;

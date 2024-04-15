@@ -60,9 +60,16 @@ namespace _1.GUI.View
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            id=(int)dataGridView1.Rows[e.RowIndex].Cells[0].Value;
-            txt_name.Text = CustomerServices.GetByID(id).Name;
-            txt_sdt.Text= CustomerServices.GetByID(id).PhoneNumber;
+            id = (int)dataGridView1.Rows[e.RowIndex].Cells[0].Value;
+            if (id==null)
+            {
+
+            }
+            else
+            {
+                txt_name.Text = CustomerServices.GetByID(id).Name;
+                txt_sdt.Text = CustomerServices.GetByID(id).PhoneNumber;
+            }
         }
     }
 }

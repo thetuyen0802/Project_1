@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace _3.DAL.Repositories
 {
-    public class BilllRepository : IBillRepository
+    public class BilllRepo : IBillRepository
     {
         private DBContext _context;
 
-        public BilllRepository()
+        public BilllRepo()
         {
             _context = new DBContext();
         }

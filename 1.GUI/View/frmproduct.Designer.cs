@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             txt_id = new TextBox();
             dview_product = new DataGridView();
             txt_name = new TextBox();
@@ -42,7 +43,9 @@
             btn_delete = new Button();
             cbx_brand = new ComboBox();
             label7 = new Label();
+            brandServicesBindingSource = new BindingSource(components);
             ((System.ComponentModel.ISupportInitialize)dview_product).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)brandServicesBindingSource).BeginInit();
             SuspendLayout();
             // 
             // txt_id
@@ -55,6 +58,8 @@
             // 
             // dview_product
             // 
+            dview_product.AllowUserToAddRows = false;
+            dview_product.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dview_product.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dview_product.Location = new Point(1, 454);
             dview_product.Name = "dview_product";
@@ -63,7 +68,6 @@
             dview_product.Size = new Size(898, 377);
             dview_product.TabIndex = 1;
             dview_product.CellClick += dview_product_CellClick;
-        
             // 
             // txt_name
             // 
@@ -173,6 +177,10 @@
             label7.TabIndex = 18;
             label7.Text = "Thương hiệu";
             // 
+            // brandServicesBindingSource
+            // 
+            brandServicesBindingSource.DataSource = typeof(_2.BUS.Services.BrandServices);
+            // 
             // frmproduct
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -200,6 +208,7 @@
             Text = " b";
             Load += frmproduct_Load;
             ((System.ComponentModel.ISupportInitialize)dview_product).EndInit();
+            ((System.ComponentModel.ISupportInitialize)brandServicesBindingSource).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -220,5 +229,6 @@
         private Button btn_delete;
         private ComboBox cbx_brand;
         private Label label7;
+        private BindingSource brandServicesBindingSource;
     }
 }

@@ -41,7 +41,7 @@ namespace _1.GUI.View
         private List<Product> product;
         private List<Bill_ProductDetail> bill_ProductDetail;
         private User Userlog;
-        private float tt;
+       
 
         private int _indexRowClick;
 
@@ -54,6 +54,7 @@ namespace _1.GUI.View
             _productDetailServices = new ProductDetailServices();
             _brandServices = new BrandServices();
             _colorServices = new ColorServices();
+            _customerServices = new CustomerServices();
             _materialServices = new MaterialServices();
             _sizeServices = new SizeService();
             _categogyServices = new CategogyServices();
@@ -64,15 +65,16 @@ namespace _1.GUI.View
             cbx_color.SelectedIndex = -1;
             cbx_size.SelectedIndex = -1;
             cbx_material.SelectedIndex = -1;
-            tt = 0;
             billid = -1;
+            product = new List<Product>();
+            detail = new List<ProductDetail>();
+            bill_ProductDetail = new List<Bill_ProductDetail>();
             LoadProduct();
+            Loadbill();
         }
         public void Loadbill()
         {
-            dview_bill.Columns.Add("Idsp", "IDSp");
-            dview_bill.Columns.Add("Idspdt", "IDSPDT");
-            dview_bill.Columns.Add("Billid", "BillId");
+
             dview_bill.Columns.Add("Name", "Tên sản phẩm");
             dview_bill.Columns.Add("Brand", "Thương hiệu");
             dview_bill.Columns.Add("CategoryId", "Loại sản phẩm");
@@ -82,11 +84,18 @@ namespace _1.GUI.View
             dview_bill.Columns.Add("Quantity", "Số lượng");
             dview_bill.Columns.Add("Price", "Đơn giá");
             dview_bill.Columns.Add("Total", "Thành tiền");
+            dview_bill.Columns.Add("Idsp", "IDSp");
+            dview_bill.Columns.Add("Idspdt", "IDSPDT");
+            dview_bill.Columns.Add("Billid", "BillId");
 
             dview_bill.Columns["Idsp"].Visible = false;
-            dview_bill.Columns["Idspdt"].Visible=false;
-            dview_bill.Columns["Billid"].Visible=false;
+            dview_bill.Columns["Idspdt"].Visible = false;
+            dview_bill.Columns["Billid"].Visible = false;
 
+           
+        }
+        public void Loadbilldata()
+        {
             var data = from prodetail in detail
                        join pro in product on prodetail.ProductId equals pro.ProductId
                        join bill_prodetail in bill_ProductDetail on prodetail.ProDetailId equals bill_prodetail.ProDetailId
@@ -105,7 +114,7 @@ namespace _1.GUI.View
                            price = bill_prodetail.Price,
                        };
 
-            foreach (var item in data)
+            foreach (var item in data.Distinct())
             {
                 dview_bill.Rows.Add(
                     item.ProName,
@@ -119,11 +128,15 @@ namespace _1.GUI.View
                     (float)item.Quantity * item.price
                     );
             }
+            float tt = 0;
             for (int i = 0; i < dview_bill.RowCount; i++)
             {
-                tt += float.Parse(dview_bill.Rows[i].Cells["Total"].Value.ToString());
+                if (dview_bill.Rows[i].Cells["Total"].Value != null)
+                {
+                    tt += float.Parse(dview_bill.Rows[i].Cells["Total"].Value.ToString());
+                }
             }
-            txt_tongtien.Text = tt.ToString();
+            txt_tongtien.Text = tt.ToString()+" đ";
         }
         public void LoadProduct()
         {
@@ -167,17 +180,20 @@ namespace _1.GUI.View
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            if (txt_phone.Text=="")
+            {
+                MessageBox.Show("Nhập số điện thoại khách hàng");
+            }else
             if (detail == null)
             {
                 MessageBox.Show("Chưa chọn sản phẩm");
             }
             else
-            if (txt_soluong == null)
+            if (txt_soluong.Text == "")
             {
                 MessageBox.Show("Chưa nhập số lượng");
             }
-            else if(int.Parse(txt_soluong.Text)>_productDetailServices.FindById(idspdt).QuantityExists)
+            else if(int.Parse(txt_soluong.Text)>(int)_productDetailServices.FindById(idspdt).QuantityExists)
             {
                 MessageBox.Show("Số lượng tồn không đủ");
             }
@@ -186,21 +202,24 @@ namespace _1.GUI.View
 
                 if (billid == -1) ///BILL CHƯA TỒN TẠI
                 {
+
                     bill = new Bill();
+                    
                     bill.EmployessId = _employessServices.GetAll().FirstOrDefault(c => c.UserId == Userlog.UserId).EmployessId;
                     bill.CustomerId = _customerServices.GetAll().FirstOrDefault(c => c.PhoneNumber == txt_phone.Text).CustomerId;
                     bill.CreateDate = DateTime.Now;
                     bill.Status = 0;//set chưa thanh toán 
                     bill.PaymenDate = null;
+                    _billServices.Add(bill);
                     billid = bill.BillId;///lấy ra billID 
 
-
-                    product.Add(_productServices.FindById(idsp));//Thêm sản phẩm được chọn vào list sản phẩm (producct)
-                               
-                    detail.Add(_productDetailServices.FindById(idspdt));//Thêm chi tiết sản phẩm được chọn vào list sản phẩm (detail)
+                    Product prd = _productServices.FindById(idsp);
+                    product.Add(prd);//Thêm sản phẩm được chọn vào list sản phẩm (producct)
+                    ProductDetail prddt = _productDetailServices.FindById(idspdt);
+                    detail.Add(prddt);//Thêm chi tiết sản phẩm được chọn vào list sản phẩm (detail)
                     //Cappj nhật số lượng
-                    int qantityex=_productDetailServices.FindById(idspdt).QuantityExists-(int)txt_soluong.TabIndex;
-                    if (qantityex==0)
+                    int qantityex=_productDetailServices.FindById(idspdt).QuantityExists-int.Parse(txt_soluong.Text);
+                    if (qantityex<=0)
                     {
                         ProductDetail productDetail = _productDetailServices.FindById(idspdt);
                         productDetail.status = 0;
@@ -222,9 +241,9 @@ namespace _1.GUI.View
                     bill_ProductDetail1.ProDetailId = idspdt;
                     bill_ProductDetail1.Quantity = int.Parse(txt_soluong.Text);
 
+                    
                     bill_ProductDetail.Add(bill_ProductDetail1);
-
-                    Loadbill();
+                 
                 }
                 else
                 {
@@ -234,11 +253,12 @@ namespace _1.GUI.View
                     bill.CreateDate = DateTime.Now;
                     bill.Status = 0;//set chưa thanh toán 
                     bill.PaymenDate = null;
-                    billid = bill.BillId;///lấy ra billID 
 
 
-                    product.Add(_productServices.FindById(idsp));//Thêm sản phẩm được chọn vào list sản phẩm (producct)
-                    detail.Add(_productDetailServices.FindById(idspdt));//Thêm chi tiết sản phẩm được chọn vào list sản phẩm (detail)
+                    Product prd = _productServices.FindById(idsp);
+                    product.Add(prd);//Thêm sản phẩm được chọn vào list sản phẩm (producct)
+                    ProductDetail prddt = _productDetailServices.FindById(idspdt);
+                    detail.Add(prddt);//Thêm chi tiết sản phẩm được chọn vào list sản phẩm (detail)
                     //cập nhật số lượng
                     int qantityex = _productDetailServices.FindById(idspdt).QuantityExists - (int)txt_soluong.TabIndex;
                     if (qantityex == 0)
@@ -253,7 +273,7 @@ namespace _1.GUI.View
                         productDetail.QuantityExists = qantityex;
                         _productDetailServices.Update(productDetail);
                     }
-
+                    billid = bill.BillId;///lấy ra billID 
 
                     float price = _productDetailServices.FindById(idspdt).Price;
                     Bill_ProductDetail bill_ProductDetail1 = new Bill_ProductDetail();
@@ -264,10 +284,13 @@ namespace _1.GUI.View
 
                     bill_ProductDetail.Add(bill_ProductDetail1);
 
-                    Loadbill();
+                  
                 }
+               
 
             }
+            dview_bill.Rows.Clear();
+            Loadbilldata();
 
         }
 
@@ -348,7 +371,7 @@ namespace _1.GUI.View
             }
             else
             {
-                _billServices.Add(bill);
+                _billServices.Update(bill);
                 MessageBox.Show("Lưu thành công");
                 billid = -1;
                 idsp = -1;
@@ -369,7 +392,7 @@ namespace _1.GUI.View
             {
                 bill.PaymenDate = DateTime.Now;
                 bill.Status = 1;
-                _billServices.Add(bill);
+                _billServices.Update(bill);
                 MessageBox.Show("Thanh toán thành công");
                 billid = -1;
                 idsp = -1;
@@ -421,18 +444,19 @@ namespace _1.GUI.View
                 product.Remove(_productServices.FindById(idsp));
                 detail.Remove(_productDetailServices.FindById(idspdt));
             }
+            dview_bill.Rows.Clear();
+            Loadbilldata();
         }
 
         private void dview_bill_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            //dview_bill.Columns["Idsp"].Visible = false;
-            //dview_bill.Columns["Idspdt"].Visible = false;
-            //dview_bill.Columns["Billid"].Visible = false;
-            idsp = int.Parse(dview_bill.Rows[e.RowIndex].Cells["Idsp"].Value.ToString());
-            idspdt= int.Parse(dview_bill.Rows[e.RowIndex].Cells["Idspdt"].Value.ToString());
-
-       
- 
+            if (e.RowIndex >= 0 && e.RowIndex < dview_bill.Rows.Count &&
+         dview_bill.Rows[e.RowIndex].Cells["Idsp"].Value != null &&
+         dview_bill.Rows[e.RowIndex].Cells["Idspdt"].Value != null)
+            {
+                idsp = int.Parse(dview_bill.Rows[e.RowIndex].Cells["Idsp"].Value.ToString());
+                idspdt = int.Parse(dview_bill.Rows[e.RowIndex].Cells["Idspdt"].Value.ToString());
+            }
         }
     }
 }

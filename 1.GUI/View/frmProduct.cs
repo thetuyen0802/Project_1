@@ -19,33 +19,49 @@ namespace _1.GUI
     {
         private IBrandServices _brandService;
         private IProductServices _services;
-        //private IBrandServices _brandServices;
+        private IBrandServices _brandServices;
         private int _clickid;
+        private List<Product> _products;
 
         public frmproduct()
         {
             InitializeComponent();
             _services = new ProductServices();
             _brandService = new BrandServices();
-            //_brandServices = new BrandServices();
+            _brandServices = new BrandServices();
+            _products = new List<Product>();
             LoadData();
+            UpdateView();
         }
         public void LoadData()
         {
             List<Brand> brands = _brandService.GetAll();
-            List<Product> products = _services.GetAll().Where(c=>c.Status==1).ToList();
+            _products = _services.GetAll().Where(c=>c.Status==1).ToList();
             dview_product.Columns.Add("Id", "ID");
-            dview_product.Columns.Add("Brand", "Thương hiệu");
+            
             dview_product.Columns.Add("ProductName", "Tên sản phẩm");
-            dview_product.Columns.Add("Cost", "Giá bán");
-
-
+            dview_product.Columns.Add("Brand", "Thương hiệu");
+            dview_product.Columns.Add("Cost", "Giá nhập");
 
             cbx_brand.DataSource = brands;
             cbx_brand.DisplayMember = "BrandName";
             cbx_brand.ValueMember = "BrandId";
 
 
+        }
+        public void UpdateView()
+        {
+            dview_product.Rows.Clear();
+            foreach (var item in _products)
+            {
+                
+                dview_product.Rows.Add(
+                    item.ProductId,
+                    item.ProductName,
+                    _brandService.GetById(item.BrandId).BrandName,
+                    item.Cost
+                    );
+            }
         }
 
 
@@ -55,14 +71,37 @@ namespace _1.GUI
             /////Chú ý trạng thái của sản phẩm :
             ////    Trạng thái = 0 => Ngừng kinh doanh
             ///     Trạng thái = 1 => Đang kinh doah
-\
+            ///     
+
             Product product = new Product();
             product.ProductName = txt_name.Text;
             product.Cost = float.Parse(txt_cost.Text);
+            product.BrandId = (int)cbx_brand.SelectedValue;
             product.Status = 1;
+            int exs=1;
+            foreach (var item in _services.GetAll())
+            {
+                if (product.ProductName==item.ProductName || product.BrandId==item.BrandId)
+                {
+                    exs = 0;
+                    break;
+                }
+                else
+                {
+                    exs = 1;
+                }
+                
+            }
 
-            _services.Add(product);
-            LoadData();
+            if (exs==0)
+            {
+                MessageBox.Show("Sản phẩm đã tồn tại");
+            }
+            else
+            {
+                _services.Add(product);
+                UpdateView();
+            }
         }
 
         private void btn_clear_Click_1(object sender, EventArgs e)
@@ -78,20 +117,30 @@ namespace _1.GUI
             Product product = _services.FindById(_clickid);
             product.ProductName = txt_name.Text;
             product.Cost = float.Parse(txt_cost.Text);
-            product.BrandId=cbx_brand.SelectedIndex;
+            product.BrandId=(int)cbx_brand.SelectedValue;
 
             _services.Update(product);
-            LoadData();
+            UpdateView();
         }
 
         private void dview_product_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            _clickid = (int)dview_product.Rows[e.RowIndex].Cells[0].Value;
-            Product product = _services.FindById(_clickid);
-            txt_name.Text = product.ProductName;
+            if (e.RowIndex == -1 && e.ColumnIndex != -1)
+            {
+                // Chặn việc chọn dòng tiêu đề
+                dview_product.ClearSelection();
+            }
+            else
+            {
+                _clickid = (int)dview_product.Rows[e.RowIndex].Cells[0].Value;
 
-            txt_cost.Text = product.Cost.ToString();
-            txt_id.Text = _clickid.ToString();
+                Product product = _services.FindById(_clickid);
+                txt_name.Text = product.ProductName;
+
+                txt_cost.Text = product.Cost.ToString();
+                txt_id.Text = _clickid.ToString();
+                cbx_brand.SelectedValue = product.BrandId;
+            }
         }
 
         private void dview_product_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -109,7 +158,7 @@ namespace _1.GUI
             Product product = _services.FindById(_clickid);
             product.Status = 0;
             _services.Update(product);
-            LoadData();
+            UpdateView();
         }
     }
 }

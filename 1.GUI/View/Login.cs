@@ -20,37 +20,48 @@ namespace _1.GUI
         }
         private void btn_login_Click(object sender, EventArgs e)
         {
-
-            int us = 1;
-           
-            foreach (var item in _userServices.GetUsers())
+            if (txt_username.Text=="")
             {
-                if (item.UserName==txt_username.Text)
-                {
-                    us = 1;
-                    _uslog = item;
-                    break;
-                }else us = 0;
-                
+                MessageBox.Show("Tên tài khoản trống");
             }
-
-            if (us==0)
+            else if (txt_password.Text=="")
             {
-                MessageBox.Show("Tên tài khoản không đúng hoặc không tồn tại");
+                MessageBox.Show("Mật khẩu trống");
             }
-            else if (us == 1)
+            else
             {
-                
-                if(_uslog.Password==txt_password.Text) 
+                int us = 1;
+
+                foreach (var item in _userServices.GetUsers())
                 {
-                    
-                    Home home = new Home(_uslog);
-                    home.Show();
-                    this.Hide();
+                    if (item.UserName == txt_username.Text)
+                    {
+                        us = 1;
+                        _uslog = item;
+                        break;
+                    }
+                    else us = 0;
+
                 }
-                else
+
+                if (us == 0)
                 {
-                    MessageBox.Show("Sai mật khẩu");
+                    MessageBox.Show("Tên tài khoản không đúng hoặc không tồn tại");
+                }
+                else if (us == 1)
+                {
+                 
+                    if (_uslog.Password == txt_password.Text)
+                    {
+
+                        Home home = new Home(_uslog);
+                        home.Show();
+                        this.Hide();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Sai mật khẩu");
+                    }
                 }
             }
 

@@ -10,7 +10,7 @@ namespace _2.BUS.Services
         private IBillRepository _iBillRepository;
         public BillServices()
         {
-            _iBillRepository = new BilllRepository();
+            _iBillRepository = new BilllRepo();
         }
 
 

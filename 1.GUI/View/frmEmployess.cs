@@ -18,11 +18,13 @@ namespace _1.GUI.View
         private IUserServices _userServices;
         private IEmployessServices _employessServices;
         private int _id;
+        private List<Employess> employesses;
         public frmEmployess()
         {
             _employessServices= new EmployessServices();
             _userServices = new UserServices();
             InitializeComponent();
+            UpdateData();
             LoadData();
         }
         public void LoadData()
@@ -33,7 +35,7 @@ namespace _1.GUI.View
             dataGridView1.Columns.Add("Email", "Email");
             dataGridView1.Columns.Add("Status", "Trạng thái");
 
-            List<Employess> employesses = _employessServices.GetAll();
+            
             foreach (var item in employesses)
             {
                 dataGridView1.Rows.Add
@@ -46,6 +48,11 @@ namespace _1.GUI.View
                     );
             }
 
+        }
+        public void UpdateData()
+        {
+            employesses = _employessServices.GetAll();
+            dataGridView1.Rows.Clear();
         }
         private void label4_Click(object sender, EventArgs e)
         {
@@ -78,18 +85,29 @@ namespace _1.GUI.View
                 employess.Email = txt_email.Text;
                 employess.Status = 1; // 1 laf ddang lafm viec 0 laf nghi viec
                 MessageBox.Show(_employessServices.Add(employess));
-                LoadData();
+                UpdateData();
+                ClearForm();
             }
             if (ex==1)
             {
                 MessageBox.Show("Email đã tồn tại");
             }
+            
         }
 
         private void frmEmployess_Load(object sender, EventArgs e)
         {
             comboBox1.SelectedIndex = 1;
+            UpdateData();   
             LoadData();
+        }
+        public void ClearForm()
+        {
+            txt_email.Text= string.Empty;
+            txt_employessId.Text= string.Empty;
+            txt_name.Text= string.Empty;
+            txt_email.Text= string.Empty;
+            comboBox1 .SelectedIndex = 1;
         }
 
         private void btn_update_Click(object sender, EventArgs e)
@@ -106,16 +124,26 @@ namespace _1.GUI.View
                 employess.Status = comboBox1.SelectedIndex;
                 _employessServices.Update(employess);
             }
+            ClearForm();
+            UpdateData();
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             _id = (int)dataGridView1.Rows[e.RowIndex].Cells[0].Value;
-            txt_employessId.Text = _id.ToString();
-            txt_email.Text=_employessServices.GetById(_id).Email;
-            txt_userid.Text = _employessServices.GetById(_id).UserId.ToString();
-            txt_name.Text=_employessServices.GetById(_id).Name;
-            comboBox1.SelectedIndex=_employessServices.GetById(_id).Status;
+            if (_id== null)
+            {
+                ClearForm();
+            }
+            else
+            {
+                txt_employessId.Text = _id.ToString();
+                txt_email.Text = _employessServices.GetById(_id).Email;
+                txt_userid.Text = _employessServices.GetById(_id).UserId.ToString();
+                txt_name.Text = _employessServices.GetById(_id).Name;
+                comboBox1.SelectedIndex = _employessServices.GetById(_id).Status;
+            }
+
         }
     }
 }

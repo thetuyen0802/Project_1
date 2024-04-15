@@ -68,11 +68,11 @@
             // dview_bill
             // 
             dview_bill.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dview_bill.Location = new Point(3, 101);
+            dview_bill.Location = new Point(6, 99);
             dview_bill.Name = "dview_bill";
             dview_bill.RowHeadersWidth = 51;
             dview_bill.RowTemplate.Height = 29;
-            dview_bill.Size = new Size(894, 242);
+            dview_bill.Size = new Size(891, 242);
             dview_bill.TabIndex = 0;
             dview_bill.CellClick += dview_bill_CellClick;
             // 
@@ -364,7 +364,7 @@
             label11.TabIndex = 14;
             label11.Text = "Tổng Tiền ";
             // 
-            // frmBanhang
+            // frmSale
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -387,7 +387,7 @@
             Controls.Add(dview_bill);
             FormBorderStyle = FormBorderStyle.None;
             MaximizeBox = false;
-            Name = "frmBanhang";
+            Name = "frmSale";
             Text = "frmBanhang";
             Load += frmBanhang_Load;
             ((System.ComponentModel.ISupportInitialize)dview_bill).EndInit();

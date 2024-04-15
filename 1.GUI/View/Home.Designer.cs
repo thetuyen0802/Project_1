@@ -76,6 +76,7 @@
             btn_bill.TabIndex = 5;
             btn_bill.Text = "Hóa Đơn";
             btn_bill.UseVisualStyleBackColor = true;
+            btn_bill.Click += btn_bill_Click;
             // 
             // btn_account
             // 

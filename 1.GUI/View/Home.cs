@@ -33,7 +33,7 @@ namespace _1.GUI
                 btn_sales.Location = new Point(0, 0);
                 btn_bill.Location = new Point(0, 50);
                 btn_customer.Location = new Point(0, 100);
-                btn_account.Location=new Point(0, 150);
+                btn_account.Location = new Point(0, 150);
                 frmSale sales = new frmSale(_user);
                 FillForm(sales);
             }
@@ -142,8 +142,15 @@ namespace _1.GUI
         private void btn_nhanvien_Click(object sender, EventArgs e)
         {
             panelContainer.Controls.Clear();
-            frmEmployess frm= new frmEmployess();
+            frmEmployess frm = new frmEmployess();
             FillForm(frm);
+        }
+
+        private void btn_bill_Click(object sender, EventArgs e)
+        {
+            panelContainer.Controls.Clear();
+            frmBill bill = new frmBill();
+            FillForm(bill);
         }
     }
 }

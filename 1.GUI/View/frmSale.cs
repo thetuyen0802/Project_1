@@ -41,7 +41,7 @@ namespace _1.GUI.View
         private List<Product> product;
         private List<Bill_ProductDetail> bill_ProductDetail;
         private User Userlog;
-       
+
 
         private int _indexRowClick;
 
@@ -92,7 +92,7 @@ namespace _1.GUI.View
             dview_bill.Columns["Idspdt"].Visible = false;
             dview_bill.Columns["Billid"].Visible = false;
 
-           
+
         }
         public void Loadbilldata()
         {
@@ -136,11 +136,11 @@ namespace _1.GUI.View
                     tt += float.Parse(dview_bill.Rows[i].Cells["Total"].Value.ToString());
                 }
             }
-            txt_tongtien.Text = tt.ToString()+" đ";
+            txt_tongtien.Text = tt.ToString() + " đ";
         }
         public void LoadProduct()
         {
-            product = _productServices.GetAll().Where(c=>c.Status== 1).ToList();
+            product = _productServices.GetAll().Where(c => c.Status == 1).ToList();
             dview_product.DataSource = product;
 
         }
@@ -180,10 +180,11 @@ namespace _1.GUI.View
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (txt_phone.Text=="")
+            if (txt_phone.Text == "")
             {
                 MessageBox.Show("Nhập số điện thoại khách hàng");
-            }else
+            }
+            else
             if (detail == null)
             {
                 MessageBox.Show("Chưa chọn sản phẩm");
@@ -193,7 +194,7 @@ namespace _1.GUI.View
             {
                 MessageBox.Show("Chưa nhập số lượng");
             }
-            else if(int.Parse(txt_soluong.Text)>(int)_productDetailServices.FindById(idspdt).QuantityExists)
+            else if (int.Parse(txt_soluong.Text) > (int)_productDetailServices.FindById(idspdt).QuantityExists)
             {
                 MessageBox.Show("Số lượng tồn không đủ");
             }
@@ -204,7 +205,7 @@ namespace _1.GUI.View
                 {
 
                     bill = new Bill();
-                    
+
                     bill.EmployessId = _employessServices.GetAll().FirstOrDefault(c => c.UserId == Userlog.UserId).EmployessId;
                     bill.CustomerId = _customerServices.GetAll().FirstOrDefault(c => c.PhoneNumber == txt_phone.Text).CustomerId;
                     bill.CreateDate = DateTime.Now;
@@ -218,8 +219,8 @@ namespace _1.GUI.View
                     ProductDetail prddt = _productDetailServices.FindById(idspdt);
                     detail.Add(prddt);//Thêm chi tiết sản phẩm được chọn vào list sản phẩm (detail)
                     //Cappj nhật số lượng
-                    int qantityex=_productDetailServices.FindById(idspdt).QuantityExists-int.Parse(txt_soluong.Text);
-                    if (qantityex<=0)
+                    int qantityex = _productDetailServices.FindById(idspdt).QuantityExists - int.Parse(txt_soluong.Text);
+                    if (qantityex <= 0)
                     {
                         ProductDetail productDetail = _productDetailServices.FindById(idspdt);
                         productDetail.status = 0;
@@ -231,7 +232,7 @@ namespace _1.GUI.View
                         productDetail.QuantityExists = qantityex;
                         _productDetailServices.Update(productDetail);
                     }
-                   
+
 
 
                     float price = _productDetailServices.FindById(idspdt).Price;
@@ -241,9 +242,9 @@ namespace _1.GUI.View
                     bill_ProductDetail1.ProDetailId = idspdt;
                     bill_ProductDetail1.Quantity = int.Parse(txt_soluong.Text);
 
-                    
+
                     bill_ProductDetail.Add(bill_ProductDetail1);
-                 
+
                 }
                 else
                 {
@@ -284,9 +285,9 @@ namespace _1.GUI.View
 
                     bill_ProductDetail.Add(bill_ProductDetail1);
 
-                  
+
                 }
-               
+
 
             }
             dview_bill.Rows.Clear();
@@ -434,7 +435,7 @@ namespace _1.GUI.View
 
         private void btn_bora_Click(object sender, EventArgs e)
         {
-            if (dview_bill.RowCount==0)
+            if (dview_bill.RowCount == 0)
             {
                 billid = -1;
                 MessageBox.Show("Không có sản phẩm nào trong hóa đơn");
@@ -456,6 +457,30 @@ namespace _1.GUI.View
             {
                 idsp = int.Parse(dview_bill.Rows[e.RowIndex].Cells["Idsp"].Value.ToString());
                 idspdt = int.Parse(dview_bill.Rows[e.RowIndex].Cells["Idspdt"].Value.ToString());
+            }
+        }
+
+        private void txt_phone_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar==(char)Keys.Enter)
+            {
+                if (txt_phone.Text == "")
+                {
+                    MessageBox.Show("Chưa nhập số điện thoại khách hàng");
+                }
+                else
+                {
+                    int cus = 0;
+                    cus=_customerServices.GetAll().FirstOrDefault(c => c.PhoneNumber == txt_phone.Text).CustomerId;
+                    if (cus==null)
+                    {
+                        MessageBox.Show("Số điện thoại nhập sai hoặc khách hàng chưa đang ký");
+                    }
+                    else
+                    {
+                        txt_name.Text = _customerServices.GetByID(cus).Name;
+                    }
+                }
             }
         }
     }

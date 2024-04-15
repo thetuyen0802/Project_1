@@ -63,7 +63,6 @@ namespace _1.GUI.View
             id = (int)dataGridView1.Rows[e.RowIndex].Cells[0].Value;
             if (id==null)
             {
-
             }
             else
             {

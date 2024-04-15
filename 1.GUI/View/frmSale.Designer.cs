@@ -67,6 +67,9 @@
             // 
             // dview_bill
             // 
+            dview_bill.AllowUserToAddRows = false;
+            dview_bill.AllowUserToDeleteRows = false;
+            dview_bill.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dview_bill.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dview_bill.Location = new Point(6, 99);
             dview_bill.Name = "dview_bill";
@@ -140,6 +143,7 @@
             // 
             // dview_product
             // 
+            dview_product.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dview_product.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dview_product.Location = new Point(3, 23);
             dview_product.Name = "dview_product";
@@ -347,6 +351,7 @@
             txt_phone.Name = "txt_phone";
             txt_phone.Size = new Size(167, 27);
             txt_phone.TabIndex = 12;
+            txt_phone.KeyPress += txt_phone_KeyPress;
             // 
             // txt_tongtien
             // 

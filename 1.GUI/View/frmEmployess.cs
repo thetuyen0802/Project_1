@@ -23,6 +23,7 @@ namespace _1.GUI.View
         {
             _employessServices= new EmployessServices();
             _userServices = new UserServices();
+            List<Employess> employesses= new List<Employess>();
             InitializeComponent();
             UpdateData();
             LoadData();
@@ -52,7 +53,7 @@ namespace _1.GUI.View
         public void UpdateData()
         {
             employesses = _employessServices.GetAll();
-            dataGridView1.Rows.Clear();
+            
         }
         private void label4_Click(object sender, EventArgs e)
         {
@@ -62,7 +63,7 @@ namespace _1.GUI.View
         private void btn_add_Click(object sender, EventArgs e)
         {
                 int ex = 0;
-            if (_employessServices.GetAll().Where(c => c.Email == txt_email.Text)==null)
+            if (_employessServices.GetAll().FirstOrDefault(c => c.Email == txt_email.Text)==null)
             {
                 ex = 0;
             }
@@ -85,8 +86,10 @@ namespace _1.GUI.View
                 employess.Email = txt_email.Text;
                 employess.Status = 1; // 1 laf ddang lafm viec 0 laf nghi viec
                 MessageBox.Show(_employessServices.Add(employess));
-                UpdateData();
+                dataGridView1.Rows.Clear();
                 ClearForm();
+                UpdateData();
+                
             }
             if (ex==1)
             {
@@ -99,7 +102,7 @@ namespace _1.GUI.View
         {
             comboBox1.SelectedIndex = 1;
             UpdateData();   
-            LoadData();
+           
         }
         public void ClearForm()
         {
@@ -124,25 +127,34 @@ namespace _1.GUI.View
                 employess.Status = comboBox1.SelectedIndex;
                 _employessServices.Update(employess);
             }
+            dataGridView1.Rows.Clear();
             ClearForm();
             UpdateData();
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            _id = (int)dataGridView1.Rows[e.RowIndex].Cells[0].Value;
-            if (_id== null)
+            if (e.RowIndex == -1)
             {
-                ClearForm();
+                dataGridView1.ClearSelection();
             }
             else
             {
-                txt_employessId.Text = _id.ToString();
-                txt_email.Text = _employessServices.GetById(_id).Email;
-                txt_userid.Text = _employessServices.GetById(_id).UserId.ToString();
-                txt_name.Text = _employessServices.GetById(_id).Name;
-                comboBox1.SelectedIndex = _employessServices.GetById(_id).Status;
+                _id = (int)dataGridView1.Rows[e.RowIndex].Cells[0].Value;
+                if (_id == null)
+                {
+                    ClearForm();
+                }
+                else
+                {
+                    txt_employessId.Text = _id.ToString();
+                    txt_email.Text = _employessServices.GetById(_id).Email;
+                    txt_userid.Text = _employessServices.GetById(_id).UserId.ToString();
+                    txt_name.Text = _employessServices.GetById(_id).Name;
+                    comboBox1.SelectedIndex = _employessServices.GetById(_id).Status;
+                }
             }
+            
 
         }
     }

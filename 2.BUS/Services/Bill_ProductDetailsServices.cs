@@ -36,6 +36,16 @@ namespace _2.BUS.Services
             return _bill_product_repo.GetAll();
         }
 
-      
+        public string Update(Bill_ProductDetail obj)
+        {
+            if (_bill_product_repo.Update(obj))
+            {
+                return "Cập nhật thành công";
+            }
+            else
+            {
+                return "Cập nhậtthất bại";
+            }
+        }
     }
 }

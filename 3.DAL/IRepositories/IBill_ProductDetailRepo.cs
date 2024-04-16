@@ -14,6 +14,8 @@ namespace _3.DAL.IRepositories
         bool Add(Bill_ProductDetail obj);
         
         List<Bill_ProductDetail> GetAll();
+
+        bool Update(Bill_ProductDetail obj);
         
     }
 }

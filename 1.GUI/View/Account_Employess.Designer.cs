@@ -33,6 +33,7 @@
             label1 = new Label();
             label3 = new Label();
             btn_update = new Button();
+            label2 = new Label();
             SuspendLayout();
             // 
             // txt_username
@@ -78,6 +79,16 @@
             btn_update.UseVisualStyleBackColor = true;
             btn_update.Click += btn_update_Click;
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Location = new Point(372, 36);
+            label2.Name = "label2";
+            label2.Size = new Size(176, 46);
+            label2.TabIndex = 7;
+            label2.Text = "Tài Khoản";
+            // 
             // Account_Employess
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -85,6 +96,7 @@
             BackColor = SystemColors.GradientActiveCaption;
             ClientSize = new Size(900, 880);
             ControlBox = false;
+            Controls.Add(label2);
             Controls.Add(btn_update);
             Controls.Add(label3);
             Controls.Add(label1);
@@ -105,5 +117,6 @@
         private Label label1;
         private Label label3;
         private Button btn_update;
+        private Label label2;
     }
 }

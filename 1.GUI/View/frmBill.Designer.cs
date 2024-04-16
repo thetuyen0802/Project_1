@@ -73,12 +73,14 @@
             // 
             // view_bill
             // 
+            view_bill.AllowUserToAddRows = false;
+            view_bill.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             view_bill.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             view_bill.Location = new Point(2, 98);
             view_bill.Name = "view_bill";
             view_bill.RowHeadersWidth = 51;
             view_bill.RowTemplate.Height = 29;
-            view_bill.Size = new Size(579, 228);
+            view_bill.Size = new Size(659, 228);
             view_bill.TabIndex = 2;
             view_bill.CellClick += view_bill_CellClick;
             // 
@@ -102,18 +104,19 @@
             // 
             // cbx_status
             // 
+            cbx_status.DropDownStyle = ComboBoxStyle.DropDownList;
             cbx_status.FormattingEnabled = true;
             cbx_status.Items.AddRange(new object[] { "Chưa thanh toán ", "Đã thanh toán" });
-            cbx_status.Location = new Point(614, 298);
+            cbx_status.Location = new Point(667, 298);
             cbx_status.Name = "cbx_status";
             cbx_status.Size = new Size(216, 28);
             cbx_status.TabIndex = 6;
-            cbx_status.SelectedIndexChanged += cbx_status_SelectedIndexChanged;
+            cbx_status.SelectionChangeCommitted += cbx_status_SelectionChangeCommitted;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(614, 275);
+            label4.Location = new Point(667, 275);
             label4.Name = "label4";
             label4.Size = new Size(75, 20);
             label4.TabIndex = 7;
@@ -121,25 +124,25 @@
             // 
             // txt_phone
             // 
-            txt_phone.Location = new Point(614, 235);
+            txt_phone.Location = new Point(667, 235);
             txt_phone.Name = "txt_phone";
-            txt_phone.Size = new Size(274, 27);
+            txt_phone.Size = new Size(221, 27);
             txt_phone.TabIndex = 8;
             txt_phone.KeyPress += txt_sdt_KeyPress;
             // 
             // txt_customer_name
             // 
             txt_customer_name.Enabled = false;
-            txt_customer_name.Location = new Point(614, 174);
+            txt_customer_name.Location = new Point(667, 174);
             txt_customer_name.Name = "txt_customer_name";
             txt_customer_name.ReadOnly = true;
-            txt_customer_name.Size = new Size(274, 27);
+            txt_customer_name.Size = new Size(221, 27);
             txt_customer_name.TabIndex = 9;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(614, 212);
+            label5.Location = new Point(667, 212);
             label5.Name = "label5";
             label5.Size = new Size(97, 20);
             label5.TabIndex = 10;
@@ -148,16 +151,17 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(614, 151);
+            label6.Location = new Point(667, 151);
             label6.Name = "label6";
             label6.Size = new Size(111, 20);
             label6.TabIndex = 11;
             label6.Text = "Tên khách hàng";
+            label6.Click += label6_Click;
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(614, 89);
+            label7.Location = new Point(667, 89);
             label7.Name = "label7";
             label7.Size = new Size(99, 20);
             label7.TabIndex = 12;
@@ -166,10 +170,10 @@
             // txt_employess_name
             // 
             txt_employess_name.Enabled = false;
-            txt_employess_name.Location = new Point(614, 112);
+            txt_employess_name.Location = new Point(667, 112);
             txt_employess_name.Name = "txt_employess_name";
             txt_employess_name.ReadOnly = true;
-            txt_employess_name.Size = new Size(274, 27);
+            txt_employess_name.Size = new Size(221, 27);
             txt_employess_name.TabIndex = 13;
             // 
             // btn_pay

@@ -143,6 +143,8 @@
             // 
             // dview_product
             // 
+            dview_product.AllowUserToAddRows = false;
+            dview_product.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dview_product.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dview_product.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dview_product.Location = new Point(3, 23);
@@ -272,6 +274,8 @@
             // 
             // dview_productdetail
             // 
+            dview_productdetail.AllowUserToAddRows = false;
+            dview_productdetail.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dview_productdetail.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dview_productdetail.Location = new Point(3, 224);
             dview_productdetail.Name = "dview_productdetail";
@@ -394,7 +398,6 @@
             MaximizeBox = false;
             Name = "frmSale";
             Text = "frmBanhang";
-            Load += frmBanhang_Load;
             ((System.ComponentModel.ISupportInitialize)dview_bill).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

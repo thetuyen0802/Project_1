@@ -3,6 +3,7 @@ using _2.BUS.Services;
 using _3.DAL.Context;
 using _3.DAL.Model;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -36,10 +37,15 @@ namespace _1.GUI.View
         private int idsp;
         private int idspdt;
         private int billid;
+        private int slbo;
         private Bill bill;
         private List<ProductDetail> detail;
         private List<Product> product;
         private List<Bill_ProductDetail> bill_ProductDetail;
+
+        private List<ProductDetail> detaildata;
+        private List<Product> productdata;
+        //private List<Bill_ProductDetail> bill_ProductDetaildata;
         private User Userlog;
 
 
@@ -69,31 +75,15 @@ namespace _1.GUI.View
             product = new List<Product>();
             detail = new List<ProductDetail>();
             bill_ProductDetail = new List<Bill_ProductDetail>();
-            LoadProduct();
-            Loadbill();
+
+            productdata = new List<Product>();
+            detaildata = new List<ProductDetail>();
+            //bill_ProductDetaildata = new List<Bill_ProductDetail>();
+            //LoadProduct();
+            frmBanhang_Load();
+            LoadProductData();
         }
-        public void Loadbill()
-        {
-
-            dview_bill.Columns.Add("Name", "Tên sản phẩm");
-            dview_bill.Columns.Add("Brand", "Thương hiệu");
-            dview_bill.Columns.Add("CategoryId", "Loại sản phẩm");
-            dview_bill.Columns.Add("MaterialId", "Chất liệu");
-            dview_bill.Columns.Add("SizeId", "Cỡ");
-            dview_bill.Columns.Add("ColorId", "Màu");
-            dview_bill.Columns.Add("Quantity", "Số lượng");
-            dview_bill.Columns.Add("Price", "Đơn giá");
-            dview_bill.Columns.Add("Total", "Thành tiền");
-            dview_bill.Columns.Add("Idsp", "IDSp");
-            dview_bill.Columns.Add("Idspdt", "IDSPDT");
-            dview_bill.Columns.Add("Billid", "BillId");
-
-            dview_bill.Columns["Idsp"].Visible = false;
-            dview_bill.Columns["Idspdt"].Visible = false;
-            dview_bill.Columns["Billid"].Visible = false;
-
-
-        }
+        
         public void Loadbilldata()
         {
             var data = from prodetail in detail
@@ -129,29 +119,94 @@ namespace _1.GUI.View
                     );
             }
             float tt = 0;
-            for (int i = 0; i < dview_bill.RowCount; i++)
+            if (dview_bill.RowCount==0)
             {
-                if (dview_bill.Rows[i].Cells["Total"].Value != null)
-                {
-                    tt += float.Parse(dview_bill.Rows[i].Cells["Total"].Value.ToString());
-                }
+                txt_tongtien.Text = "0 đ";
             }
-            txt_tongtien.Text = tt.ToString() + " đ";
+            else
+            {
+                for (int i = 0; i < dview_bill.RowCount; i++)
+                {
+                    if (dview_bill.Rows[i].Cells["Total"].Value != null)
+                    {
+                        tt += float.Parse(dview_bill.Rows[i].Cells["Total"].Value.ToString());
+                    }
+                }
+                txt_tongtien.Text = tt.ToString() + " đ";
+            }
+           
         }
-        public void LoadProduct()
+        public void LoadProductData()
         {
-            product = _productServices.GetAll().Where(c => c.Status == 1).ToList();
-            dview_product.DataSource = product;
+            //dview_product.Columns.Add("Id", "Idsp");
+            //dview_product.Columns.Add("Name", "Tên sản phẩm");
+            //dview_product.Columns.Add("Brand", "Thương hiệu");
 
+            //dview_product.Columns["Id"].Visible = false;
+            productdata = _productServices.GetAll().Where(c => c.Status == 1).ToList();
+            foreach (var item in productdata)
+            {
+                dview_product.Rows.Add
+                    (
+                    item.ProductId,
+                    item.ProductName,
+                    _brandServices.GetById(item.BrandId).BrandName
+                    );
+                
+            }
         }
-        public void LoadProductDetail()
-        {
-            detail = _productDetailServices.GetAll().Where(c => c.ProductId == idsp).ToList();
-            dview_productdetail.DataSource = detail;
+        //public void LoadProduct()
+        //{
+        //    product = _productServices.GetAll().Where(c => c.Status == 1).ToList();
+        //    dview_product.DataSource = product;
 
-        }
-        private void frmBanhang_Load(object sender, EventArgs e)
-        {
+        //}
+        
+        public void frmBanhang_Load()
+        {/// bill
+            dview_bill.Columns.Add("Name", "Tên sản phẩm");
+            dview_bill.Columns.Add("Brand", "Thương hiệu");
+            dview_bill.Columns.Add("CategoryId", "Loại sản phẩm");
+            dview_bill.Columns.Add("MaterialId", "Chất liệu");
+            dview_bill.Columns.Add("SizeId", "Cỡ");
+            dview_bill.Columns.Add("ColorId", "Màu");
+            dview_bill.Columns.Add("Quantity", "Số lượng");
+            dview_bill.Columns.Add("Price", "Đơn giá");
+            dview_bill.Columns.Add("Total", "Thành tiền");
+            dview_bill.Columns.Add("Idsp", "IDSp");
+            dview_bill.Columns.Add("Idspdt", "IDSPDT");
+            dview_bill.Columns.Add("Billid", "BillId");
+
+            dview_bill.Columns["Idsp"].Visible = false;
+            dview_bill.Columns["Idspdt"].Visible = false;
+            dview_bill.Columns["Billid"].Visible = false;
+            ///product
+
+
+            dview_product.Columns.Add("Id", "Idsp");
+            dview_product.Columns.Add("Name", "Tên sản phẩm");
+            dview_product.Columns.Add("Brand", "Thương hiệu");
+
+            dview_product.Columns["Id"].Visible = false;
+
+            ///Prodetail
+            dview_productdetail.Columns.Add("ProdtId", "ProdtId");
+            dview_productdetail.Columns.Add("ProId", "ProId"); 
+            dview_productdetail.Columns.Add("Name", "Tên sản phẩm");
+            dview_productdetail.Columns.Add("Brand", "Thương hiệu");
+            dview_productdetail.Columns.Add("Category", "Loại sản phẩm");
+            dview_productdetail.Columns.Add("Material", "Chất liệu"); 
+            dview_productdetail.Columns.Add("Color", "Màu sắc");
+            dview_productdetail.Columns.Add("Size", "Cỡ");
+            dview_productdetail.Columns.Add("Quantity", "Số lượng");
+            dview_productdetail.Columns.Add("Price", "Đơn giá");
+
+
+            dview_productdetail.Columns["ProdtId"].Visible=false;
+            dview_productdetail.Columns["ProId"].Visible=false;
+
+
+
             List<_3.DAL.Model.Color> colors = _colorServices.GetColors();
             List<Material> materials = _materialServices.GetAll();
             List<_3.DAL.Model.Size> sizes = _sizeServices.GetSizes();
@@ -205,7 +260,6 @@ namespace _1.GUI.View
                 {
 
                     bill = new Bill();
-
                     bill.EmployessId = _employessServices.GetAll().FirstOrDefault(c => c.UserId == Userlog.UserId).EmployessId;
                     bill.CustomerId = _customerServices.GetAll().FirstOrDefault(c => c.PhoneNumber == txt_phone.Text).CustomerId;
                     bill.CreateDate = DateTime.Now;
@@ -242,8 +296,31 @@ namespace _1.GUI.View
                     bill_ProductDetail1.ProDetailId = idspdt;
                     bill_ProductDetail1.Quantity = int.Parse(txt_soluong.Text);
 
+                    int ex = 0;
+                    foreach (var item in _bill_ProductDetailsServices.GetAll())
+                    {
+                        if (item.BillId == billid && item.ProDetailId == idspdt)
+                        {
+                            ex = 1;
+                            break;
+                        }
+                        else
+                        {
+                            ex = 0;
+                        }
+                    }
+                    if (ex == 1)
+                    {
 
-                    bill_ProductDetail.Add(bill_ProductDetail1);
+                        bill_ProductDetail1.Quantity += int.Parse(txt_soluong.Text);
+                        _bill_ProductDetailsServices.Update(bill_ProductDetail1);
+
+                    }
+                    else
+                    {
+                        _bill_ProductDetailsServices.Add(bill_ProductDetail1);
+                        bill_ProductDetail.Add(bill_ProductDetail1);
+                    }
 
                 }
                 else
@@ -283,12 +360,33 @@ namespace _1.GUI.View
                     bill_ProductDetail1.ProDetailId = idspdt;
                     bill_ProductDetail1.Quantity = int.Parse(txt_soluong.Text);
 
-                    bill_ProductDetail.Add(bill_ProductDetail1);
-
+                    int ex = 0;
+                    foreach (var item in _bill_ProductDetailsServices.GetAll())
+                    {
+                        if (item.BillId== billid && item.ProDetailId==idspdt)
+                        {
+                            ex = 1;
+                            break;
+                        }
+                        else
+                        {
+                            ex = 0;
+                        }
+                    }
+                    if (ex==1)
+                    {
+                        
+                        bill_ProductDetail1.Quantity += int.Parse(txt_soluong.Text);
+                        _bill_ProductDetailsServices.Update(bill_ProductDetail1);
+                        
+                    }
+                    else
+                    {
+                        _bill_ProductDetailsServices.Add(bill_ProductDetail1);
+                        bill_ProductDetail.Add(bill_ProductDetail1);
+                    }
 
                 }
-
-
             }
             dview_bill.Rows.Clear();
             Loadbilldata();
@@ -361,7 +459,7 @@ namespace _1.GUI.View
             cbx_size.SelectedIndex = -1;
             cbx_material.SelectedIndex = -1;
             detail = _productDetailServices.GetAll();
-            LoadProduct();
+            
         }
 
         private void btn_save_Click(object sender, EventArgs e)
@@ -418,14 +516,37 @@ namespace _1.GUI.View
         private void dview_product_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
 
-            idsp = (int)dview_product.Rows[e.RowIndex].Cells[0].Value;
+            idsp = (int)dview_product.Rows[e.RowIndex].Cells["Id"].Value;
+            dview_productdetail.Rows.Clear();
             LoadProductDetail();
         }
+        public void LoadProductDetail()
+        {
+            detaildata = _productDetailServices.GetAll().Where(c => c.ProductId == idsp).ToList();
+            foreach (var item in detaildata)
+            {
+              
+                dview_productdetail.Rows.Add
+                    (
+                    item.ProDetailId,
+                    item.ProductId,
+                    _productServices.FindById(item.ProductId).ProductName,
+                    _brandServices.GetById(_productServices.FindById(item.ProductId).BrandId).BrandName,
+                    _categogyServices.GetByID(item.CategoryId).CategoryName,
+                    _materialServices.Get(item.MaterialId).MaterialName,
+                    _colorServices.GetByID(item.ColorId).ColorName,
+                    _sizeServices.GetById(item.SizeId).SizeName,
+                    item.QuantityExists,
+                    item.Price
+                    );
+            }
+
+        }
+
 
         private void dview_productdetail_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
-            idspdt = (int)dview_productdetail.Rows[e.RowIndex].Cells[0].Value;
+            idspdt = (int)dview_productdetail.Rows[e.RowIndex].Cells["ProdtId"].Value;
             cbx_category.SelectedValue = _productDetailServices.FindById(idspdt).CategoryId;
             cbx_color.SelectedValue = _productDetailServices.FindById(idspdt).ColorId;
             cbx_material.SelectedValue = _productDetailServices.FindById(idspdt).MaterialId;
@@ -444,6 +565,12 @@ namespace _1.GUI.View
             {
                 product.Remove(_productServices.FindById(idsp));
                 detail.Remove(_productDetailServices.FindById(idspdt));
+                // Cập nhật lại số lượng 
+                
+                int qantityex = _productDetailServices.FindById(idspdt).QuantityExists + slbo;
+                ProductDetail productDetail = _productDetailServices.FindById(idspdt);
+                productDetail.QuantityExists = qantityex;
+                _productDetailServices.Update(productDetail);
             }
             dview_bill.Rows.Clear();
             Loadbilldata();
@@ -452,11 +579,16 @@ namespace _1.GUI.View
         private void dview_bill_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && e.RowIndex < dview_bill.Rows.Count &&
-         dview_bill.Rows[e.RowIndex].Cells["Idsp"].Value != null &&
-         dview_bill.Rows[e.RowIndex].Cells["Idspdt"].Value != null)
+                dview_bill.Rows[e.RowIndex].Cells["Idsp"].Value != null &&
+                dview_bill.Rows[e.RowIndex].Cells["Idspdt"].Value != null)
             {
                 idsp = int.Parse(dview_bill.Rows[e.RowIndex].Cells["Idsp"].Value.ToString());
                 idspdt = int.Parse(dview_bill.Rows[e.RowIndex].Cells["Idspdt"].Value.ToString());
+                slbo = int.Parse(dview_bill.Rows[e.RowIndex].Cells["Quantity"].Value.ToString());
+            }
+            else
+            {
+
             }
         }
 

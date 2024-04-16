@@ -47,6 +47,9 @@
             // 
             // dataView
             // 
+            dataView.AllowUserToAddRows = false;
+            dataView.AllowUserToOrderColumns = true;
+            dataView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataView.Location = new Point(3, 261);
             dataView.Name = "dataView";

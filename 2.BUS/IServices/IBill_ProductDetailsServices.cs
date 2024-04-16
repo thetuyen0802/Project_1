@@ -11,7 +11,9 @@ namespace _2.BUS.IServices
     {
         string Add(Bill_ProductDetail bill_pro_details);
         //string Update(Bill_ProductDetail bill_pro_detail);
-        List<Bill_ProductDetail> GetAll();  
-       // Bill_ProductDetail GetById(int id); 
+        List<Bill_ProductDetail> GetAll();
+
+        string Update(Bill_ProductDetail obj);
+
     }
 }

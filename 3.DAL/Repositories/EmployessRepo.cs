@@ -21,10 +21,17 @@ namespace _3.DAL.Repositories
 
         public bool Add(Employess nv)
         {
-            if (nv == null) return false;
-            _context.Add(nv);
-            _context.SaveChanges();
-            return true;
+            if (nv == null)
+            {
+                return false;
+            }
+            else
+            {
+                _context.Add(nv);
+                _context.SaveChanges();
+                return true;
+            }
+           
         }
 
        

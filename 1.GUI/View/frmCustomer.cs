@@ -53,7 +53,7 @@ namespace _1.GUI.View
             Customer customer = CustomerServices.GetByID(id);
             customer.Name = txt_name.Text;
             customer.PhoneNumber = txt_sdt.Text;
-            MessageBox.Show(CustomerServices.Add(customer));
+            MessageBox.Show(CustomerServices.Update(customer));
             Load();
 
         }

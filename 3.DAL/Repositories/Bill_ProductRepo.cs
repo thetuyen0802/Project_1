@@ -28,12 +28,29 @@ namespace _3.DAL.Repositories
                 return true;
             }
         }
-
+        
         public List<Bill_ProductDetail> GetAll()
         {
             return _context.Bill_ProductDetails.ToList();
         }
 
-            
+        public bool Update(Bill_ProductDetail obj)
+        {
+            if (obj==null)
+            {
+                return false;
+            }
+            else
+            {
+                Bill_ProductDetail bill_ProductDetail = _context.Bill_ProductDetails.FirstOrDefault(c => c.BillId == obj.BillId && c.ProDetailId == obj.ProDetailId);
+                bill_ProductDetail.Price= obj.Price;
+                bill_ProductDetail.Quantity= obj.Quantity;
+               _context.Update(bill_ProductDetail);
+                _context.SaveChanges();
+                return true;
+            }
+           
+
+        }
     }
 }

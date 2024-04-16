@@ -20,30 +20,46 @@ namespace _1.GUI.View
     {
         private IUserServices _services;
         private int id;
+        private List<User> _users;  
 
 
         public Account_Manager()
         {
             InitializeComponent();
             _services = new UserServices();
+            Load();
             LoadData();
 
         }
         void LoadData()
         {
 
-            dataView.DataSource = _services.GetUsers().ToList();
+            _users = _services.GetUsers().ToList();
+            foreach (var item in _users)
+            {
+                dataView.Rows.Add(
+                    item.UserId,
+                    item.UserName,
+                    item.Password,
+                    item.RoleId==1 ? "Nhân viên" : "Quản lý",
+                    item.Status == 1 ? ("Đang làm việc") : ("Đã nghỉ việc")
+                    ); 
+            }
+
 
         }
-
-
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
+        public void Load()
         {
+            dataView.Columns.Add("UserId", "UserId");
+            dataView.Columns.Add("UserName", "Tên tài khoản");
+            dataView.Columns.Add("Password", "Mật khẩu ");
+            dataView.Columns.Add("RoleId", "Chức vụ");
+            dataView.Columns.Add("Status", "Trạng thái");
 
+
+            dataView.Columns["UserId"].Visible= false;
+            
         }
-
-
         //private void button2_Click(object sender, EventArgs e)
         //{
         //    User userView = new User();
@@ -86,20 +102,18 @@ namespace _1.GUI.View
             }
             if (rbt_status_0.Checked)
             {
-                user.Status = 0;
+                user.Status = 0;//0 là da nghi
             }
             else if (rbt_status_1.Checked)
             {
-                user.Status = 1;
+                user.Status = 1;//1 là đang làm việc
             }
             MessageBox.Show(_services.Update(user));
+            dataView.Rows.Clear();
             LoadData();
         }
 
-        private void dataView_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+      
 
         private void dataView_CellClick(object sender, DataGridViewCellEventArgs e)
         {

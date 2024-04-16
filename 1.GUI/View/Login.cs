@@ -50,18 +50,26 @@ namespace _1.GUI
                 }
                 else if (us == 1)
                 {
-                 
-                    if (_uslog.Password == txt_password.Text)
+                    if (_uslog.Status==1)
                     {
+                        if (_uslog.Password != txt_password.Text)
+                        {
+                            MessageBox.Show("Sai mật khẩu");
 
-                        Home home = new Home(_uslog);
-                        home.Show();
-                        this.Hide();
+                        }
+                        else
+                        {
+                            Home home = new Home(_uslog);
+                            home.Show();
+                            this.Hide();
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Sai mật khẩu");
+                        MessageBox.Show("Tài khoản đã ngừng hoạt động");
                     }
+                 
+                   
                 }
             }
 

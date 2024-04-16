@@ -59,7 +59,7 @@ namespace _1.GUI
             dview_product.Columns.Add("ProductName", "Tên sản phẩm");
             dview_product.Columns.Add("Brand", "Thương hiệu");
             dview_product.Columns.Add("Cost", "Giá nhập");
-
+                
 
             view_prodetail.Columns.Add("Name", "Tên sản phẩm");
             view_prodetail.Columns.Add("Brand", "Thương hiệu");

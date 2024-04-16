@@ -30,6 +30,7 @@ namespace _1.GUI
             {
                 this.Controls.Remove(btn_product);
                 this.Controls.Remove(btn_nhanvien);
+                this.Controls.Remove(btn_proinfor);
                 btn_sales.Location = new Point(0, 0);
                 btn_bill.Location = new Point(0, 50);
                 btn_customer.Location = new Point(0, 100);
@@ -151,6 +152,13 @@ namespace _1.GUI
             panelContainer.Controls.Clear();
             frmBill bill = new frmBill();
             FillForm(bill);
+        }
+
+        private void btn_proinfor_Click(object sender, EventArgs e)
+        {
+            panelContainer.Controls.Clear();
+            frmProInfor frmProInfor = new frmProInfor();
+            FillForm(frmProInfor);
         }
     }
 }

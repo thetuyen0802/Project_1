@@ -37,6 +37,7 @@
             btn_logout = new Button();
             btn_customer = new Button();
             btn_nhanvien = new Button();
+            btn_proinfor = new Button();
             SuspendLayout();
             // 
             // panelContainer
@@ -80,7 +81,7 @@
             // 
             // btn_account
             // 
-            btn_account.Location = new Point(-3, 250);
+            btn_account.Location = new Point(-3, 295);
             btn_account.Name = "btn_account";
             btn_account.Size = new Size(157, 53);
             btn_account.TabIndex = 8;
@@ -134,6 +135,16 @@
             btn_nhanvien.UseVisualStyleBackColor = true;
             btn_nhanvien.Click += btn_nhanvien_Click;
             // 
+            // btn_proinfor
+            // 
+            btn_proinfor.Location = new Point(-3, 246);
+            btn_proinfor.Name = "btn_proinfor";
+            btn_proinfor.Size = new Size(157, 53);
+            btn_proinfor.TabIndex = 13;
+            btn_proinfor.Text = "Thông tin sản phẩm";
+            btn_proinfor.UseVisualStyleBackColor = true;
+            btn_proinfor.Click += btn_proinfor_Click;
+            // 
             // Home
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -141,6 +152,7 @@
             AutoSize = true;
             ClientSize = new Size(1054, 833);
             ControlBox = false;
+            Controls.Add(btn_proinfor);
             Controls.Add(btn_nhanvien);
             Controls.Add(btn_customer);
             Controls.Add(btn_logout);
@@ -166,5 +178,6 @@
         private Button btn_logout;
         private Button btn_customer;
         private Button btn_nhanvien;
+        private Button btn_proinfor;
     }
 }

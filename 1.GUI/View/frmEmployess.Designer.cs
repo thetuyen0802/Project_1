@@ -35,10 +35,6 @@
             txt_name = new TextBox();
             txt_email = new TextBox();
             label4 = new Label();
-            label2 = new Label();
-            txt_userid = new TextBox();
-            txt_employessId = new TextBox();
-            label5 = new Label();
             comboBox1 = new ComboBox();
             label6 = new Label();
             btn_add = new Button();
@@ -71,7 +67,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(413, 100);
+            label3.Location = new Point(43, 80);
             label3.Name = "label3";
             label3.Size = new Size(99, 20);
             label3.TabIndex = 3;
@@ -89,14 +85,14 @@
             // 
             // txt_name
             // 
-            txt_name.Location = new Point(526, 93);
+            txt_name.Location = new Point(167, 80);
             txt_name.Name = "txt_name";
             txt_name.Size = new Size(292, 27);
             txt_name.TabIndex = 10;
             // 
             // txt_email
             // 
-            txt_email.Location = new Point(523, 151);
+            txt_email.Location = new Point(164, 144);
             txt_email.Name = "txt_email";
             txt_email.Size = new Size(295, 27);
             txt_email.TabIndex = 11;
@@ -104,46 +100,12 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(413, 151);
+            label4.Location = new Point(43, 151);
             label4.Name = "label4";
             label4.Size = new Size(46, 20);
             label4.TabIndex = 13;
             label4.Text = "Email";
             label4.Click += label4_Click;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(43, 154);
-            label2.Name = "label2";
-            label2.Size = new Size(51, 20);
-            label2.TabIndex = 14;
-            label2.Text = "UserId";
-            // 
-            // txt_userid
-            // 
-            txt_userid.Location = new Point(161, 148);
-            txt_userid.Name = "txt_userid";
-            txt_userid.ReadOnly = true;
-            txt_userid.Size = new Size(144, 27);
-            txt_userid.TabIndex = 15;
-            // 
-            // txt_employessId
-            // 
-            txt_employessId.Location = new Point(161, 93);
-            txt_employessId.Name = "txt_employessId";
-            txt_employessId.ReadOnly = true;
-            txt_employessId.Size = new Size(144, 27);
-            txt_employessId.TabIndex = 16;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(43, 93);
-            label5.Name = "label5";
-            label5.Size = new Size(94, 20);
-            label5.TabIndex = 17;
-            label5.Text = "Nhân viên ID";
             // 
             // comboBox1
             // 
@@ -182,10 +144,6 @@
             Controls.Add(btn_add);
             Controls.Add(label6);
             Controls.Add(comboBox1);
-            Controls.Add(label5);
-            Controls.Add(txt_employessId);
-            Controls.Add(txt_userid);
-            Controls.Add(label2);
             Controls.Add(label4);
             Controls.Add(txt_email);
             Controls.Add(txt_name);
@@ -196,7 +154,6 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "frmEmployess";
             Text = "frmNhanvien";
-            Load += frmEmployess_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -211,10 +168,6 @@
         private TextBox txt_name;
         private TextBox txt_email;
         private Label label4;
-        private Label label2;
-        private TextBox txt_userid;
-        private TextBox txt_employessId;
-        private Label label5;
         private ComboBox comboBox1;
         private Label label6;
         private Button btn_add;

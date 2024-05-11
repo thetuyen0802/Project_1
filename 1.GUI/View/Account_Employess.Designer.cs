@@ -40,8 +40,10 @@
             // 
             txt_username.Location = new Point(254, 170);
             txt_username.Name = "txt_username";
+            txt_username.ReadOnly = true;
             txt_username.Size = new Size(329, 27);
             txt_username.TabIndex = 0;
+            txt_username.TextChanged += txt_username_TextChanged;
             // 
             // txt_password
             // 

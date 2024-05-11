@@ -397,7 +397,7 @@ namespace _1.GUI.View
         {
             int categoryId = int.Parse(cbx_category.SelectedValue.ToString());
 
-            if (detail.Where(c => c.CategoryId == categoryId).ToList().Count == 0)
+            if (detaildata.Where(c => c.CategoryId == categoryId).ToList().Count == 0)
             {
                 MessageBox.Show("Sản phẩm hết hàng hoặc không tồn tại");
                 cbx_category.SelectedIndex = -1;
@@ -405,7 +405,8 @@ namespace _1.GUI.View
             }
             else
             {
-                detail = detail.Where(c => c.CategoryId == categoryId).ToList();
+                detaildata = detaildata.Where(c => c.CategoryId == categoryId).ToList();
+                dview_productdetail.Rows.Clear();
                 LoadProductDetail();
             }
         }

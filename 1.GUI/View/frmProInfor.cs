@@ -57,11 +57,11 @@ namespace _1.GUI.View
 
         public void Load()
         {
-            brands = brandServices.GetAll();
-            categories = categogyServices.GetCategories();
-            materials = materialServices.GetAll();
-            colors = colorServices.GetColors();
-            sizes = sizeServices.GetSizes();
+            
+            
+            
+            
+            
 
             dataGridView1.Columns.Add("BrandId", "BrandId");
             dataGridView1.Columns.Add("BrandName", "Thương hiệu");
@@ -78,6 +78,7 @@ namespace _1.GUI.View
         }
         public void LoadBrandData()
         {
+            brands = brandServices.GetAll();
             dataGridView1.Rows.Clear();
             foreach (var item in brands)
             {
@@ -86,6 +87,7 @@ namespace _1.GUI.View
         }
         public void LoadCategoryData()
         {
+            categories = categogyServices.GetCategories();
             dataGridView2.Rows.Clear();
             foreach (var item in categories)
             {
@@ -94,6 +96,7 @@ namespace _1.GUI.View
         }
         public void LoadMaterial()
         {
+            materials = materialServices.GetAll();
             dataGridView3.Rows.Clear();
             foreach (var item in materials)
             {
@@ -102,6 +105,7 @@ namespace _1.GUI.View
         }
         public void LoadColor()
         {
+            colors = colorServices.GetColors();
             dataGridView4.Rows.Clear();
             foreach (var item in colors)
             {
@@ -110,6 +114,7 @@ namespace _1.GUI.View
         }
         public void Loadsize()
         {
+            sizes = sizeServices.GetSizes();
             dataGridView5.Rows.Clear();
             foreach (var item in sizes)
             {
@@ -149,7 +154,6 @@ namespace _1.GUI.View
                     MessageBox.Show(brandServices.Add(brand));
                 }
             }
-
             dataGridView1.Rows.Clear();
             LoadBrandData();
         }

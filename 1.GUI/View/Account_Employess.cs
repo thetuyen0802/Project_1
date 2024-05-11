@@ -26,17 +26,22 @@ namespace _1.GUI.View
 
         private void Account_Employess_Load(object sender, EventArgs e)
         {
-          
+
             txt_password.Text = _Userif.Password;
-            txt_username.Text  =_Userif.UserName;
+            txt_username.Text = _Userif.UserName;
         }
 
         private void btn_update_Click(object sender, EventArgs e)
         {
             User newUser = _userServices.GetById(_Userif.UserId);
-            newUser.UserName= txt_username.Text;
-            newUser.Password= txt_password.Text;
-            MessageBox.Show(_userServices.Update(newUser)); 
+            newUser.UserName = txt_username.Text;
+            newUser.Password = txt_password.Text;
+            MessageBox.Show(_userServices.Update(newUser));
+
+        }
+
+        private void txt_username_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }
